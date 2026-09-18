@@ -1,0 +1,37 @@
+# Kites Events — website
+
+Static site. No build step, no dependencies to install.
+
+## Structure
+
+```
+index.html        the whole page (markup + styles + logic)
+support.js        runtime that mounts the page
+image-slot.js     image placeholder element
+images/           photography and logos
+```
+
+## Run locally
+
+Open over HTTP (not `file://`, which blocks the module loads):
+
+```bash
+python3 -m http.server 8000
+# → http://localhost:8000
+```
+
+## Deploy
+
+Publish the contents of this folder as-is to any static host — GitHub Pages,
+Netlify, Vercel, Cloudflare Pages, S3. No build command; the publish
+directory is the repo root (or `deploy/` if you keep this folder nested).
+
+Fonts (Prata, Jost) and the animation libraries (GSAP, Lenis) load from CDNs,
+so the deployed site needs network access. For a fully offline copy, use the
+single-file export instead.
+
+## Notes
+
+- Light mode is the default; the sun/moon dial in the navbar switches to the
+  night theme and the choice persists in `localStorage`.
+- Replace a photo by dropping a new file into `images/` under the same name.

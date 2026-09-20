@@ -27,13 +27,15 @@
   /* Kerala festive: sandalwood and kasavu by day, temple night and marigold flame after dark */
   :root, [data-theme="light"] {
     --ink: #2A1408; --ink-rgb: 42,20,8;
-    --bg: #F8EEDA;  --bg-rgb: 248,238,218;
-    --bg-2: #F2E2C2; --bg-3: #EDD9B2;
+    --bg: #FDFCFA;  --bg-rgb: 253,252,250;
+    --bg-2: #F5F3EF; --bg-3: #EDEAE4;
     --coral: #A0210F; --coral-rgb: 160,33,15;
     --ochre: #8A5A0C; --ochre-rgb: 138,90,12;
     --flame: #C9A227; --flame-rgb: 201,162,39;
-    --img-ph: #E8D6B4; --danger: #9A2B2B;
-    --rule: rgba(42,20,8,.2);
+    --img-ph: #E7E4DE; --danger: #9A2B2B;
+    --rule: rgba(42,20,8,.17);
+    /* ambient light barely tints white paper; it only gets its full body at night */
+    --amb-a: .012; --amb-a2: .009;
     --scheme: light;
   }
   [data-theme="dark"] {
@@ -45,6 +47,7 @@
     --flame: #F5C74D; --flame-rgb: 245,199,77;
     --img-ph: #241608; --danger: #C9564B;
     --rule: rgba(247,233,206,.22);
+    --amb-a: .14; --amb-a2: .1;
     --scheme: dark;
   }
   #hero, [data-plate-dark], #menu, #cursor {
@@ -55,6 +58,7 @@
     --ochre: #F0B23C; --ochre-rgb: 240,178,60;
     --flame: #F5C74D; --flame-rgb: 245,199,77;
     --img-ph: #241608; --rule: rgba(247,233,206,.24);
+    --amb-a: .14; --amb-a2: .1;
     color: var(--ink);
   }
   #nav[data-over-hero="1"] {
@@ -120,6 +124,9 @@
   [data-shaft], [data-ember] { contain: strict; }
   [data-shaft] span, [data-caustic] { will-change: transform, opacity; backface-visibility: hidden; }
   [data-shaft], [data-ember], [data-seam], #field { transform: translateZ(0); }
+  /* an opaque section owns its own stacking context, so the shafts inside it
+     paint above its background instead of dropping behind the page */
+  main > section, footer { isolation: isolate; }
   /* content always rides above the light layers */
   [data-fr], footer > div, #proc-intro { position: relative; z-index: 1; }
   @media (max-width: 980px) {
@@ -162,7 +169,7 @@
 
 <div id="theme-flash" aria-hidden="true" style="position:fixed;left:0;right:0;top:0;height:min(52vh,460px);z-index:99;opacity:0;pointer-events:none;background:radial-gradient(44% 82% at var(--flash-x,84%) -4%,rgba(var(--ochre-rgb),.3) 0%,rgba(var(--coral-rgb),.1) 42%,rgba(var(--coral-rgb),0) 76%)"></div>
 
-<div id="field" aria-hidden="true" style="position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(70% 52% at 18% var(--ay,12%),rgba(var(--ochre-rgb),.14),rgba(var(--ochre-rgb),0) 70%),radial-gradient(56% 44% at 88% var(--ay2,72%),rgba(var(--coral-rgb),.1),rgba(var(--coral-rgb),0) 70%)"></div>
+<div id="field" aria-hidden="true" style="position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(70% 52% at 18% var(--ay,12%),rgba(var(--ochre-rgb),var(--amb-a,.14)),rgba(var(--ochre-rgb),0) 70%),radial-gradient(56% 44% at 88% var(--ay2,72%),rgba(var(--coral-rgb),var(--amb-a2,.1)),rgba(var(--coral-rgb),0) 70%)"></div>
 
 <button id="to-top" type="button" aria-label="Back to top" tabindex="-1" data-cursor="Top" style="position:fixed;z-index:95;right:clamp(16px,3vw,34px);bottom:clamp(16px,3vw,34px);display:flex;align-items:center;justify-content:center;width:54px;height:54px;padding:0;border:1px solid rgba(var(--ink-rgb),.3);border-radius:50%;background:rgba(var(--bg-rgb),.85);backdrop-filter:blur(12px);color:var(--ink);font-size:14px;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .55s ease,transform .7s cubic-bezier(.16,1,.3,1),background-color .5s ease,border-color .5s ease,color .5s ease" style-hover="background-color:var(--coral);border-color:var(--coral);color:#F8EEDA">
   <span aria-hidden="true" style="display:block;line-height:1">↑</span>
@@ -342,8 +349,8 @@
   <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:5px;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(var(--ochre-rgb),.8) 0 9px,rgba(var(--ochre-rgb),0) 9px 17px)" data-kasavu=""><span data-kasavu-sweep="" style="position:absolute;top:0;bottom:0;left:0;width:32%;background:linear-gradient(90deg,rgba(255,240,196,0),rgba(255,240,196,.95) 50%,rgba(255,240,196,0));transform:translateX(-140%)"></span></span>
   <span data-seam="" aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:150px;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.26),rgba(var(--ochre-rgb),0) 78%)"></span>
   <span data-shaft="" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none">
-    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),.13) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
-    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),.09) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
+    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),var(--amb-a,.13)) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
+    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),var(--amb-a2,.09)) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
   </span>
   <span data-lamp="" data-amb="" aria-hidden="true" style="position:absolute;right:clamp(8px,2vw,34px);top:0;width:66px;height:230px;pointer-events:none;transform-origin:top center;animation:lampSway 7.5s ease-in-out infinite">
     <span data-amb-wash="" style="position:absolute;left:50%;top:150px;width:460px;height:460px;margin-left:-230px;max-width:62vw;max-height:62vw;border-radius:50%;background:radial-gradient(circle,rgba(var(--ochre-rgb),.2) 0%,rgba(var(--ochre-rgb),0) 70%);opacity:0;transition:opacity 1.4s ease"></span>
@@ -410,8 +417,8 @@
   <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:5px;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(var(--ochre-rgb),.8) 0 9px,rgba(var(--ochre-rgb),0) 9px 17px)" data-kasavu=""><span data-kasavu-sweep="" style="position:absolute;top:0;bottom:0;left:0;width:32%;background:linear-gradient(90deg,rgba(255,240,196,0),rgba(255,240,196,.95) 50%,rgba(255,240,196,0));transform:translateX(-140%)"></span></span>
   <span data-seam="" aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:150px;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.26),rgba(var(--ochre-rgb),0) 78%)"></span>
   <span data-shaft="" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none">
-    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),.13) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
-    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),.09) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
+    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),var(--amb-a,.13)) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
+    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),var(--amb-a2,.09)) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
   </span>
   <span data-lamp="" data-amb="" aria-hidden="true" style="position:absolute;left:clamp(6px,1.6vw,26px);top:0;width:54px;height:190px;pointer-events:none;transform-origin:top center;animation:lampSway 8.6s ease-in-out infinite">
     <span data-amb-wash="" style="position:absolute;left:50%;top:120px;width:400px;height:400px;margin-left:-200px;max-width:60vw;max-height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(var(--ochre-rgb),.18) 0%,rgba(var(--ochre-rgb),0) 70%);opacity:0;transition:opacity 1.4s ease"></span>
@@ -497,8 +504,8 @@
   <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:5px;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(var(--ochre-rgb),.8) 0 9px,rgba(var(--ochre-rgb),0) 9px 17px)" data-kasavu=""><span data-kasavu-sweep="" style="position:absolute;top:0;bottom:0;left:0;width:32%;background:linear-gradient(90deg,rgba(255,240,196,0),rgba(255,240,196,.95) 50%,rgba(255,240,196,0));transform:translateX(-140%)"></span></span>
   <span data-seam="" aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:150px;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.26),rgba(var(--ochre-rgb),0) 78%)"></span>
   <span data-shaft="" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none">
-    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),.13) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
-    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),.09) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
+    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),var(--amb-a,.13)) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
+    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),var(--amb-a2,.09)) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
   </span>
   <div data-fr="" data-fr-key="experiences" style="display:flex;flex-direction:column;gap:clamp(22px,3vw,44px)">
     <div data-fr-head="" style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:14px;max-width:1720px;width:100%;margin:0 auto;padding:0 clamp(16px,3.4vw,46px) 16px;border-bottom:1px solid var(--rule);font-family:Marcellus,serif;font-size:11px;letter-spacing:.26em;text-transform:uppercase">
@@ -569,8 +576,8 @@
   <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:5px;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(var(--ochre-rgb),.8) 0 9px,rgba(var(--ochre-rgb),0) 9px 17px)" data-kasavu=""><span data-kasavu-sweep="" style="position:absolute;top:0;bottom:0;left:0;width:32%;background:linear-gradient(90deg,rgba(255,240,196,0),rgba(255,240,196,.95) 50%,rgba(255,240,196,0));transform:translateX(-140%)"></span></span>
   <span data-seam="" aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:150px;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.26),rgba(var(--ochre-rgb),0) 78%)"></span>
   <span data-shaft="" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none">
-    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),.13) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
-    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),.09) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
+    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),var(--amb-a,.13)) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
+    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),var(--amb-a2,.09)) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
   </span>
   <div data-fr="" data-fr-key="gallery" style="position:relative;max-width:1720px;margin:0 auto;padding:0 clamp(16px,3.4vw,46px)">
     <div data-slate="" style="display:flex;align-items:center;gap:clamp(12px,1.6vw,22px);flex-wrap:wrap;padding-bottom:clamp(24px,3vw,46px);font-family:Marcellus,serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase">
@@ -737,8 +744,8 @@
   <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:5px;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(var(--ochre-rgb),.8) 0 9px,rgba(var(--ochre-rgb),0) 9px 17px)" data-kasavu=""><span data-kasavu-sweep="" style="position:absolute;top:0;bottom:0;left:0;width:32%;background:linear-gradient(90deg,rgba(255,240,196,0),rgba(255,240,196,.95) 50%,rgba(255,240,196,0));transform:translateX(-140%)"></span></span>
   <span data-seam="" aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:150px;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.26),rgba(var(--ochre-rgb),0) 78%)"></span>
   <span data-shaft="" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none">
-    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),.13) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
-    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),.09) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
+    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),var(--amb-a,.13)) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
+    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),var(--amb-a2,.09)) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
   </span>
   <span data-deco="" aria-hidden="true" style="position:absolute;right:clamp(10px,7vw,140px);bottom:clamp(20px,5vw,90px);z-index:0;font-family:'Cormorant Garamond',serif;font-size:clamp(150px,20vw,320px);line-height:.6;color:rgba(var(--coral-rgb),.09);pointer-events:none">“</span>
   <span data-lamp="" data-amb="" aria-hidden="true" style="position:absolute;right:clamp(6px,1.8vw,30px);bottom:clamp(30px,4vw,70px);width:70px;height:165px;pointer-events:none">
@@ -861,8 +868,8 @@
   <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:5px;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(var(--ochre-rgb),.8) 0 9px,rgba(var(--ochre-rgb),0) 9px 17px)" data-kasavu=""><span data-kasavu-sweep="" style="position:absolute;top:0;bottom:0;left:0;width:32%;background:linear-gradient(90deg,rgba(255,240,196,0),rgba(255,240,196,.95) 50%,rgba(255,240,196,0));transform:translateX(-140%)"></span></span>
   <span data-seam="" aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:150px;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.26),rgba(var(--ochre-rgb),0) 78%)"></span>
   <span data-shaft="" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none">
-    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),.13) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
-    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),.09) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
+    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),var(--amb-a,.13)) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
+    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),var(--amb-a2,.09)) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
   </span>
   <span data-lamp="" data-amb="" aria-hidden="true" style="position:absolute;left:clamp(6px,1.6vw,26px);top:0;width:58px;height:200px;pointer-events:none;transform-origin:top center;animation:lampSway 8s ease-in-out infinite">
     <span data-amb-wash="" style="position:absolute;left:50%;top:130px;width:420px;height:420px;margin-left:-210px;max-width:60vw;max-height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(var(--ochre-rgb),.18) 0%,rgba(var(--ochre-rgb),0) 70%);opacity:0;transition:opacity 1.4s ease"></span>
@@ -897,7 +904,7 @@
         </div>
       </div>
 
-      <div data-console="" style="position:relative;display:flex;flex-direction:column;gap:14px;margin-top:clamp(26px,3vw,48px);padding:clamp(18px,2.4vw,34px);background:linear-gradient(180deg,rgba(var(--ochre-rgb),.12),rgba(var(--ochre-rgb),.04) 62%);border:1px solid rgba(var(--ochre-rgb),.45);box-shadow:0 26px 60px rgba(42,20,8,.14)">
+      <div data-console="" style="position:relative;display:flex;flex-direction:column;gap:14px;margin-top:clamp(26px,3vw,48px);padding:clamp(18px,2.4vw,34px);background:linear-gradient(180deg,rgba(var(--ink-rgb),.05),rgba(var(--ink-rgb),.02) 62%);border:1px solid rgba(var(--ochre-rgb),.45);box-shadow:0 26px 60px rgba(42,20,8,.14)">
         <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,rgba(var(--ochre-rgb),0),var(--ochre),rgba(var(--ochre-rgb),0))"></span>
         <span data-glow="" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(300px 220px at var(--gx,50%) var(--gy,50%),rgba(245,199,77,.14),rgba(228,86,43,0) 70%);transition:opacity .9s ease"></span>
         <article data-plate="0" tabindex="-1" style="position:relative;overflow:hidden;padding:clamp(18px,2.2vw,30px);border:1px solid rgba(var(--ink-rgb),.2);transition:border-color .5s ease,background-color .5s ease">
@@ -1011,8 +1018,8 @@
   <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:5px;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(var(--ochre-rgb),.8) 0 9px,rgba(var(--ochre-rgb),0) 9px 17px)" data-kasavu=""><span data-kasavu-sweep="" style="position:absolute;top:0;bottom:0;left:0;width:32%;background:linear-gradient(90deg,rgba(255,240,196,0),rgba(255,240,196,.95) 50%,rgba(255,240,196,0));transform:translateX(-140%)"></span></span>
   <span data-seam="" aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:150px;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.26),rgba(var(--ochre-rgb),0) 78%)"></span>
   <span data-shaft="" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none">
-    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),.13) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
-    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),.09) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
+    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),var(--amb-a,.13)) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
+    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),var(--amb-a2,.09)) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
   </span>
   <span data-amb="" aria-hidden="true" style="position:absolute;left:0;right:0;top:5px;height:86px;pointer-events:none;transform-origin:top center;animation:garlandSway 11s ease-in-out infinite">
     <span data-amb-wash="" style="position:absolute;left:0;right:0;top:-30px;height:280px;background:radial-gradient(60% 100% at 50% 0%,rgba(var(--ochre-rgb),.2) 0%,rgba(var(--ochre-rgb),0) 72%);opacity:0;transition:opacity 1.4s ease"></span>
@@ -1433,15 +1440,15 @@ class Component extends DCLogic {
     const sweep = q(HASH + 'hero-sweep');
     const seam = q(HASH + 'curtain-seam');
     const panels = curtain ? Array.from(curtain.querySelectorAll('[data-curtain-panel]')) : [];
-    let seen = false;
-    try { seen = sessionStorage.getItem('kites-curtain') === '1'; } catch (e) {}
+    /* the house opens on every arrival, not once a session */
+    const seen = false;
     const strikeSet = () => {
       if (curtain) curtain.parentNode && curtain.parentNode.removeChild(curtain);
       if (sweep) sweep.parentNode && sweep.parentNode.removeChild(sweep);
     };
     const theatre = motion && curtain && !seen;
     if (!theatre) strikeSet();
-    else { try { sessionStorage.setItem('kites-curtain', '1'); } catch (e) {} if (lenis) lenis.stop(); }
+    else if (lenis) lenis.stop();
 
     if (motion) {
       const tl = gsap.timeline({ delay: theatre ? 0 : 0.06 });

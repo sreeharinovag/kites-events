@@ -20,6 +20,20 @@ python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
+## Push to a repo
+
+```bash
+cd deploy
+git init -b main
+git add -A
+git commit -m "Kites Events website"
+git remote add origin git@github.com:<you>/<repo>.git
+git push -u origin main
+```
+
+For GitHub Pages: Settings → Pages → Deploy from a branch → `main` / `/ (root)`.
+The `.nojekyll` file is required there — without it Jekyll strips some assets.
+
 ## Deploy
 
 Publish the contents of this folder as-is to any static host — GitHub Pages,

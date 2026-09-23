@@ -224,15 +224,44 @@
     [data-hero-scroll] { padding-bottom: calc(22px + env(safe-area-inset-bottom)) !important; }
   }
   @media (min-width: 881px) { #kite-line { display: none !important; } }
+  /* phone compaction: less travel between beats, same composition */
+  @media (max-width: 760px) {
+    main > section:not(#hero) { padding-top: 42px !important; padding-bottom: 38px !important; }
+    /* the two full-bleed interludes carry their picture in less height */
+    main > section:not([id]) { min-height: 56vh !important; }
+    [data-fr-head] { padding-bottom: 12px !important; margin-bottom: 14px !important; }
+    [data-fr-head] h2 { margin-bottom: 4px !important; }
+    #about [data-overlap] { row-gap: 18px !important; }
+    [data-about-plate] { min-height: 260px !important; }
+    [data-rail] > div { padding-top: 12px !important; padding-bottom: 12px !important; }
+    #gal-track [data-gal-frame] { aspect-ratio: 3/2 !important; }
+    [data-stack] { gap: 18px !important; padding-bottom: 28px !important; }
+    [data-stack-card] [data-stair-img] { aspect-ratio: 21/9 !important; }
+    #proc { row-gap: 24px !important; }
+    #svc-list [data-svc-row] { min-height: 56px !important; }
+    [data-quote] { padding: 20px !important; }
+    /* footer: the links read as a two-column index, the rows lose their padding */
+    footer [aria-label="Footer"] { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: 14px; row-gap: 0 !important; }
+    footer [aria-label="Footer"] > span { grid-column: 1 / -1; margin-bottom: 6px !important; }
+    footer [aria-label="Footer"] a { min-height: 44px; display: flex; align-items: center; border-bottom: 1px solid rgba(var(--ink-rgb),.1); }
+    footer [data-frow] { padding: 7px 0 !important; }
+    footer [data-frow] + span { margin-top: 8px !important; }
+    footer [aria-label="Footer"] + div > span:first-child,
+    footer [aria-label="Footer"] ~ div > span:first-child { margin-bottom: 6px !important; padding-top: 10px !important; }
+    #foot-bar { margin-top: 18px !important; padding-top: 12px !important; gap: 4px 18px !important; }
+    #foot-bar [data-legal] a { min-height: 34px !important; }
+    footer > div { row-gap: 22px !important; }
+  }
   /* phone curation pass */
   @media (max-width: 760px) {
     #experiences { min-height: 0 !important; justify-content: flex-start !important; }
-    #experiences [data-fr-head] { padding: 0 clamp(16px,3.4vw,46px) 16px !important; margin-bottom: 0 !important; }
+    #experiences [data-fr-head] { padding: 0 clamp(16px,3.4vw,46px) 12px !important; margin-bottom: 0 !important; }
     #gal-view { overflow: visible !important; }
-    #gal-track { flex-direction: column !important; width: auto !important; gap: 56px !important; }
+    #gal-track { flex-direction: column !important; width: auto !important; gap: 30px !important; }
+    #gal-track article { gap: 10px !important; }
     #gal-track article { width: auto !important; }
     #gal-track article > div:first-child { flex-wrap: wrap; row-gap: 6px; }
-    #proc { grid-template-columns: minmax(0,1fr) !important; row-gap: 34px !important; }
+    #proc { grid-template-columns: minmax(0,1fr) !important; row-gap: 24px !important; }
     #proc [data-step] { padding-left: 42px; gap: 10px !important; }
     #proc [data-step] > span:first-child { position: absolute !important; left: 0; top: -3px; height: 22px !important; width: 24px; }
     #proc [data-dot] { top: 0 !important; }
@@ -1259,7 +1288,7 @@
             <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(var(--ink-rgb),.82);max-width:24ch;line-height:1.7">Events &amp; Wedding Planners</span>
           </div>
         </div>
-        <p style="margin:0;max-width:40ch;font-size:14px;line-height:1.8;color:rgba(var(--ink-rgb),.78)">Event management and wedding planning in Thodupuzha. We design and produce celebrations people remember for the feeling, not the flowers.</p>
+        <p style="margin:0;max-width:40ch;font-size:14px;line-height:1.8;color:rgba(var(--ink-rgb),.78)">Event management and wedding planning in All Over Kerala. We design and produce celebrations people remember for the feeling, not the flowers.</p>
       </div>
       <nav aria-label="Footer" style="display:flex;flex-direction:column;gap:9px;font-size:14.5px">
         <span style="display:block;margin-bottom:14px;padding-top:12px;border-top:1px solid rgba(var(--ochre-rgb),.5);font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ochre)">Navigate</span>

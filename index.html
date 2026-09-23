@@ -213,16 +213,14 @@
   /* phone masthead: one left edge, composition seated on the dark floor */
   [data-hf-a], [data-hf-b] { display: block; }
   @media (max-width: 760px) {
-    [data-hero-core] { justify-content: flex-end !important; align-items: flex-start !important; text-align: left !important; gap: 20px !important; padding: 210px 18px calc(30px + env(safe-area-inset-bottom)) !important; }
-    [data-hrail-flat] { max-width: none !important; display: flex !important; flex-direction: column; gap: 2px; padding-left: 38px; position: relative; font-size: 10.5px !important; line-height: 1.8 !important; }
-    [data-hrail-flat]::before { content: ""; position: absolute; left: 0; top: .9em; width: 26px; height: 1px; background: var(--ochre); }
+    [data-hero-core] { justify-content: center !important; align-items: center !important; text-align: center !important; gap: 20px !important; padding: 200px 18px 24px !important; }
+    [data-hrail-flat] { max-width: none !important; display: flex !important; align-items: center; justify-content: center; gap: 12px; font-size: 10.5px !important; line-height: 1.6 !important; letter-spacing: .24em !important; }
+    [data-hrail-flat]::before, [data-hrail-flat]::after { content: ""; flex: 0 0 22px; height: 1px; background: var(--ochre); }
     [data-hf-b] { display: none !important; }
-    [data-hrail-flat]::before { top: 50% !important; }
-    [data-hrail-flat] { padding-left: 36px !important; }
     #hero h1 { margin-top: 0 !important; font-size: min(9.2vw, 40px) !important; line-height: 1.04 !important; }
-    #hero-sub { max-width: 36ch !important; font-size: 15px !important; line-height: 1.7 !important; }
-    #hero-cta { align-self: stretch; justify-content: center; min-height: 54px; margin-top: 4px; }
-    [data-hero-scroll] { display: none !important; }
+    #hero-sub { max-width: 32ch !important; font-size: 15px !important; line-height: 1.7 !important; }
+    #hero-cta { align-self: center; justify-content: center; min-height: 52px; margin-top: 4px; }
+    [data-hero-scroll] { padding-bottom: calc(22px + env(safe-area-inset-bottom)) !important; }
   }
   /* phone curation pass */
   @media (max-width: 760px) {
@@ -369,8 +367,8 @@
   <div style="position:relative;display:flex;flex-direction:column;gap:clamp(12px,1.8vh,18px);padding-top:clamp(14px,2vh,22px);border-top:1px solid var(--rule)">
     <a data-menulink="" href="#contact" style="display:flex;align-items:center;justify-content:center;gap:12px;min-height:54px;padding:0 26px;border-radius:999px;background:var(--ochre);color:#1A0E05;font-family:Marcellus,serif;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;opacity:0;transform:translateY(24px)">Start planning<span aria-hidden="true">→</span></a>
     <div style="display:flex;flex-direction:column;font-family:Marcellus,serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase">
-      <a href="tel:+919746117711" style="display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:46px;border-bottom:1px solid rgba(var(--ink-rgb),.12)">Vishnu KV<span style="opacity:.66;letter-spacing:.08em">97461 17711</span></a>
-      <a href="tel:+919895643641" style="display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:46px;border-bottom:1px solid rgba(var(--ink-rgb),.12)">Sreesankar<span style="opacity:.66;letter-spacing:.08em">98956 43641</span></a>
+      <a href="tel:+919746117711" style="display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:46px;border-bottom:1px solid rgba(var(--ink-rgb),.12)">Vishnu KV<span style="opacity:.66;letter-spacing:.08em">+91 97461 17711</span></a>
+      <a href="tel:+919895643641" style="display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:46px;border-bottom:1px solid rgba(var(--ink-rgb),.12)">Sreesankar<span style="opacity:.66;letter-spacing:.08em">+91 98956 43641</span></a>
       <a href="https://www.instagram.com/kites_events_/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:46px">@kites_events_<span style="opacity:.66;letter-spacing:.08em">Thodupuzha · Kerala</span></a>
     </div>
   </div>

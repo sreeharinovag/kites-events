@@ -97,6 +97,8 @@
   @keyframes shaftDriftAlt { 0%, 100% { transform: rotate(-11deg) translate3d(0,0,0); opacity: .6; } 50% { transform: rotate(-7deg) translate3d(-2.5vw,3vh,0); opacity: .95; } }
   @keyframes causticDrift { 0%, 100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(6%,-4%,0) scale(1.14); } }
   @media (prefers-reduced-motion: reduce) { [data-shaft] span, [data-caustic] { animation: none !important; } }
+  @media (max-width: 880px) { #moments [data-two] { grid-template-columns: minmax(0,1fr) !important; } }
+  @media (max-width: 700px) { #mom-tabs { grid-template-columns: minmax(0,1fr) !important; } }
   [data-qribbons] button span[data-qname] { transform-origin: center; }
   /* scene compositions collapse in their own way */
   @media (max-width: 1000px) {
@@ -302,7 +304,7 @@
     <a data-navlink="hero" href="#hero" style="position:relative;display:inline-block;padding:6px 0;opacity:.68;transition:opacity .4s ease">Home<span data-nav-rule="" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.16,1,.3,1)"></span></a>
     <a data-navlink="about" href="#about" style="position:relative;display:inline-block;padding:6px 0;opacity:.68;transition:opacity .4s ease">About<span data-nav-rule="" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.16,1,.3,1)"></span></a>
     <a data-navlink="services" href="#services" style="position:relative;display:inline-block;padding:6px 0;opacity:.68;transition:opacity .4s ease">Services<span data-nav-rule="" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.16,1,.3,1)"></span></a>
-    <a data-navlink="experiences" href="#experiences" style="position:relative;display:inline-block;padding:6px 0;opacity:.68;transition:opacity .4s ease">Experiences<span data-nav-rule="" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.16,1,.3,1)"></span></a>
+    <a data-navlink="moments" href="#moments" style="position:relative;display:inline-block;padding:6px 0;opacity:.68;transition:opacity .4s ease">Moments<span data-nav-rule="" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.16,1,.3,1)"></span></a>
     <a data-navlink="process" href="#process" style="position:relative;display:inline-block;padding:6px 0;opacity:.68;transition:opacity .4s ease">Process<span data-nav-rule="" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.16,1,.3,1)"></span></a>
     <a data-navlink="reviews" href="#reviews" style="position:relative;display:inline-block;padding:6px 0;opacity:.68;transition:opacity .4s ease">Reviews<span data-nav-rule="" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.16,1,.3,1)"></span></a>
     <a data-navlink="contact" href="#contact" style="position:relative;display:inline-block;padding:6px 0;opacity:.68;transition:opacity .4s ease">Contact<span data-nav-rule="" aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.16,1,.3,1)"></span></a>
@@ -358,7 +360,7 @@
     <a data-seg="hero" href="#hero" style="position:relative;flex:1 1 0;display:flex;align-items:center;gap:7px;min-width:0;padding:0 clamp(6px,.8vw,12px);overflow:hidden;font-family:Marcellus,serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(var(--ink-rgb),.64);transition:color .45s ease"><span data-seg-fill="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.03),rgba(var(--ochre-rgb),.2));transform:scaleX(0);transform-origin:left;pointer-events:none"></span><span data-seg-num="" style="position:relative;color:var(--ochre)">I</span><span data-seg-name="" style="position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Home</span></a>
     <a data-seg="about" href="#about" style="position:relative;flex:1 1 0;display:flex;align-items:center;gap:7px;min-width:0;padding:0 clamp(6px,.8vw,12px);border-left:1px solid rgba(var(--ochre-rgb),.22);overflow:hidden;font-family:Marcellus,serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(var(--ink-rgb),.64);transition:color .45s ease"><span data-seg-fill="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.03),rgba(var(--ochre-rgb),.2));transform:scaleX(0);transform-origin:left;pointer-events:none"></span><span data-seg-num="" style="position:relative;color:var(--ochre)">II</span><span data-seg-name="" style="position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">The Atelier</span></a>
     <a data-seg="services" href="#services" style="position:relative;flex:1 1 0;display:flex;align-items:center;gap:7px;min-width:0;padding:0 clamp(6px,.8vw,12px);border-left:1px solid rgba(var(--ochre-rgb),.22);overflow:hidden;font-family:Marcellus,serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(var(--ink-rgb),.64);transition:color .45s ease"><span data-seg-fill="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.03),rgba(var(--ochre-rgb),.2));transform:scaleX(0);transform-origin:left;pointer-events:none"></span><span data-seg-num="" style="position:relative;color:var(--ochre)">III</span><span data-seg-name="" style="position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Services</span></a>
-    <a data-seg="experiences" href="#experiences" style="position:relative;flex:1 1 0;display:flex;align-items:center;gap:7px;min-width:0;padding:0 clamp(6px,.8vw,12px);border-left:1px solid rgba(var(--ochre-rgb),.22);overflow:hidden;font-family:Marcellus,serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(var(--ink-rgb),.64);transition:color .45s ease"><span data-seg-fill="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.03),rgba(var(--ochre-rgb),.2));transform:scaleX(0);transform-origin:left;pointer-events:none"></span><span data-seg-num="" style="position:relative;color:var(--ochre)">IV</span><span data-seg-name="" style="position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Experiences</span></a>
+    <a data-seg="moments" href="#moments" style="position:relative;flex:1 1 0;display:flex;align-items:center;gap:7px;min-width:0;padding:0 clamp(6px,.8vw,12px);border-left:1px solid rgba(var(--ochre-rgb),.22);overflow:hidden;font-family:Marcellus,serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(var(--ink-rgb),.64);transition:color .45s ease"><span data-seg-fill="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.03),rgba(var(--ochre-rgb),.2));transform:scaleX(0);transform-origin:left;pointer-events:none"></span><span data-seg-num="" style="position:relative;color:var(--ochre)">IV</span><span data-seg-name="" style="position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Moments</span></a>
     <a data-seg="process" href="#process" style="position:relative;flex:1 1 0;display:flex;align-items:center;gap:7px;min-width:0;padding:0 clamp(6px,.8vw,12px);border-left:1px solid rgba(var(--ochre-rgb),.22);overflow:hidden;font-family:Marcellus,serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(var(--ink-rgb),.64);transition:color .45s ease"><span data-seg-fill="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.03),rgba(var(--ochre-rgb),.2));transform:scaleX(0);transform-origin:left;pointer-events:none"></span><span data-seg-num="" style="position:relative;color:var(--ochre)">V</span><span data-seg-name="" style="position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">The Process</span></a>
     <a data-seg="reviews" href="#reviews" style="position:relative;flex:1 1 0;display:flex;align-items:center;gap:7px;min-width:0;padding:0 clamp(6px,.8vw,12px);border-left:1px solid rgba(var(--ochre-rgb),.22);overflow:hidden;font-family:Marcellus,serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(var(--ink-rgb),.64);transition:color .45s ease"><span data-seg-fill="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.03),rgba(var(--ochre-rgb),.2));transform:scaleX(0);transform-origin:left;pointer-events:none"></span><span data-seg-num="" style="position:relative;color:var(--ochre)">VI</span><span data-seg-name="" style="position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Reviews</span></a>
     <a data-seg="contact" href="#contact" style="position:relative;flex:1 1 0;display:flex;align-items:center;gap:7px;min-width:0;padding:0 clamp(6px,.8vw,12px);border-left:1px solid rgba(var(--ochre-rgb),.22);overflow:hidden;font-family:Marcellus,serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(var(--ink-rgb),.64);transition:color .45s ease"><span data-seg-fill="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.03),rgba(var(--ochre-rgb),.2));transform:scaleX(0);transform-origin:left;pointer-events:none"></span><span data-seg-num="" style="position:relative;color:var(--ochre)">VII</span><span data-seg-name="" style="position:relative;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Contact</span></a>
@@ -369,7 +371,7 @@
   <a data-ix="hero" href="#hero" style="display:flex;align-items:center;gap:11px;writing-mode:vertical-rl;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(var(--ink-rgb),.55);transition:color .5s ease"><span data-ix-tick="" aria-hidden="true" style="display:block;width:1px;height:12px;background:currentColor;opacity:.45;transition:height .5s cubic-bezier(.16,1,.3,1),opacity .5s ease"></span>Home</a>
   <a data-ix="about" href="#about" style="display:flex;align-items:center;gap:11px;writing-mode:vertical-rl;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(var(--ink-rgb),.55);transition:color .5s ease"><span data-ix-tick="" aria-hidden="true" style="display:block;width:1px;height:12px;background:currentColor;opacity:.45;transition:height .5s cubic-bezier(.16,1,.3,1),opacity .5s ease"></span>The Atelier</a>
   <a data-ix="services" href="#services" style="display:flex;align-items:center;gap:11px;writing-mode:vertical-rl;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(var(--ink-rgb),.55);transition:color .5s ease"><span data-ix-tick="" aria-hidden="true" style="display:block;width:1px;height:12px;background:currentColor;opacity:.45;transition:height .5s cubic-bezier(.16,1,.3,1),opacity .5s ease"></span>Services</a>
-  <a data-ix="experiences" href="#experiences" style="display:flex;align-items:center;gap:11px;writing-mode:vertical-rl;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(var(--ink-rgb),.55);transition:color .5s ease"><span data-ix-tick="" aria-hidden="true" style="display:block;width:1px;height:12px;background:currentColor;opacity:.45;transition:height .5s cubic-bezier(.16,1,.3,1),opacity .5s ease"></span>Experiences</a>
+  <a data-ix="moments" href="#moments" style="display:flex;align-items:center;gap:11px;writing-mode:vertical-rl;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(var(--ink-rgb),.55);transition:color .5s ease"><span data-ix-tick="" aria-hidden="true" style="display:block;width:1px;height:12px;background:currentColor;opacity:.45;transition:height .5s cubic-bezier(.16,1,.3,1),opacity .5s ease"></span>Moments</a>
   <a data-ix="process" href="#process" style="display:flex;align-items:center;gap:11px;writing-mode:vertical-rl;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(var(--ink-rgb),.55);transition:color .5s ease"><span data-ix-tick="" aria-hidden="true" style="display:block;width:1px;height:12px;background:currentColor;opacity:.45;transition:height .5s cubic-bezier(.16,1,.3,1),opacity .5s ease"></span>The Process</a>
   <a data-ix="reviews" href="#reviews" style="display:flex;align-items:center;gap:11px;writing-mode:vertical-rl;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(var(--ink-rgb),.55);transition:color .5s ease"><span data-ix-tick="" aria-hidden="true" style="display:block;width:1px;height:12px;background:currentColor;opacity:.45;transition:height .5s cubic-bezier(.16,1,.3,1),opacity .5s ease"></span>Reviews</a>
   <a data-ix="contact" href="#contact" style="display:flex;align-items:center;gap:11px;writing-mode:vertical-rl;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(var(--ink-rgb),.55);transition:color .5s ease"><span data-ix-tick="" aria-hidden="true" style="display:block;width:1px;height:12px;background:currentColor;opacity:.45;transition:height .5s cubic-bezier(.16,1,.3,1),opacity .5s ease"></span>Contact</a>
@@ -380,7 +382,7 @@
     <img data-mphoto="0" src="images/hero-plate.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12);transition:opacity .9s ease,transform 2.4s cubic-bezier(.16,1,.3,1)" />
     <img data-mphoto="1" src="images/cat-1.webp?v=2" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12);transition:opacity .9s ease,transform 2.4s cubic-bezier(.16,1,.3,1)" />
     <img data-mphoto="2" src="images/cat-3.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12);transition:opacity .9s ease,transform 2.4s cubic-bezier(.16,1,.3,1)" />
-    <img data-mphoto="3" src="images/gal-1.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12);transition:opacity .9s ease,transform 2.4s cubic-bezier(.16,1,.3,1)" />
+    <img data-mphoto="3" src="images/break-bg.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12);transition:opacity .9s ease,transform 2.4s cubic-bezier(.16,1,.3,1)" />
     <img data-mphoto="4" src="images/cat-4.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12);transition:opacity .9s ease,transform 2.4s cubic-bezier(.16,1,.3,1)" />
     <img data-mphoto="5" src="images/gal-2.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12);transition:opacity .9s ease,transform 2.4s cubic-bezier(.16,1,.3,1)" />
     <img data-mphoto="6" src="images/gal-3.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12);transition:opacity .9s ease,transform 2.4s cubic-bezier(.16,1,.3,1)" />
@@ -401,7 +403,7 @@
     <a data-menulink="" data-mi="0" href="#hero" style="position:relative;display:flex;align-items:center;gap:14px;min-height:50px;padding:1px 0 1px 36px"><span data-mbulb="" aria-hidden="true" style="position:absolute;left:4px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;background:rgba(var(--ink-rgb),.22);border:1px solid rgba(var(--ochre-rgb),.6);transform:scale(0);transition:background-color .5s ease,box-shadow .5s ease"></span><span style="display:block;overflow:hidden;padding:0 .12em .1em 0"><span data-mname="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,9vw,54px);line-height:1.02;letter-spacing:-.005em;transform:translateY(112%);transition:color .5s ease">Home</span></span><span data-mnum="" aria-hidden="true" style="margin-left:auto;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.22em;color:var(--ochre);opacity:0">01</span></a>
     <a data-menulink="" data-mi="1" href="#about" style="position:relative;display:flex;align-items:center;gap:14px;min-height:50px;padding:1px 0 1px 36px"><span data-mbulb="" aria-hidden="true" style="position:absolute;left:4px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;background:rgba(var(--ink-rgb),.22);border:1px solid rgba(var(--ochre-rgb),.6);transform:scale(0);transition:background-color .5s ease,box-shadow .5s ease"></span><span style="display:block;overflow:hidden;padding:0 .12em .1em 0"><span data-mname="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,9vw,54px);line-height:1.02;letter-spacing:-.005em;transform:translateY(112%);transition:color .5s ease">About</span></span><span data-mnum="" aria-hidden="true" style="margin-left:auto;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.22em;color:var(--ochre);opacity:0">02</span></a>
     <a data-menulink="" data-mi="2" href="#services" style="position:relative;display:flex;align-items:center;gap:14px;min-height:50px;padding:1px 0 1px 36px"><span data-mbulb="" aria-hidden="true" style="position:absolute;left:4px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;background:rgba(var(--ink-rgb),.22);border:1px solid rgba(var(--ochre-rgb),.6);transform:scale(0);transition:background-color .5s ease,box-shadow .5s ease"></span><span style="display:block;overflow:hidden;padding:0 .12em .1em 0"><span data-mname="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,9vw,54px);line-height:1.02;letter-spacing:-.005em;transform:translateY(112%);transition:color .5s ease">Services</span></span><span data-mnum="" aria-hidden="true" style="margin-left:auto;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.22em;color:var(--ochre);opacity:0">03</span></a>
-    <a data-menulink="" data-mi="3" href="#experiences" style="position:relative;display:flex;align-items:center;gap:14px;min-height:50px;padding:1px 0 1px 36px"><span data-mbulb="" aria-hidden="true" style="position:absolute;left:4px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;background:rgba(var(--ink-rgb),.22);border:1px solid rgba(var(--ochre-rgb),.6);transform:scale(0);transition:background-color .5s ease,box-shadow .5s ease"></span><span style="display:block;overflow:hidden;padding:0 .12em .1em 0"><span data-mname="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,9vw,54px);line-height:1.02;letter-spacing:-.005em;transform:translateY(112%);transition:color .5s ease">Experiences</span></span><span data-mnum="" aria-hidden="true" style="margin-left:auto;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.22em;color:var(--ochre);opacity:0">04</span></a>
+    <a data-menulink="" data-mi="3" href="#moments" style="position:relative;display:flex;align-items:center;gap:14px;min-height:50px;padding:1px 0 1px 36px"><span data-mbulb="" aria-hidden="true" style="position:absolute;left:4px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;background:rgba(var(--ink-rgb),.22);border:1px solid rgba(var(--ochre-rgb),.6);transform:scale(0);transition:background-color .5s ease,box-shadow .5s ease"></span><span style="display:block;overflow:hidden;padding:0 .12em .1em 0"><span data-mname="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,9vw,54px);line-height:1.02;letter-spacing:-.005em;transform:translateY(112%);transition:color .5s ease">Moments</span></span><span data-mnum="" aria-hidden="true" style="margin-left:auto;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.22em;color:var(--ochre);opacity:0">04</span></a>
     <a data-menulink="" data-mi="4" href="#process" style="position:relative;display:flex;align-items:center;gap:14px;min-height:50px;padding:1px 0 1px 36px"><span data-mbulb="" aria-hidden="true" style="position:absolute;left:4px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;background:rgba(var(--ink-rgb),.22);border:1px solid rgba(var(--ochre-rgb),.6);transform:scale(0);transition:background-color .5s ease,box-shadow .5s ease"></span><span style="display:block;overflow:hidden;padding:0 .12em .1em 0"><span data-mname="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,9vw,54px);line-height:1.02;letter-spacing:-.005em;transform:translateY(112%);transition:color .5s ease">Process</span></span><span data-mnum="" aria-hidden="true" style="margin-left:auto;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.22em;color:var(--ochre);opacity:0">05</span></a>
     <a data-menulink="" data-mi="5" href="#reviews" style="position:relative;display:flex;align-items:center;gap:14px;min-height:50px;padding:1px 0 1px 36px"><span data-mbulb="" aria-hidden="true" style="position:absolute;left:4px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;background:rgba(var(--ink-rgb),.22);border:1px solid rgba(var(--ochre-rgb),.6);transform:scale(0);transition:background-color .5s ease,box-shadow .5s ease"></span><span style="display:block;overflow:hidden;padding:0 .12em .1em 0"><span data-mname="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,9vw,54px);line-height:1.02;letter-spacing:-.005em;transform:translateY(112%);transition:color .5s ease">Reviews</span></span><span data-mnum="" aria-hidden="true" style="margin-left:auto;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.22em;color:var(--ochre);opacity:0">06</span></a>
     <a data-menulink="" data-mi="6" href="#contact" style="position:relative;display:flex;align-items:center;gap:14px;min-height:50px;padding:1px 0 1px 36px"><span data-mbulb="" aria-hidden="true" style="position:absolute;left:4px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;background:rgba(var(--ink-rgb),.22);border:1px solid rgba(var(--ochre-rgb),.6);transform:scale(0);transition:background-color .5s ease,box-shadow .5s ease"></span><span style="display:block;overflow:hidden;padding:0 .12em .1em 0"><span data-mname="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(32px,9vw,54px);line-height:1.02;letter-spacing:-.005em;transform:translateY(112%);transition:color .5s ease">Contact</span></span><span data-mnum="" aria-hidden="true" style="margin-left:auto;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.22em;color:var(--ochre);opacity:0">07</span></a>
@@ -414,6 +416,16 @@
     </div>
     <a href="https://www.instagram.com/kites_events_/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:44px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(var(--ink-rgb),.8)">@kites_events_<span>Thodupuzha · Kerala</span></a>
   </div>
+</div>
+
+<div id="show-light" role="dialog" aria-modal="true" aria-label="Moments viewer" style="position:fixed;inset:0;z-index:165;display:flex;align-items:center;justify-content:center;padding:clamp(14px,3vw,48px);background:rgba(8,4,2,.95);visibility:hidden;opacity:0;pointer-events:none;transition:opacity .5s ease">
+  <button id="show-light-close" type="button" aria-label="Close viewer" style="position:absolute;z-index:3;top:clamp(12px,2vw,30px);right:clamp(12px,2vw,30px);display:flex;align-items:center;justify-content:center;width:46px;height:46px;padding:0;background:none;border:1px solid rgba(247,233,206,.34);border-radius:50%;color:#F7E9CE;cursor:pointer">
+    <span aria-hidden="true" style="position:relative;display:block;width:16px;height:16px">
+      <span style="position:absolute;left:0;top:50%;width:16px;height:1px;background:currentColor;transform:rotate(45deg)"></span>
+      <span style="position:absolute;left:0;top:50%;width:16px;height:1px;background:currentColor;transform:rotate(-45deg)"></span>
+    </span>
+  </button>
+  <div id="show-light-body" style="position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;pointer-events:none"></div>
 </div>
 
 <div id="kite-line" aria-hidden="true" style="position:fixed;right:5px;top:96px;bottom:26px;z-index:90;width:2px;pointer-events:none;opacity:0;transition:opacity .6s ease"><span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.1),rgba(var(--ochre-rgb),.9));transform-origin:top;transform:scaleY(0)"></span><span style="position:absolute;left:50%;top:0;width:8px;height:8px;margin:-4px 0 0 -4px;background:var(--coral);transform:rotate(45deg);box-shadow:0 0 12px rgba(228,86,43,.6)"></span></div>
@@ -621,12 +633,12 @@
           <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(var(--ink-rgb),.82)">Celebrations<br />produced</span>
         </div>
         <div style="display:flex;align-items:baseline;gap:clamp(12px,1.6vw,22px);padding:clamp(16px,2vw,28px) clamp(14px,2vw,30px);border-left:1px solid rgba(var(--ochre-rgb),.34)">
-          <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(36px,4.2vw,62px);line-height:1;color:var(--coral)">14</span>
-          <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(var(--ink-rgb),.82)">Events a season,<br />by choice</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(25px,2.9vw,42px);line-height:1.05;color:var(--coral)">All Kerala</span>
+          <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(var(--ink-rgb),.82)">Stages lit from<br />coast to hills</span>
         </div>
         <div style="display:flex;align-items:baseline;gap:clamp(12px,1.6vw,22px);padding:clamp(16px,2vw,28px) 0 clamp(16px,2vw,28px) clamp(14px,2vw,30px);border-left:1px solid rgba(var(--ochre-rgb),.34)">
-          <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(36px,4.2vw,62px);line-height:1;color:var(--coral)">2016</span>
-          <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(var(--ink-rgb),.82)">Working from<br />Thodupuzha since</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(25px,2.9vw,42px);line-height:1.05;color:var(--coral)">One crew</span>
+          <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(var(--ink-rgb),.82)">Design, production<br />and film, in-house</span>
         </div>
       </div>
     </div>
@@ -719,141 +731,136 @@
     </div>
   </div>
 </section>
-<section id="experiences" data-section="experiences" data-screen-label="Experiences" style="position:relative;display:flex;flex-direction:column;justify-content:center;min-height:100svh;padding:clamp(64px,8vw,116px) 0;overflow:hidden">
+<section id="moments" data-section="moments" data-screen-label="Moments" style="position:relative;padding:clamp(52px,6.4vw,104px) 0 clamp(48px,5.6vw,88px);overflow:clip;background:var(--bg-2)">
   <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:1px;overflow:hidden;background:linear-gradient(90deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),.4) 16%,rgba(var(--ochre-rgb),.4) 84%,rgba(var(--ochre-rgb),0))" data-kasavu=""><span data-kasavu-sweep="" style="position:absolute;top:0;bottom:0;left:0;width:32%;background:linear-gradient(90deg,rgba(255,240,196,0),rgba(255,240,196,.95) 50%,rgba(255,240,196,0));transform:translateX(-140%)"></span></span>
-  <span data-seam="" aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:150px;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.26),rgba(var(--ochre-rgb),0) 78%)"></span>
-  <span data-shaft="" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none">
-    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),var(--amb-a,.13)) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
-    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),var(--amb-a2,.09)) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
+  <span data-shaft="" aria-hidden="true" style="position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none">
+    <span style="position:absolute;top:-34%;left:4%;width:36%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),var(--amb-a,.13)) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
+    <span style="position:absolute;top:-40%;right:2%;width:26%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),var(--amb-a2,.09)) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
   </span>
-  <div data-fr="" data-fr-key="experiences" style="display:flex;flex-direction:column;gap:clamp(22px,3vw,44px)">
-    <div data-fr-head="" style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:14px;max-width:1720px;width:100%;margin:0 auto;padding:0 clamp(16px,3.4vw,46px) 16px;border-bottom:1px solid var(--rule);font-family:Marcellus,serif;font-size:11px;letter-spacing:.26em;text-transform:uppercase">
-      <div style="display:flex;align-items:baseline;gap:18px">
-        <div data-fr-label="">Selected experiences</div>
-      </div>
-      <div id="gal-hint" style="opacity:.75">Scroll →</div>
-    </div>
-    <div data-fr-body="">
-      <div id="gal-view" style="overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none">
-        <div id="gal-track" style="display:flex;align-items:stretch;gap:clamp(20px,2.6vw,48px);padding:0 clamp(16px,3.4vw,46px);width:max-content">
-          <article style="display:flex;flex-direction:column;gap:14px;width:clamp(290px,44vw,660px);flex:0 0 auto">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid rgba(var(--ochre-rgb),.42);font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase">
-              <span style="color:var(--coral)">01 / Wedding</span>
-              <span style="opacity:.72">Kochi · Kerala &nbsp;/&nbsp; 2026</span>
-            </div>
-            <div data-gal-frame="" data-cursor="VIEW" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 60px rgba(42,20,8,.16)">
-              <div data-gal-img="" style="position:absolute;inset:-6% 0"><image-slot id="gal-1" src="images/gal-1.webp" shape="rect" fit="cover" placeholder="WEDDING / lantern-lit jetty, wide, 16:10"></image-slot></div>
-              <span aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(248,238,218,.34);pointer-events:none"></span>
-            </div>
-            <h3 style="margin:6px 0 0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.8vw,44px);line-height:1.08">The Beginning of Forever</h3>
-            <p style="margin:0;max-width:48ch;font-size:clamp(14px,1vw,16px);line-height:1.8;color:rgba(var(--ink-rgb),.78)">Three days on the backwaters. Four hundred guests, one continuous scene: a lantern-lit jetty, a mandap of native palm, dinner under open sky.</p>
-          </article>
-          <article style="display:flex;flex-direction:column;gap:14px;width:clamp(290px,44vw,660px);flex:0 0 auto">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid rgba(var(--ochre-rgb),.42);font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase">
-              <span style="color:var(--coral)">02 / Engagement</span>
-              <span style="opacity:.72">Munnar · Kerala &nbsp;/&nbsp; 2025</span>
-            </div>
-            <div data-gal-frame="" data-cursor="VIEW" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 60px rgba(42,20,8,.16)">
-              <div data-gal-img="" style="position:absolute;inset:-6% 0"><image-slot id="gal-2" src="images/gal-2.webp" shape="rect" fit="cover" placeholder="ENGAGEMENT / misty tea-garden table, 16:10"></image-slot></div>
-              <span aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(248,238,218,.34);pointer-events:none"></span>
-            </div>
-            <h3 style="margin:6px 0 0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.8vw,44px);line-height:1.08">A Quiet Yes</h3>
-            <p style="margin:0;max-width:48ch;font-size:clamp(14px,1vw,16px);line-height:1.8;color:rgba(var(--ink-rgb),.78)">Eighteen people, one long table in the tea gardens, mist arriving on cue at six. The smallest event of that season and the one we talk about most.</p>
-          </article>
-          <article style="display:flex;flex-direction:column;gap:14px;width:clamp(290px,44vw,660px);flex:0 0 auto">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid rgba(var(--ochre-rgb),.42);font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase">
-              <span style="color:var(--coral)">03 / Anniversary</span>
-              <span style="opacity:.72">Alleppey · Kerala &nbsp;/&nbsp; 2025</span>
-            </div>
-            <div data-gal-frame="" data-cursor="VIEW" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 60px rgba(42,20,8,.16)">
-              <div data-gal-img="" style="position:absolute;inset:-6% 0"><image-slot id="gal-3" src="images/gal-3.webp" shape="rect" fit="cover" placeholder="ANNIVERSARY / candlelit tablescape, 16:10"></image-slot></div>
-              <span aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(248,238,218,.34);pointer-events:none"></span>
-            </div>
-            <h3 style="margin:6px 0 0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.8vw,44px);line-height:1.08">Twenty-Five Summers</h3>
-            <p style="margin:0;max-width:48ch;font-size:clamp(14px,1vw,16px);line-height:1.8;color:rgba(var(--ink-rgb),.78)">A silver anniversary staged as a private dinner on water. Brass, ivory linen, and the couple's own wedding film projected onto a sail.</p>
-          </article>
-          <article style="display:flex;flex-direction:column;gap:14px;width:clamp(290px,44vw,660px);flex:0 0 auto">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid rgba(var(--ochre-rgb),.42);font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase">
-              <span style="color:var(--coral)">04 / Baptism</span>
-              <span style="opacity:.72">Fort Kochi &nbsp;/&nbsp; 2024</span>
-            </div>
-            <div data-gal-frame="" data-cursor="VIEW" style="position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 60px rgba(42,20,8,.16)">
-              <div data-gal-img="" style="position:absolute;inset:-6% 0"><image-slot id="gal-4" src="images/gal-4.webp" shape="rect" fit="cover" placeholder="BAPTISM / church light, white oleander, 16:10"></image-slot></div>
-              <span aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(248,238,218,.34);pointer-events:none"></span>
-            </div>
-            <h3 style="margin:6px 0 0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.8vw,44px);line-height:1.08">First Light</h3>
-            <p style="margin:0;max-width:48ch;font-size:clamp(14px,1vw,16px);line-height:1.8;color:rgba(var(--ink-rgb),.78)">A morning baptism in a four-hundred-year-old church, then lunch in a courtyard of white oleander. Designed for grandparents and toddlers in equal measure.</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="gallery" data-section="gallery" data-screen-label="Categories" style="position:relative;padding:clamp(60px,7vw,110px) 0;overflow:clip;background:var(--bg-2)">
-  <span aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:1px;overflow:hidden;background:linear-gradient(90deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),.4) 16%,rgba(var(--ochre-rgb),.4) 84%,rgba(var(--ochre-rgb),0))" data-kasavu=""><span data-kasavu-sweep="" style="position:absolute;top:0;bottom:0;left:0;width:32%;background:linear-gradient(90deg,rgba(255,240,196,0),rgba(255,240,196,.95) 50%,rgba(255,240,196,0));transform:translateX(-140%)"></span></span>
-  <span data-seam="" aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:150px;z-index:-1;pointer-events:none;opacity:0;background:linear-gradient(180deg,rgba(var(--ochre-rgb),.26),rgba(var(--ochre-rgb),0) 78%)"></span>
-  <span data-shaft="" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none">
-    <span style="position:absolute;top:-34%;left:6%;width:34%;height:168%;transform:rotate(13deg);background:linear-gradient(100deg,rgba(var(--ochre-rgb),0),rgba(var(--ochre-rgb),var(--amb-a,.13)) 46%,rgba(var(--ochre-rgb),0));animation:shaftDrift 24s ease-in-out infinite"></span>
-    <span style="position:absolute;top:-40%;right:3%;width:24%;height:176%;transform:rotate(-11deg);background:linear-gradient(100deg,rgba(var(--coral-rgb),0),rgba(var(--coral-rgb),var(--amb-a2,.09)) 50%,rgba(var(--coral-rgb),0));animation:shaftDriftAlt 31s ease-in-out -7s infinite"></span>
-  </span>
-  <div data-fr="" data-fr-key="gallery" style="position:relative;max-width:1720px;margin:0 auto;padding:0 clamp(16px,3.4vw,46px)">
-    <div data-slate="" style="display:flex;align-items:center;gap:clamp(12px,1.6vw,22px);flex-wrap:wrap;padding-bottom:clamp(24px,3vw,46px);font-family:Marcellus,serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase">
+  <div data-fr="" data-fr-key="moments" style="position:relative;max-width:1720px;margin:0 auto;padding:0 clamp(16px,3.4vw,46px)">
+    <div data-slate="" style="display:flex;align-items:center;gap:clamp(12px,1.6vw,22px);flex-wrap:wrap;padding-bottom:clamp(18px,2.2vw,34px);font-family:Marcellus,serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase">
       <span data-tab-rule="" aria-hidden="true" style="display:block;flex:0 0 clamp(40px,7vw,120px);height:1px;background:linear-gradient(90deg,var(--ochre),rgba(var(--ochre-rgb),0));transform-origin:left"></span>
-      <span data-fr-label="">Why families choose us</span>
-      <span aria-hidden="true" style="margin-left:auto;font-size:10.5px;color:rgba(var(--ink-rgb),.72)">Four layers, one standard</span>
+      <span data-fr-label="">Moments</span>
+      <span aria-hidden="true" style="margin-left:auto;font-size:10.5px;color:rgba(var(--ink-rgb),.72)">Photographs · Reels · Films</span>
     </div>
-    <div data-fr-body="">
-      <div data-cards="" data-stack="" style="display:flex;flex-direction:column;gap:clamp(30px,5vw,80px);padding-bottom:clamp(40px,7vw,110px)">
-        <div data-stack-card="" data-stair-row="" style="position:sticky;top:calc(clamp(86px,11vh,118px) + 0px);z-index:2;display:grid;grid-template-columns:clamp(70px,7.6vw,146px) clamp(120px,15vw,240px) minmax(0,1fr);align-items:center;gap:clamp(16px,2.4vw,44px);padding:clamp(20px,2.6vw,40px) clamp(18px,2.4vw,40px);background:var(--bg);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 70px rgba(42,20,8,.16);overflow:hidden;transform-origin:center top;will-change:transform"><span data-stack-veil="" aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;background:rgba(var(--bg-rgb),.72)"></span>
-          <span data-stair-pool="" aria-hidden="true" style="position:absolute;left:-4%;top:50%;width:52%;height:200%;transform:translateY(-50%);pointer-events:none;opacity:0;background:radial-gradient(closest-side,rgba(var(--ochre-rgb),.2),rgba(var(--ochre-rgb),0) 74%);transition:opacity .8s ease"></span>
-          <div style="position:relative;overflow:hidden"><span data-card-num="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(44px,5.8vw,102px);line-height:.86;color:rgba(var(--coral-rgb),.16);-webkit-text-stroke:1px rgba(var(--coral-rgb),.85)">01</span></div>
-          <div data-stair-img="" style="position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);transition:transform .8s cubic-bezier(.16,1,.3,1),box-shadow .7s ease">
-            <image-slot id="cat-2" src="images/cat-2.webp" shape="rect" fit="cover" placeholder="LISTEN / conversation, 1:1"></image-slot>
-            <span aria-hidden="true" style="position:absolute;inset:8px;border:1px solid rgba(248,238,218,.32);pointer-events:none"></span>
-          </div>
-          <div style="position:relative;display:flex;flex-direction:column;gap:10px">
-            <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.7vw,44px);line-height:1.08">Listen</h3>
-            <p style="margin:0;max-width:52ch;font-size:clamp(14px,1.05vw,16.5px);line-height:1.8;color:rgba(var(--ink-rgb),.8)">We start with your story, not our portfolio. Two long conversations before a single idea is drawn.</p>
-  
-        </div>
-        </div>
-        <div data-stack-card="" data-stair-row="" style="position:sticky;top:calc(clamp(86px,11vh,118px) + 13px);z-index:3;display:grid;grid-template-columns:clamp(70px,7.6vw,146px) clamp(120px,15vw,240px) minmax(0,1fr);align-items:center;gap:clamp(16px,2.4vw,44px);padding:clamp(20px,2.6vw,40px) clamp(18px,2.4vw,40px);background:var(--bg);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 70px rgba(42,20,8,.16);overflow:hidden;transform-origin:center top;will-change:transform"><span data-stack-veil="" aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;background:rgba(var(--bg-rgb),.72)"></span>
-          <span data-stair-pool="" aria-hidden="true" style="position:absolute;left:-4%;top:50%;width:52%;height:200%;transform:translateY(-50%);pointer-events:none;opacity:0;background:radial-gradient(closest-side,rgba(var(--ochre-rgb),.2),rgba(var(--ochre-rgb),0) 74%);transition:opacity .8s ease"></span>
-          <div style="position:relative;overflow:hidden"><span data-card-num="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(44px,5.8vw,102px);line-height:.86;color:rgba(var(--coral-rgb),.16);-webkit-text-stroke:1px rgba(var(--coral-rgb),.85)">02</span></div>
-          <div data-stair-img="" style="position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);transition:transform .8s cubic-bezier(.16,1,.3,1),box-shadow .7s ease">
-            <image-slot id="cat-3" src="images/cat-3.webp" shape="rect" fit="cover" placeholder="CREATE / concept and florals, 1:1"></image-slot>
-            <span aria-hidden="true" style="position:absolute;inset:8px;border:1px solid rgba(248,238,218,.32);pointer-events:none"></span>
-          </div>
-          <div style="position:relative;display:flex;flex-direction:column;gap:10px">
-            <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.7vw,44px);line-height:1.08">Create</h3>
-            <p style="margin:0;max-width:52ch;font-size:clamp(14px,1.05vw,16.5px);line-height:1.8;color:rgba(var(--ink-rgb),.8)">One concept, fully drawn: palette, florals, light, sound, menu, movement. No mood-board roulette.</p>
-          </div>
-        </div>
-        <div data-stack-card="" data-stair-row="" style="position:sticky;top:calc(clamp(86px,11vh,118px) + 26px);z-index:4;display:grid;grid-template-columns:clamp(70px,7.6vw,146px) clamp(120px,15vw,240px) minmax(0,1fr);align-items:center;gap:clamp(16px,2.4vw,44px);padding:clamp(20px,2.6vw,40px) clamp(18px,2.4vw,40px);background:var(--bg);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 70px rgba(42,20,8,.16);overflow:hidden;transform-origin:center top;will-change:transform"><span data-stack-veil="" aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;background:rgba(var(--bg-rgb),.72)"></span>
-          <span data-stair-pool="" aria-hidden="true" style="position:absolute;left:-4%;top:50%;width:52%;height:200%;transform:translateY(-50%);pointer-events:none;opacity:0;background:radial-gradient(closest-side,rgba(var(--ochre-rgb),.2),rgba(var(--ochre-rgb),0) 74%);transition:opacity .8s ease"></span>
-          <div style="position:relative;overflow:hidden"><span data-card-num="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(44px,5.8vw,102px);line-height:.86;color:rgba(var(--coral-rgb),.16);-webkit-text-stroke:1px rgba(var(--coral-rgb),.85)">03</span></div>
-          <div data-stair-img="" style="position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);transition:transform .8s cubic-bezier(.16,1,.3,1),box-shadow .7s ease">
-            <image-slot id="cat-4" src="images/cat-4.webp" shape="rect" fit="cover" placeholder="ORCHESTRATE / production, 1:1"></image-slot>
-            <span aria-hidden="true" style="position:absolute;inset:8px;border:1px solid rgba(248,238,218,.32);pointer-events:none"></span>
-          </div>
-          <div style="position:relative;display:flex;flex-direction:column;gap:10px">
-            <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.7vw,44px);line-height:1.08">Orchestrate</h3>
-            <p style="margin:0;max-width:52ch;font-size:clamp(14px,1.05vw,16.5px);line-height:1.8;color:rgba(var(--ink-rgb),.8)">Vendors, permits, timelines, contingencies. A production book down to the minute, held by us.</p>
-          </div>
-        </div>
-        <div data-stack-card="" data-stair-row="" style="position:sticky;top:calc(clamp(86px,11vh,118px) + 39px);z-index:5;display:grid;grid-template-columns:clamp(70px,7.6vw,146px) clamp(120px,15vw,240px) minmax(0,1fr);align-items:center;gap:clamp(16px,2.4vw,44px);padding:clamp(20px,2.6vw,40px) clamp(18px,2.4vw,40px);background:var(--bg);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 70px rgba(42,20,8,.16);overflow:hidden;transform-origin:center top;will-change:transform"><span data-stack-veil="" aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;background:rgba(var(--bg-rgb),.72)"></span>
-          <span data-stair-pool="" aria-hidden="true" style="position:absolute;left:-4%;top:50%;width:52%;height:200%;transform:translateY(-50%);pointer-events:none;opacity:0;background:radial-gradient(closest-side,rgba(var(--ochre-rgb),.2),rgba(var(--ochre-rgb),0) 74%);transition:opacity .8s ease"></span>
-          <div style="position:relative;overflow:hidden"><span data-card-num="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(44px,5.8vw,102px);line-height:.86;color:rgba(var(--coral-rgb),.16);-webkit-text-stroke:1px rgba(var(--coral-rgb),.85)">04</span></div>
-          <div data-stair-img="" style="position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);transition:transform .8s cubic-bezier(.16,1,.3,1),box-shadow .7s ease">
-            <image-slot id="cat-5" src="images/cat-5.webp" shape="rect" fit="cover" placeholder="CELEBRATE / the day itself, 1:1"></image-slot>
-            <span aria-hidden="true" style="position:absolute;inset:8px;border:1px solid rgba(248,238,218,.32);pointer-events:none"></span>
-          </div>
-          <div style="position:relative;display:flex;flex-direction:column;gap:10px">
-            <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.7vw,44px);line-height:1.08">Celebrate</h3>
-            <p style="margin:0;max-width:52ch;font-size:clamp(14px,1.05vw,16.5px);line-height:1.8;color:rgba(var(--ink-rgb),.8)">On the day you are a guest at your own event. That is the entire point of hiring us.</p>
-          </div>
-        </div>
+    <div data-fr-body="" style="display:flex;flex-direction:column;gap:clamp(18px,2.2vw,32px)">
+      <div data-two="" style="display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:end;gap:clamp(16px,3vw,54px)">
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,4.6vw,72px);line-height:1.02;letter-spacing:-.012em">Moments,<br /><span style="font-style:italic;color:var(--ochre)">kept.</span></h2>
+        <p style="margin:0;max-width:52ch;font-size:clamp(14px,1.05vw,16.5px);line-height:1.8;color:rgba(var(--ink-rgb),.82)">Three ways in: photographs from the floor, short reels, and full films. Pick one.</p>
+      </div>
+      <div id="mom-tabs" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+        <button data-mtab="photos" type="button" aria-pressed="true" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;min-height:66px;padding:0 clamp(16px,1.8vw,26px);background:rgba(var(--ochre-rgb),.12);border:1px solid rgba(var(--ochre-rgb),.9);color:var(--ink);cursor:pointer;text-align:left;transition:background-color .45s ease,border-color .45s ease,color .45s ease">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(19px,1.9vw,28px);line-height:1.1">Photographs</span>
+          <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:10px;color:var(--ochre)">06</span>
+        </button>
+        <button data-mtab="reels" type="button" aria-pressed="false" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;min-height:66px;padding:0 clamp(16px,1.8vw,26px);background:transparent;border:1px solid rgba(var(--ink-rgb),.22);color:rgba(var(--ink-rgb),.74);cursor:pointer;text-align:left;transition:background-color .45s ease,border-color .45s ease,color .45s ease">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(19px,1.9vw,28px);line-height:1.1">Reels</span>
+          <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:10px;color:var(--ochre)">03</span>
+        </button>
+        <button data-mtab="films" type="button" aria-pressed="false" style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;min-height:66px;padding:0 clamp(16px,1.8vw,26px);background:transparent;border:1px solid rgba(var(--ink-rgb),.22);color:rgba(var(--ink-rgb),.74);cursor:pointer;text-align:left;transition:background-color .45s ease,border-color .45s ease,color .45s ease">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(19px,1.9vw,28px);line-height:1.1">Films</span>
+          <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:10px;color:var(--ochre)">02</span>
+        </button>
+      </div>
+      <p id="mom-hint" style="margin:0;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7)">Six frames from recent celebrations · tap one to open it full size</p>
+      <div data-mpanel="photos" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,262px),1fr));gap:clamp(10px,1.2vw,18px)">
+        <button data-mcard="" data-kind="still" data-aspect="3/2" data-embed="" data-poster="images/gal-1.webp" data-title="Kasavu and gold, first light" data-meta="Morning ceremony" type="button" aria-label="Open Kasavu and gold, first light" style="position:relative;display:block;width:100%;padding:0;aspect-ratio:3/2;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.28);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),border-color .5s ease,box-shadow .6s ease">
+          <image-slot id="show-3" src="images/gal-1.webp" shape="rect" fit="cover" placeholder="STILL / kasavu and gold, 3:2"></image-slot>
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,2,.06),rgba(10,5,2,.12) 42%,rgba(10,5,2,.84))"></span>
+          <span style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:5px;padding:clamp(12px,1.2vw,18px);text-align:left">
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(16px,1.3vw,21px);line-height:1.15;color:#FFF8EA">Kasavu and gold, first light</span>
+            <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:9.5px;color:rgba(247,233,206,.78)">Morning ceremony</span>
+          </span>
+        </button>
+        <button data-mcard="" data-kind="still" data-aspect="3/2" data-embed="" data-poster="images/gal-2.webp" data-title="Mandapam, dressed" data-meta="Kochi · Kerala" type="button" aria-label="Open Mandapam, dressed" style="position:relative;display:block;width:100%;padding:0;aspect-ratio:3/2;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.28);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),border-color .5s ease,box-shadow .6s ease">
+          <image-slot id="show-6" src="images/gal-2.webp" shape="rect" fit="cover" placeholder="STILL / mandapam, 3:2"></image-slot>
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,2,.06),rgba(10,5,2,.12) 42%,rgba(10,5,2,.84))"></span>
+          <span style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:5px;padding:clamp(12px,1.2vw,18px);text-align:left">
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(16px,1.3vw,21px);line-height:1.15;color:#FFF8EA">Mandapam, dressed</span>
+            <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:9.5px;color:rgba(247,233,206,.78)">Kochi · Kerala</span>
+          </span>
+        </button>
+        <button data-mcard="" data-kind="still" data-aspect="3/2" data-embed="" data-poster="images/gal-3.webp" data-title="Table, candle, marigold" data-meta="Detail pass" type="button" aria-label="Open Table, candle, marigold" style="position:relative;display:block;width:100%;padding:0;aspect-ratio:3/2;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.28);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),border-color .5s ease,box-shadow .6s ease">
+          <image-slot id="show-8" src="images/gal-3.webp" shape="rect" fit="cover" placeholder="STILL / table detail, 3:2"></image-slot>
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,2,.06),rgba(10,5,2,.12) 42%,rgba(10,5,2,.84))"></span>
+          <span style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:5px;padding:clamp(12px,1.2vw,18px);text-align:left">
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(16px,1.3vw,21px);line-height:1.15;color:#FFF8EA">Table, candle, marigold</span>
+            <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:9.5px;color:rgba(247,233,206,.78)">Detail pass</span>
+          </span>
+        </button>
+        <button data-mcard="" data-kind="still" data-aspect="3/2" data-embed="" data-poster="images/gal-4.webp" data-title="The aisle, minutes before" data-meta="Reception hall" type="button" aria-label="Open The aisle, minutes before" style="position:relative;display:block;width:100%;padding:0;aspect-ratio:3/2;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.28);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),border-color .5s ease,box-shadow .6s ease">
+          <image-slot id="show-9" src="images/gal-4.webp" shape="rect" fit="cover" placeholder="STILL / aisle, 3:2"></image-slot>
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,2,.06),rgba(10,5,2,.12) 42%,rgba(10,5,2,.84))"></span>
+          <span style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:5px;padding:clamp(12px,1.2vw,18px);text-align:left">
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(16px,1.3vw,21px);line-height:1.15;color:#FFF8EA">The aisle, minutes before</span>
+            <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:9.5px;color:rgba(247,233,206,.78)">Reception hall</span>
+          </span>
+        </button>
+        <button data-mcard="" data-kind="still" data-aspect="3/2" data-embed="" data-poster="images/svc-3.webp" data-title="Florals, close" data-meta="Design studio" type="button" aria-label="Open Florals, close" style="position:relative;display:block;width:100%;padding:0;aspect-ratio:3/2;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.28);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),border-color .5s ease,box-shadow .6s ease">
+          <image-slot id="show-10" src="images/svc-3.webp" shape="rect" fit="cover" placeholder="STILL / florals, 3:2"></image-slot>
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,2,.06),rgba(10,5,2,.12) 42%,rgba(10,5,2,.84))"></span>
+          <span style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:5px;padding:clamp(12px,1.2vw,18px);text-align:left">
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(16px,1.3vw,21px);line-height:1.15;color:#FFF8EA">Florals, close</span>
+            <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:9.5px;color:rgba(247,233,206,.78)">Design studio</span>
+          </span>
+        </button>
+        <button data-mcard="" data-kind="still" data-aspect="3/2" data-embed="" data-poster="images/cat-5.webp" data-title="The last dance" data-meta="Night, lights down" type="button" aria-label="Open The last dance" style="position:relative;display:block;width:100%;padding:0;aspect-ratio:3/2;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.28);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),border-color .5s ease,box-shadow .6s ease">
+          <image-slot id="show-11" src="images/cat-5.webp" shape="rect" fit="cover" placeholder="STILL / last dance, 3:2"></image-slot>
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,2,.06),rgba(10,5,2,.12) 42%,rgba(10,5,2,.84))"></span>
+          <span style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:5px;padding:clamp(12px,1.2vw,18px);text-align:left">
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(16px,1.3vw,21px);line-height:1.15;color:#FFF8EA">The last dance</span>
+            <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:9.5px;color:rgba(247,233,206,.78)">Night, lights down</span>
+          </span>
+        </button>
+      </div>
+      <div data-mpanel="reels" style="display:none;grid-template-columns:repeat(auto-fit,minmax(min(100%,208px),1fr));gap:clamp(10px,1.2vw,18px)">
+        <button data-mcard="" data-kind="reel" data-aspect="9/16" data-embed="" data-poster="images/cat-1.webp?v=2" data-title="Mandapam reveal" data-meta="Reel · 42 seconds" type="button" aria-label="Open Mandapam reveal" style="position:relative;display:block;width:100%;padding:0;aspect-ratio:9/16;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.28);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),border-color .5s ease,box-shadow .6s ease">
+          <image-slot id="show-2" src="images/cat-1.webp?v=2" shape="rect" fit="cover" placeholder="REEL POSTER / mandapam reveal, 9:16"></image-slot>
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,2,.06),rgba(10,5,2,.12) 42%,rgba(10,5,2,.84))"></span>
+        <span aria-hidden="true" style="position:absolute;left:50%;top:50%;display:flex;align-items:center;justify-content:center;width:52px;height:52px;margin:-26px 0 0 -26px;border:1px solid rgba(var(--ochre-rgb),.85);border-radius:50%;background:rgba(20,11,5,.5)"><span style="display:block;width:0;height:0;margin-left:4px;border-left:12px solid var(--ochre);border-top:7px solid transparent;border-bottom:7px solid transparent"></span></span>
+          <span style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:5px;padding:clamp(12px,1.2vw,18px);text-align:left">
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(16px,1.3vw,21px);line-height:1.15;color:#FFF8EA">Mandapam reveal</span>
+            <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:9.5px;color:rgba(247,233,206,.78)">Reel · 42 seconds</span>
+          </span>
+        </button>
+        <button data-mcard="" data-kind="reel" data-aspect="9/16" data-embed="" data-poster="images/cat-3.webp" data-title="Sangeet, floor open" data-meta="Reel · 30 seconds" type="button" aria-label="Open Sangeet, floor open" style="position:relative;display:block;width:100%;padding:0;aspect-ratio:9/16;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.28);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),border-color .5s ease,box-shadow .6s ease">
+          <image-slot id="show-4" src="images/cat-3.webp" shape="rect" fit="cover" placeholder="REEL POSTER / sangeet, 9:16"></image-slot>
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,2,.06),rgba(10,5,2,.12) 42%,rgba(10,5,2,.84))"></span>
+        <span aria-hidden="true" style="position:absolute;left:50%;top:50%;display:flex;align-items:center;justify-content:center;width:52px;height:52px;margin:-26px 0 0 -26px;border:1px solid rgba(var(--ochre-rgb),.85);border-radius:50%;background:rgba(20,11,5,.5)"><span style="display:block;width:0;height:0;margin-left:4px;border-left:12px solid var(--ochre);border-top:7px solid transparent;border-bottom:7px solid transparent"></span></span>
+          <span style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:5px;padding:clamp(12px,1.2vw,18px);text-align:left">
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(16px,1.3vw,21px);line-height:1.15;color:#FFF8EA">Sangeet, floor open</span>
+            <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:9.5px;color:rgba(247,233,206,.78)">Reel · 30 seconds</span>
+          </span>
+        </button>
+        <button data-mcard="" data-kind="reel" data-aspect="9/16" data-embed="" data-poster="images/cat-4.webp" data-title="Baraat, brass band" data-meta="Reel · 24 seconds" type="button" aria-label="Open Baraat, brass band" style="position:relative;display:block;width:100%;padding:0;aspect-ratio:9/16;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.28);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),border-color .5s ease,box-shadow .6s ease">
+          <image-slot id="show-7" src="images/cat-4.webp" shape="rect" fit="cover" placeholder="REEL POSTER / baraat, 9:16"></image-slot>
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,2,.06),rgba(10,5,2,.12) 42%,rgba(10,5,2,.84))"></span>
+        <span aria-hidden="true" style="position:absolute;left:50%;top:50%;display:flex;align-items:center;justify-content:center;width:52px;height:52px;margin:-26px 0 0 -26px;border:1px solid rgba(var(--ochre-rgb),.85);border-radius:50%;background:rgba(20,11,5,.5)"><span style="display:block;width:0;height:0;margin-left:4px;border-left:12px solid var(--ochre);border-top:7px solid transparent;border-bottom:7px solid transparent"></span></span>
+          <span style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:5px;padding:clamp(12px,1.2vw,18px);text-align:left">
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(16px,1.3vw,21px);line-height:1.15;color:#FFF8EA">Baraat, brass band</span>
+            <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:9.5px;color:rgba(247,233,206,.78)">Reel · 24 seconds</span>
+          </span>
+        </button>
+      </div>
+      <div data-mpanel="films" style="display:none;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(10px,1.2vw,18px)">
+        <button data-mcard="" data-kind="film" data-aspect="16/9" data-embed="" data-poster="images/hero-plate.webp" data-title="Wedding film, in full" data-meta="Kochi · Kerala" type="button" aria-label="Open Wedding film, in full" style="position:relative;display:block;width:100%;padding:0;aspect-ratio:16/9;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.28);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),border-color .5s ease,box-shadow .6s ease">
+          <image-slot id="show-1" src="images/hero-plate.webp" shape="rect" fit="cover" placeholder="FILM POSTER / wedding film, 16:9"></image-slot>
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,2,.06),rgba(10,5,2,.12) 42%,rgba(10,5,2,.84))"></span>
+        <span aria-hidden="true" style="position:absolute;left:50%;top:50%;display:flex;align-items:center;justify-content:center;width:52px;height:52px;margin:-26px 0 0 -26px;border:1px solid rgba(var(--ochre-rgb),.85);border-radius:50%;background:rgba(20,11,5,.5)"><span style="display:block;width:0;height:0;margin-left:4px;border-left:12px solid var(--ochre);border-top:7px solid transparent;border-bottom:7px solid transparent"></span></span>
+          <span style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:5px;padding:clamp(12px,1.2vw,18px);text-align:left">
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(16px,1.3vw,21px);line-height:1.15;color:#FFF8EA">Wedding film, in full</span>
+            <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:9.5px;color:rgba(247,233,206,.78)">Kochi · Kerala</span>
+          </span>
+        </button>
+        <button data-mcard="" data-kind="film" data-aspect="16/9" data-embed="" data-poster="images/break-bg.webp" data-title="Reception, one take" data-meta="Thodupuzha" type="button" aria-label="Open Reception, one take" style="position:relative;display:block;width:100%;padding:0;aspect-ratio:16/9;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.28);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),border-color .5s ease,box-shadow .6s ease">
+          <image-slot id="show-5" src="images/break-bg.webp" shape="rect" fit="cover" placeholder="FILM POSTER / reception, 16:9"></image-slot>
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,2,.06),rgba(10,5,2,.12) 42%,rgba(10,5,2,.84))"></span>
+        <span aria-hidden="true" style="position:absolute;left:50%;top:50%;display:flex;align-items:center;justify-content:center;width:52px;height:52px;margin:-26px 0 0 -26px;border:1px solid rgba(var(--ochre-rgb),.85);border-radius:50%;background:rgba(20,11,5,.5)"><span style="display:block;width:0;height:0;margin-left:4px;border-left:12px solid var(--ochre);border-top:7px solid transparent;border-bottom:7px solid transparent"></span></span>
+          <span style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:5px;padding:clamp(12px,1.2vw,18px);text-align:left">
+            <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(16px,1.3vw,21px);line-height:1.15;color:#FFF8EA">Reception, one take</span>
+            <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-size:9.5px;color:rgba(247,233,206,.78)">Thodupuzha</span>
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -922,6 +929,62 @@
           </span>
           <div data-step-label="" style="font-family:Marcellus,serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral)">05 / Celebrate</div>
           <div style="overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em"><h3 data-step-head="" style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(18px,1.7vw,26px);line-height:1.24">You enjoy the moment. We handle the rest.</h3></div>
+        </div>
+      </div>
+      <div data-reveal="" style="display:flex;align-items:center;gap:clamp(12px,1.6vw,22px);flex-wrap:wrap;padding:clamp(44px,5.4vw,90px) 0 clamp(22px,2.6vw,42px);font-family:Marcellus,serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase">
+        <span aria-hidden="true" style="display:block;flex:0 0 clamp(40px,7vw,120px);height:1px;background:linear-gradient(90deg,var(--ochre),rgba(var(--ochre-rgb),0))"></span>
+        <span>Why families choose us</span>
+        <span aria-hidden="true" style="margin-left:auto;font-size:10.5px;color:rgba(var(--ink-rgb),.72)">Four layers, one standard</span>
+      </div>
+      <div data-cards="" data-stack="" style="display:flex;flex-direction:column;gap:clamp(30px,5vw,80px);padding-bottom:clamp(40px,7vw,110px)">
+        <div data-stack-card="" data-stair-row="" style="position:sticky;top:calc(clamp(86px,11vh,118px) + 0px);z-index:2;display:grid;grid-template-columns:clamp(70px,7.6vw,146px) clamp(120px,15vw,240px) minmax(0,1fr);align-items:center;gap:clamp(16px,2.4vw,44px);padding:clamp(20px,2.6vw,40px) clamp(18px,2.4vw,40px);background:var(--bg);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 70px rgba(42,20,8,.16);overflow:hidden;transform-origin:center top;will-change:transform"><span data-stack-veil="" aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;background:rgba(var(--bg-rgb),.72)"></span>
+          <span data-stair-pool="" aria-hidden="true" style="position:absolute;left:-4%;top:50%;width:52%;height:200%;transform:translateY(-50%);pointer-events:none;opacity:0;background:radial-gradient(closest-side,rgba(var(--ochre-rgb),.2),rgba(var(--ochre-rgb),0) 74%);transition:opacity .8s ease"></span>
+          <div style="position:relative;overflow:hidden"><span data-card-num="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(44px,5.8vw,102px);line-height:.86;color:rgba(var(--coral-rgb),.16);-webkit-text-stroke:1px rgba(var(--coral-rgb),.85)">01</span></div>
+          <div data-stair-img="" style="position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);transition:transform .8s cubic-bezier(.16,1,.3,1),box-shadow .7s ease">
+            <image-slot id="cat-2" src="images/cat-2.webp" shape="rect" fit="cover" placeholder="LISTEN / conversation, 1:1"></image-slot>
+            <span aria-hidden="true" style="position:absolute;inset:8px;border:1px solid rgba(248,238,218,.32);pointer-events:none"></span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:10px">
+            <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.7vw,44px);line-height:1.08">Listen</h3>
+            <p style="margin:0;max-width:52ch;font-size:clamp(14px,1.05vw,16.5px);line-height:1.8;color:rgba(var(--ink-rgb),.8)">We start with your story, not our portfolio. Two long conversations before a single idea is drawn.</p>
+  
+        </div>
+        </div>
+        <div data-stack-card="" data-stair-row="" style="position:sticky;top:calc(clamp(86px,11vh,118px) + 13px);z-index:3;display:grid;grid-template-columns:clamp(70px,7.6vw,146px) clamp(120px,15vw,240px) minmax(0,1fr);align-items:center;gap:clamp(16px,2.4vw,44px);padding:clamp(20px,2.6vw,40px) clamp(18px,2.4vw,40px);background:var(--bg);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 70px rgba(42,20,8,.16);overflow:hidden;transform-origin:center top;will-change:transform"><span data-stack-veil="" aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;background:rgba(var(--bg-rgb),.72)"></span>
+          <span data-stair-pool="" aria-hidden="true" style="position:absolute;left:-4%;top:50%;width:52%;height:200%;transform:translateY(-50%);pointer-events:none;opacity:0;background:radial-gradient(closest-side,rgba(var(--ochre-rgb),.2),rgba(var(--ochre-rgb),0) 74%);transition:opacity .8s ease"></span>
+          <div style="position:relative;overflow:hidden"><span data-card-num="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(44px,5.8vw,102px);line-height:.86;color:rgba(var(--coral-rgb),.16);-webkit-text-stroke:1px rgba(var(--coral-rgb),.85)">02</span></div>
+          <div data-stair-img="" style="position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);transition:transform .8s cubic-bezier(.16,1,.3,1),box-shadow .7s ease">
+            <image-slot id="cat-3" src="images/cat-3.webp" shape="rect" fit="cover" placeholder="CREATE / concept and florals, 1:1"></image-slot>
+            <span aria-hidden="true" style="position:absolute;inset:8px;border:1px solid rgba(248,238,218,.32);pointer-events:none"></span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:10px">
+            <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.7vw,44px);line-height:1.08">Create</h3>
+            <p style="margin:0;max-width:52ch;font-size:clamp(14px,1.05vw,16.5px);line-height:1.8;color:rgba(var(--ink-rgb),.8)">One concept, fully drawn: palette, florals, light, sound, menu, movement. No mood-board roulette.</p>
+          </div>
+        </div>
+        <div data-stack-card="" data-stair-row="" style="position:sticky;top:calc(clamp(86px,11vh,118px) + 26px);z-index:4;display:grid;grid-template-columns:clamp(70px,7.6vw,146px) clamp(120px,15vw,240px) minmax(0,1fr);align-items:center;gap:clamp(16px,2.4vw,44px);padding:clamp(20px,2.6vw,40px) clamp(18px,2.4vw,40px);background:var(--bg);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 70px rgba(42,20,8,.16);overflow:hidden;transform-origin:center top;will-change:transform"><span data-stack-veil="" aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;background:rgba(var(--bg-rgb),.72)"></span>
+          <span data-stair-pool="" aria-hidden="true" style="position:absolute;left:-4%;top:50%;width:52%;height:200%;transform:translateY(-50%);pointer-events:none;opacity:0;background:radial-gradient(closest-side,rgba(var(--ochre-rgb),.2),rgba(var(--ochre-rgb),0) 74%);transition:opacity .8s ease"></span>
+          <div style="position:relative;overflow:hidden"><span data-card-num="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(44px,5.8vw,102px);line-height:.86;color:rgba(var(--coral-rgb),.16);-webkit-text-stroke:1px rgba(var(--coral-rgb),.85)">03</span></div>
+          <div data-stair-img="" style="position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);transition:transform .8s cubic-bezier(.16,1,.3,1),box-shadow .7s ease">
+            <image-slot id="cat-4" src="images/cat-4.webp" shape="rect" fit="cover" placeholder="ORCHESTRATE / production, 1:1"></image-slot>
+            <span aria-hidden="true" style="position:absolute;inset:8px;border:1px solid rgba(248,238,218,.32);pointer-events:none"></span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:10px">
+            <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.7vw,44px);line-height:1.08">Orchestrate</h3>
+            <p style="margin:0;max-width:52ch;font-size:clamp(14px,1.05vw,16.5px);line-height:1.8;color:rgba(var(--ink-rgb),.8)">Vendors, permits, timelines, contingencies. A production book down to the minute, held by us.</p>
+          </div>
+        </div>
+        <div data-stack-card="" data-stair-row="" style="position:sticky;top:calc(clamp(86px,11vh,118px) + 39px);z-index:5;display:grid;grid-template-columns:clamp(70px,7.6vw,146px) clamp(120px,15vw,240px) minmax(0,1fr);align-items:center;gap:clamp(16px,2.4vw,44px);padding:clamp(20px,2.6vw,40px) clamp(18px,2.4vw,40px);background:var(--bg);border:1px solid rgba(var(--ochre-rgb),.4);box-shadow:0 26px 70px rgba(42,20,8,.16);overflow:hidden;transform-origin:center top;will-change:transform"><span data-stack-veil="" aria-hidden="true" style="position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;background:rgba(var(--bg-rgb),.72)"></span>
+          <span data-stair-pool="" aria-hidden="true" style="position:absolute;left:-4%;top:50%;width:52%;height:200%;transform:translateY(-50%);pointer-events:none;opacity:0;background:radial-gradient(closest-side,rgba(var(--ochre-rgb),.2),rgba(var(--ochre-rgb),0) 74%);transition:opacity .8s ease"></span>
+          <div style="position:relative;overflow:hidden"><span data-card-num="" style="display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(44px,5.8vw,102px);line-height:.86;color:rgba(var(--coral-rgb),.16);-webkit-text-stroke:1px rgba(var(--coral-rgb),.85)">04</span></div>
+          <div data-stair-img="" style="position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--img-ph);border:1px solid rgba(var(--ochre-rgb),.4);transition:transform .8s cubic-bezier(.16,1,.3,1),box-shadow .7s ease">
+            <image-slot id="cat-5" src="images/cat-5.webp" shape="rect" fit="cover" placeholder="CELEBRATE / the day itself, 1:1"></image-slot>
+            <span aria-hidden="true" style="position:absolute;inset:8px;border:1px solid rgba(248,238,218,.32);pointer-events:none"></span>
+          </div>
+          <div style="position:relative;display:flex;flex-direction:column;gap:10px">
+            <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.7vw,44px);line-height:1.08">Celebrate</h3>
+            <p style="margin:0;max-width:52ch;font-size:clamp(14px,1.05vw,16.5px);line-height:1.8;color:rgba(var(--ink-rgb),.8)">On the day you are a guest at your own event. That is the entire point of hiring us.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -2621,6 +2684,98 @@ class Component extends DCLogic {
         this.on(f, 'mouseleave', () => set(false));
       }
     });
+
+    /* moments: three plain groups, one viewer */
+    const momTabs = qa('[data-mtab]');
+    if (momTabs.length) {
+      const panels = qa('[data-mpanel]'), hint = q('#mom-hint'),
+            lite = q('#show-light'), liteBody = q('#show-light-body'), liteClose = q('#show-light-close');
+      const HINTS = {
+        photos: 'Six frames from recent celebrations · tap one to open it full size',
+        reels: 'Short vertical cuts from Instagram · tap one to play it here',
+        films: 'Full wedding films · tap one to play it here'
+      };
+      const posterOf = el => {
+        const slot = el.querySelector('image-slot');
+        const live = slot && slot.shadowRoot && slot.shadowRoot.querySelector('img');
+        return (live && live.currentSrc) || el.getAttribute('data-poster');
+      };
+      /* a watch link, a share link or a reel permalink all become an embed */
+      const embedSrc = raw => {
+        if (!raw) return '';
+        const yt = raw.match(/(?:youtu\.be\/|[?&]v=|embed\/|shorts\/)([\w-]{6,})/);
+        if (yt) return 'https://www.youtube.com/embed/' + yt[1] + '?autoplay=1&rel=0&modestbranding=1';
+        if (/instagram\.com/.test(raw)) return raw.split('?')[0].replace(/\/$/, '') + '/embed';
+        return raw;
+      };
+      const closeLite = () => {
+        if (!lite) return;
+        lite.style.opacity = '0'; lite.style.pointerEvents = 'none';
+        setTimeout(() => { lite.style.visibility = 'hidden'; if (liteBody) liteBody.innerHTML = ''; }, 420);
+      };
+      const openLite = el => {
+        if (!lite || !liteBody) return;
+        const src = embedSrc(el.getAttribute('data-embed')), ar = el.getAttribute('data-aspect') || '16/9';
+        const arN = (parseFloat(ar.split('/')[0]) || 16) / (parseFloat(ar.split('/')[1]) || 9);
+        liteBody.innerHTML = '';
+        const box = document.createElement('div');
+        box.style.cssText = 'pointer-events:auto;position:relative;aspect-ratio:' + ar + ';width:min(100%,' + (82 * arN).toFixed(2) + 'vh);max-height:82vh;overflow:hidden;background:#0A0503;border:1px solid rgba(240,178,60,.4);box-shadow:0 40px 120px rgba(0,0,0,.6)';
+        if (src) {
+          const fr = document.createElement('iframe');
+          fr.src = src; fr.title = el.getAttribute('data-title') || 'Moments';
+          fr.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; clipboard-write');
+          fr.setAttribute('allowfullscreen', '');
+          fr.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0';
+          box.appendChild(fr);
+        } else {
+          const ig = document.createElement('img');
+          ig.src = posterOf(el) || ''; ig.alt = el.getAttribute('data-title') || '';
+          ig.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover';
+          const cap = document.createElement('span');
+          cap.textContent = el.getAttribute('data-kind') === 'still'
+            ? [el.getAttribute('data-title'), el.getAttribute('data-meta')].filter(Boolean).join(' · ')
+            : 'Link pending';
+          cap.style.cssText = 'position:absolute;left:0;right:0;bottom:0;padding:16px 20px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#F7E9CE;background:linear-gradient(180deg,rgba(10,5,2,0),rgba(10,5,2,.9))';
+          box.appendChild(ig); box.appendChild(cap);
+        }
+        liteBody.appendChild(box);
+        lite.style.visibility = 'visible'; lite.style.opacity = '1'; lite.style.pointerEvents = 'auto';
+        if (liteClose) liteClose.focus();
+      };
+      momTabs.forEach(btn => {
+        this.on(btn, 'click', () => {
+          const key = btn.getAttribute('data-mtab');
+          momTabs.forEach(b => {
+            const on = b === btn;
+            b.setAttribute('aria-pressed', on ? 'true' : 'false');
+            b.style.background = on ? 'rgba(var(--ochre-rgb),.12)' : 'transparent';
+            b.style.borderColor = on ? 'rgba(var(--ochre-rgb),.9)' : 'rgba(var(--ink-rgb),.22)';
+            b.style.color = on ? 'var(--ink)' : 'rgba(var(--ink-rgb),.74)';
+          });
+          panels.forEach(p => { p.style.display = p.getAttribute('data-mpanel') === key ? 'grid' : 'none'; });
+          if (hint) hint.textContent = HINTS[key] || '';
+          if (window.ScrollTrigger) ScrollTrigger.refresh();
+        });
+      });
+      qa('[data-mcard]').forEach(c => {
+        this.on(c, 'click', () => openLite(c));
+        if (!touch) {
+          this.on(c, 'mouseenter', () => {
+            c.style.borderColor = 'rgba(var(--ochre-rgb),.9)';
+            c.style.boxShadow = '0 20px 48px rgba(0,0,0,.5)';
+            if (motion) c.style.transform = 'translateY(-4px)';
+          });
+          this.on(c, 'mouseleave', () => {
+            c.style.borderColor = 'rgba(var(--ochre-rgb),.28)';
+            c.style.boxShadow = 'none';
+            c.style.transform = 'none';
+          });
+        }
+      });
+      if (liteClose) this.on(liteClose, 'click', closeLite);
+      if (lite) this.on(lite, 'click', e => { if (e.target === lite) closeLite(); });
+      this.on(document, 'keydown', e => { if (e.key === 'Escape' && lite && lite.style.visibility === 'visible') closeLite(); });
+    }
 
     qa('footer nav a, [data-menulink]').forEach(a => {
       a.style.transition = 'color .45s ease,transform .6s ' + E + ',opacity .5s ease';

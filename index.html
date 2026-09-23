@@ -210,6 +210,42 @@
   /* the widest cap line ("ORCHESTRATED.") has to clear the narrowest phone box */
   @media (min-width: 361px) { #hero h1 { letter-spacing: .06em !important; } }
   @media (max-width: 700px) { [data-form-grid] { grid-template-columns: minmax(0,1fr) !important; } }
+  /* phone masthead: one left edge, composition seated on the dark floor */
+  [data-hf-a], [data-hf-b] { display: block; }
+  @media (max-width: 760px) {
+    [data-hero-core] { justify-content: flex-end !important; align-items: flex-start !important; text-align: left !important; gap: 20px !important; padding: 210px 18px calc(30px + env(safe-area-inset-bottom)) !important; }
+    [data-hrail-flat] { max-width: none !important; display: flex !important; flex-direction: column; gap: 2px; padding-left: 38px; position: relative; font-size: 10.5px !important; line-height: 1.8 !important; }
+    [data-hrail-flat]::before { content: ""; position: absolute; left: 0; top: .9em; width: 26px; height: 1px; background: var(--ochre); }
+    [data-hf-b] { display: none !important; }
+    [data-hrail-flat]::before { top: 50% !important; }
+    [data-hrail-flat] { padding-left: 36px !important; }
+    #hero h1 { margin-top: 0 !important; font-size: min(9.2vw, 40px) !important; line-height: 1.04 !important; }
+    #hero-sub { max-width: 36ch !important; font-size: 15px !important; line-height: 1.7 !important; }
+    #hero-cta { align-self: stretch; justify-content: center; min-height: 54px; margin-top: 4px; }
+    [data-hero-scroll] { display: none !important; }
+  }
+  /* phone curation pass */
+  @media (max-width: 760px) {
+    #experiences { min-height: 0 !important; justify-content: flex-start !important; }
+    #experiences [data-fr-head] { padding: 0 clamp(16px,3.4vw,46px) 16px !important; margin-bottom: 0 !important; }
+    #gal-view { overflow: visible !important; }
+    #gal-track { flex-direction: column !important; width: auto !important; gap: 56px !important; }
+    #gal-track article { width: auto !important; }
+    #gal-track article > div:first-child { flex-wrap: wrap; row-gap: 6px; }
+    #proc { grid-template-columns: minmax(0,1fr) !important; row-gap: 34px !important; }
+    #proc [data-step] { padding-left: 42px; gap: 10px !important; }
+    #proc [data-step] > span:first-child { position: absolute !important; left: 0; top: -3px; height: 22px !important; width: 24px; }
+    #proc [data-dot] { top: 0 !important; }
+    [data-plate-row] { grid-template-columns: minmax(0,1fr) !important; gap: 18px !important; }
+    [data-plate-actions] { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)); }
+    [data-plate-actions] a { justify-content: center; min-height: 48px; padding: 12px 10px !important; }
+    #disclose > span:last-child { display: none !important; }
+    #contact input[type="date"] { display: block; width: 100%; min-width: 0; -webkit-appearance: none; appearance: none; text-align: left; color: var(--ink); }
+    #contact input[type="date"]::-webkit-date-and-time-value { text-align: left; }
+    #contact input:focus, #contact textarea:focus, #et-btn:focus { outline: none; border-bottom-color: var(--coral) !important; }
+    #form button[type="submit"] { width: 100%; justify-content: center; min-height: 54px; }
+    #to-top { width: 46px !important; height: 46px !important; }
+  }
   @media (prefers-reduced-motion: reduce) { * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; } }
 </style>
 </helmet>
@@ -475,7 +511,7 @@
 
 
   <div data-hero-core="" style="position:relative;flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(16px,2vw,26px);padding:calc(clamp(84px,10vh,124px) + 118px) clamp(20px,8vw,132px) clamp(10px,1.6vw,20px);text-align:center">
-    <p data-hrail-flat="" style="display:none;margin:0;max-width:26ch;font-family:Marcellus,serif;font-size:11px;line-height:1.9;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre)">Events &amp; Wedding Planners · Thodupuzha · Est. 2016</p>
+    <p data-hrail-flat="" style="display:none;margin:0;max-width:26ch;font-family:Marcellus,serif;font-size:11px;line-height:1.9;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre)"><span data-hf-a="">Events &amp; Wedding Planners</span> <span data-hf-b="">Thodupuzha · Est. 2016</span></p>
     <h1 style="margin:0;font-family:'Tenor Sans',sans-serif;font-weight:400;font-size:clamp(33px,6.4vw,72px);line-height:1.06;letter-spacing:.045em;text-transform:uppercase;color:#FFF8EA;text-shadow:0 2px 26px rgba(10,5,2,.62),0 1px 3px rgba(10,5,2,.5);text-wrap:balance">
       <span style="display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em"><span data-heroline="" style="display:block;transform:translateY(112%)">Moments,</span></span>
       <span style="display:block;overflow:hidden;padding-bottom:.2em;margin-bottom:-.2em"><span data-heroline="" style="display:block;transform:translateY(112%);font-family:Italiana,'Cormorant Garamond',serif;font-weight:400;font-size:1.24em;line-height:1.02;letter-spacing:.02em;text-transform:none;color:#FFC968;text-shadow:0 2px 30px rgba(10,5,2,.72),0 1px 3px rgba(10,5,2,.6)">beautifully</span></span>
@@ -485,7 +521,7 @@
     <a id="hero-cta" href="#contact" data-cursor="Start" data-magnetic="" style="display:inline-flex;align-items:center;gap:14px;padding:17px 30px;border-radius:999px;background:var(--ochre);color:#1A0E05;font-family:Marcellus,serif;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;opacity:0;transform:translateY(16px);transition:background-color .45s ease,color .45s ease" style-hover="background-color:#F7E9CE;color:#1A0E05">Start planning<span aria-hidden="true">→</span></a>
   </div>
 
-  <div style="position:relative;display:flex;justify-content:center;padding:0 clamp(16px,3.4vw,46px) clamp(24px,3.4vw,40px)">
+  <div data-hero-scroll="" style="position:relative;display:flex;justify-content:center;padding:0 clamp(16px,3.4vw,46px) clamp(24px,3.4vw,40px)">
     <a href="#about" style="display:flex;flex-direction:column;align-items:center;gap:10px;font-family:Marcellus,serif;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#FFF8EA;opacity:.74">Scroll<span aria-hidden="true" style="display:block;width:1px;height:clamp(24px,3.4vw,38px);background:currentColor"></span></a>
   </div>
 </section>
@@ -1125,7 +1161,7 @@
                   <span id="et-value" style="color:rgba(var(--ink-rgb),.72)">Select</span>
                   <span id="et-caret" aria-hidden="true" style="display:block;width:7px;height:7px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);transition:transform .45s cubic-bezier(.16,1,.3,1)"></span>
                 </button>
-                <ul id="et-list" role="listbox" aria-label="Event type" tabindex="-1" style="position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:20;max-height:260px;overflow:auto;margin:0;padding:6px 0;list-style:none;background:var(--bg);border:1px solid rgba(var(--ochre-rgb),.45);box-shadow:0 20px 44px rgba(42,20,8,.2);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .35s ease,transform .45s cubic-bezier(.16,1,.3,1)">
+                <ul id="et-list" data-lenis-prevent="" role="listbox" aria-label="Event type" tabindex="-1" style="position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:20;max-height:260px;overflow:auto;margin:0;padding:6px 0;list-style:none;background:var(--bg);border:1px solid rgba(var(--ochre-rgb),.45);box-shadow:0 20px 44px rgba(42,20,8,.2);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .35s ease,transform .45s cubic-bezier(.16,1,.3,1)">
                   <li role="option" aria-selected="false" data-et="Luxury Wedding" style="display:flex;align-items:center;gap:12px;padding:10px 16px;font-size:14px;cursor:pointer;transition:background-color .25s ease,color .25s ease"><span aria-hidden="true" style="font-family:Marcellus,serif;font-size:10.5px;opacity:.8">01</span>Luxury Wedding</li>
                   <li role="option" aria-selected="false" data-et="Destination Wedding" style="display:flex;align-items:center;gap:12px;padding:10px 16px;font-size:14px;cursor:pointer;transition:background-color .25s ease,color .25s ease"><span aria-hidden="true" style="font-family:Marcellus,serif;font-size:10.5px;opacity:.8">02</span>Destination Wedding</li>
                   <li role="option" aria-selected="false" data-et="Engagement" style="display:flex;align-items:center;gap:12px;padding:10px 16px;font-size:14px;cursor:pointer;transition:background-color .25s ease,color .25s ease"><span aria-hidden="true" style="font-family:Marcellus,serif;font-size:10.5px;opacity:.8">03</span>Engagement</li>
@@ -1151,7 +1187,7 @@
             </label>
             <label style="display:flex;flex-direction:column;gap:9px;grid-column:1/-1">
               <span style="font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;opacity:.78">Message</span>
-              <textarea name="message" rows="3" placeholder="Tell us what you're imagining." style="padding:10px 0;background:none;border:0;border-bottom:1px solid rgba(var(--ink-rgb),.3);font-size:15px;resize:vertical;transition:border-color .4s ease"></textarea>
+              <textarea data-lenis-prevent="" name="message" rows="3" placeholder="Tell us what you're imagining." style="padding:10px 0;background:none;border:0;border-bottom:1px solid rgba(var(--ink-rgb),.3);font-size:15px;resize:vertical;transition:border-color .4s ease"></textarea>
             </label>
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:18px 24px;grid-column:1/-1">
               <button type="submit" data-cursor="Send" data-magnetic="" style="display:inline-flex;align-items:center;gap:14px;padding:17px 30px;border-radius:999px;background:var(--coral);border:0;color:#F8EEDA;font-family:Marcellus,serif;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background-color .45s ease" style-hover="background-color:var(--ink)">Send enquiry<span data-arrow="" aria-hidden="true" style="transition:transform .5s cubic-bezier(.16,1,.3,1)">→</span></button>
@@ -1670,10 +1706,11 @@ class Component extends DCLogic {
     const strikeSet = () => {
       if (curtain) curtain.parentNode && curtain.parentNode.removeChild(curtain);
       if (sweep) sweep.parentNode && sweep.parentNode.removeChild(sweep);
+      if (lenis && !menuOpen) lenis.start();
     };
     const theatre = motion && curtain && !seen;
     if (!theatre) strikeSet();
-    else if (lenis) lenis.stop();
+    else if (lenis) { lenis.stop(); setTimeout(() => { if (!menuOpen) lenis.start(); }, 5000); }
 
     if (motion) {
       const tl = gsap.timeline({ delay: theatre ? 0 : 0.06 });
@@ -1979,6 +2016,16 @@ class Component extends DCLogic {
     this.wire(q, qa, HASH, lenis, true, touch);
     ScrollTrigger.refresh();
     this.on(window, 'load', () => ScrollTrigger.refresh());
+    if (window.ResizeObserver) {
+      let rh = document.body.scrollHeight, rt = 0;
+      this._ro = new ResizeObserver(() => {
+        const h = document.body.scrollHeight;
+        if (Math.abs(h - rh) < 40) return;
+        rh = h; clearTimeout(rt);
+        rt = setTimeout(() => { ScrollTrigger.refresh(); if (lenis && lenis.resize) lenis.resize(); }, 250);
+      });
+      this._ro.observe(document.body);
+    }
     setTimeout(() => this.guard(), 900);
     setTimeout(() => this.guard(), 2200);
   }
@@ -2214,7 +2261,8 @@ class Component extends DCLogic {
       const bar = q(HASH + 'foot-bar');
       const base = 'clamp(16px,3vw,34px)';
       const paint = () => {
-        const on = scrollY > innerHeight * 0.85;
+        const ct = innerWidth <= 760 ? q(HASH + 'contact') : null;
+        const on = scrollY > innerHeight * 0.85 && !(ct && ct.getBoundingClientRect().top < innerHeight * 0.9);
         if (bar) {
           const r = bar.getBoundingClientRect();
           const lift = innerHeight - r.top + 16;

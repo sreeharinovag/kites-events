@@ -128,10 +128,11 @@
   @media (max-width: 880px) {
     [data-stair-row] { grid-template-columns: clamp(52px,13vw,84px) minmax(0,1fr) !important; margin-left: 0 !important; }
     [data-stair-img] { grid-column: 1 / -1; order: 3; aspect-ratio: 16/9 !important; }
-    /* stacked, the layers are taller than the frame — let them flow instead of pinning */
-    [data-stack-card] { position: static !important; box-shadow: none !important; }
-    [data-stack-veil] { display: none !important; }
-    [data-stack] { gap: clamp(14px,3vw,24px) !important; }
+    /* phones keep the pinned pile: compact layers that fit under the bar */
+    [data-stack] { gap: 28px !important; padding-bottom: 48px !important; }
+    [data-stack-card] { padding: 18px !important; row-gap: 14px !important; column-gap: 14px !important; box-shadow: 0 -10px 30px rgba(42,20,8,.10), 0 18px 40px rgba(42,20,8,.12) !important; }
+    [data-stack-card] [data-card-num] { font-size: 46px !important; }
+    [data-stack-card] p { font-size: 14.5px !important; line-height: 1.7 !important; }
   }
   @media (max-height: 640px) { [data-stack-card] { position: static !important; } [data-stack-veil] { display: none !important; } }
   @media (max-width: 760px) { [data-rail] { grid-template-columns: minmax(0,1fr) !important; } [data-rail] > div { border-left: 0 !important; border-top: 1px solid rgba(var(--ochre-rgb),.28); padding-left: 0 !important; padding-right: 0 !important; } [data-rail] > div:first-child { border-top: 0; } }
@@ -1938,15 +1939,43 @@ class Component extends DCLogic {
     /* the reasons stack: each layer pins, the next slides over it, and the one
        underneath settles back a fraction and takes the page's colour */
     const layers = qa('[data-stack-card]');
-    if (layers.length > 1 && innerWidth > 880 && innerHeight > 640) {
+    if (layers.length > 1 && innerHeight > 640) {
+      const sScrub = touch ? true : 0.6;
       layers.forEach((card, i) => {
         if (i === layers.length - 1) return;
         const veilEl = card.querySelector('[data-stack-veil]');
-        const st = { trigger: layers[i + 1], start: 'top bottom', end: 'top top+=' + (140 + i * 13), scrub: 0.6 };
+        const nextTop = () => 'top top+=' + ((parseFloat(getComputedStyle(layers[i + 1]).top) || (140 + i * 13)) + 2);
+        const st = { trigger: layers[i + 1], start: 'top bottom', end: nextTop, scrub: sScrub, invalidateOnRefresh: true };
+        if (touch) {
+          const im = card.querySelector('[data-stair-img]');
+          if (im) T(gsap.fromTo(im, { scale: 1 }, { scale: 0.9, opacity: 0.55, ease: 'none', immediateRender: false, scrollTrigger: { trigger: layers[i + 1], start: 'top bottom', end: nextTop, scrub: true, invalidateOnRefresh: true } }));
+        }
         T(gsap.fromTo(card, { scale: 1 }, { scale: 0.962 - i * 0.004, ease: 'none', immediateRender: false, scrollTrigger: st }));
         if (veilEl) T(gsap.fromTo(veilEl, { opacity: 0 }, { opacity: 0.62, ease: 'none', immediateRender: false,
-          scrollTrigger: { trigger: layers[i + 1], start: 'top bottom', end: 'top top+=' + (140 + i * 13), scrub: 0.6 } }));
+          scrollTrigger: { trigger: layers[i + 1], start: 'top bottom', end: nextTop, scrub: sScrub, invalidateOnRefresh: true } }));
       });
+    }
+
+    /* phone motion: the same stage language, tuned for a thumb — frames open like
+       a curtain as they arrive, photographs drift inside them, layers rise in */
+    if (innerWidth <= 880) {
+      const E2 = 'expo.out';
+      qa(HASH + 'gal-track article').forEach(a => {
+        const f = a.querySelector('[data-gal-frame]'), im = a.querySelector('[data-gal-img]');
+        const meta = Array.from(a.children).filter(x => x !== f);
+        if (f) T(gsap.fromTo(f, { clipPath: 'inset(14% 10% 14% 10%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.4, ease: E2, clearProps: 'clipPath', scrollTrigger: { trigger: f, start: 'top 90%' } }));
+        if (im) {
+          T(gsap.fromTo(im, { scale: 1.18 }, { scale: 1, duration: 1.8, ease: E2, scrollTrigger: { trigger: f || a, start: 'top 90%' } }));
+          T(gsap.fromTo(im, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: f || a, start: 'top bottom', end: 'bottom top', scrub: true } }));
+        }
+        if (meta.length) T(gsap.from(meta, { y: 22, opacity: 0, duration: 1, stagger: 0.08, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: a, start: 'top 86%' } }));
+      });
+      layers.forEach(card => T(gsap.from(card.querySelectorAll(':scope > div'), { y: 34, opacity: 0, duration: 1.1, stagger: 0.09, ease: 'power3.out', clearProps: 'opacity,transform', scrollTrigger: { trigger: card, start: 'top 92%' } })));
+      qa('[data-about-plate], [data-svc-frame], [data-plate-row] [data-glow]').forEach(el => {
+        const inner = el.querySelector('image-slot');
+        if (inner) T(gsap.fromTo(inner, { scale: 1.12 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom 40%', scrub: true } }));
+      });
+      qa('[data-plate-row]').forEach(row => T(gsap.from(row, { y: 30, opacity: 0, duration: 1, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: row, start: 'top 90%' } })));
     }
 
     const svcRules = qa('[data-svc-rule]');
@@ -2110,6 +2139,23 @@ class Component extends DCLogic {
     });
     this.on(q(HASH + 'q-next'), 'click', () => show(qi + 1));
     this.on(q(HASH + 'q-prev'), 'click', () => show(qi - 1));
+    const pile = quotes.length && quotes[0].parentElement;
+    if (pile && touch) {
+      pile.style.touchAction = 'pan-y';
+      let sx = 0, sy = 0, dx = 0, drag = false, lock = null;
+      this.on(pile, 'touchstart', e => { const t = e.touches[0]; sx = t.clientX; sy = t.clientY; dx = 0; drag = true; lock = null; }, { passive: true });
+      this.on(pile, 'touchmove', e => {
+        if (!drag) return;
+        const t = e.touches[0]; dx = t.clientX - sx; const dy = t.clientY - sy;
+        if (lock === null && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) lock = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+        if (lock === 'x') { const c = quotes[qi]; c.style.transition = 'none'; c.style.transform = 'translateX(' + dx + 'px) rotate(' + (dx / 40).toFixed(2) + 'deg)'; }
+      }, { passive: true });
+      this.on(pile, 'touchend', () => {
+        if (!drag) return; drag = false;
+        const c = quotes[qi]; c.style.transition = '';
+        if (lock === 'x' && Math.abs(dx) > 50) show(qi + (dx < 0 ? 1 : -1)); else show(qi);
+      }, { passive: true });
+    }
 
     /* travelling through the section deals the next account; the ribbons still
        override by hand */

@@ -35,9 +35,6 @@
   @media (max-width: 900px) {
     [data-navlinks], [data-hide-m] { display: none !important; }
     [data-cols] { grid-template-columns: minmax(0,1fr) !important; }
-    [data-track] { flex-direction: column !important; width: auto !important; }
-    [data-track] > * { width: 100% !important; }
-    [data-cardimg] { height: clamp(300px,100vw,520px) !important; }
     [data-gal] { grid-template-columns: repeat(2,minmax(0,1fr)) !important; grid-template-rows: none !important; grid-auto-rows: auto !important; }
     [data-tile] { grid-column: auto !important; grid-row: auto !important; aspect-ratio: 1/1; }
     [data-tile][data-wide] { grid-column: span 2 !important; aspect-ratio: 16/9; }
@@ -60,13 +57,43 @@
     [data-planners] a { flex: 1 1 100%; justify-content: center; padding: 0 14px !important; }
   }
   @media (min-width: 600px) and (max-width: 900px) {
-    [data-track] { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)); }
-    [data-track] > :first-child { grid-column: span 2; }
-    [data-cardimg] { height: clamp(300px,52vw,460px) !important; }
+    [data-snapcard] { flex-basis: 46% !important; }
+    [data-track] { grid-auto-columns: 46vw !important; }
+    #rv-stack [data-rv-q] { font-size: 30px !important; }
     [data-gal] { grid-template-columns: repeat(3,minmax(0,1fr)) !important; }
     [data-tile][data-wide] { grid-column: span 3 !important; aspect-ratio: 21/9; }
     [data-tile]:nth-child(5) { grid-column: span 2 !important; aspect-ratio: auto; }
   }
+  @media (max-width: 900px) {
+    [data-grain] { display: none !important; }
+    #hero-copy a[href="#about"] { display: none !important; }
+    #hero-copy a[href="#contact"] { width: 100%; justify-content: center; }
+    #about { padding: 96px 20px 80px !important; }
+    #about [data-lift] { width: 46% !important; }
+    #services { min-height: 0 !important; display: block !important; padding: 24px 0 88px !important; }
+    [data-track] { display: grid !important; grid-auto-flow: column; grid-template-rows: auto auto; grid-auto-columns: 80vw; column-gap: 12px !important; row-gap: 36px; width: auto !important; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 20px; padding: 0 20px !important; scrollbar-width: none; }
+    [data-track] > :first-child { grid-row: 1; grid-column: 1 / span 4; position: sticky; left: 0; width: calc(100vw - 40px) !important; }
+    [data-track] > article { grid-row: 2; width: auto !important; scroll-snap-align: start; gap: 16px !important; }
+    [data-cardimg] { height: auto !important; aspect-ratio: 4/5; }
+    #process > section:first-child { padding: 88px 20px 36px !important; }
+    #moments { padding: 88px 20px 80px !important; }
+    [data-tile] figcaption > span:first-child { display: none; }
+    [data-tile] figcaption > span:last-child { font-size: 16px !important; }
+    #reviews { height: auto !important; min-height: 0 !important; }
+    #rv-body { height: auto !important; padding: 96px 0 80px !important; gap: 28px !important; }
+    #rv-stack { display: flex !important; width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; align-items: center; }
+    [data-rv-item] { flex: 0 0 100%; box-sizing: border-box; padding: 0 28px; opacity: 1 !important; visibility: visible !important; transform: none !important; scroll-snap-align: center; }
+    [data-rv-q] { font-size: 24px !important; line-height: 1.4 !important; }
+    [data-rv-cite] { flex-wrap: wrap; justify-content: center; line-height: 1.8; }
+    #contact { padding: 88px 20px 72px !important; }
+    #contact-stage { min-height: 0 !important; padding-bottom: 48px !important; }
+    #contact-title > span:nth-child(2) { padding-left: 0 !important; }
+    #v5-form { padding: 24px 20px !important; }
+    footer { padding-left: 20px !important; padding-right: 20px !important; }
+    footer nav > span { display: none !important; }
+    footer nav { gap: 0 22px !important; }
+  }
+  [data-snap]::-webkit-scrollbar, [data-track]::-webkit-scrollbar { display: none; }
   @media (min-width: 901px) { [data-show-m] { display: none !important; } }
   @media (hover: none), (pointer: coarse) { [data-cursor-el] { display: none !important; } }
   @media (prefers-reduced-motion: reduce) { [data-grain] { animation: none !important; } }
@@ -229,7 +256,7 @@
 </section>
 
 <section id="services" data-section="services" data-screen-label="Services" style="position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(80px,11vh,130px) 0 clamp(50px,8vh,90px)">
-  <div id="svc-track" data-track="" style="display:flex;align-items:stretch;gap:clamp(18px,2.4vw,40px);padding:0 clamp(18px,3.4vw,48px);width:max-content">
+  <div id="svc-track" data-track="" data-snapx="" style="display:flex;align-items:stretch;gap:clamp(18px,2.4vw,40px);padding:0 clamp(18px,3.4vw,48px);width:max-content">
     <div style="width:clamp(300px,32vw,560px);display:flex;flex-direction:column;justify-content:space-between;gap:32px">
       <div style="display:flex;flex-direction:column;gap:clamp(18px,2.4vw,32px)">
         <span data-r="" style="display:flex;align-items:center;gap:14px;font-family:Marcellus,serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,32,24,0.78)"><span aria-hidden="true" style="display:block;width:clamp(28px,4vw,64px);height:1px;background:#B07D2A"></span>Services<span style="margin-left:auto;color:#8C5F17">02</span></span>
@@ -298,7 +325,62 @@
     </div>
   </section>
 
-  <section id="film" aria-label="Five movements" style="position:relative;height:100svh;min-height:560px;overflow:hidden;background:#0B0502">
+
+  <section id="film-m" data-show-m="" aria-label="Five movements" style="padding:0 0 72px">
+    <div data-snap="#fm-count" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;padding:0 20px;scrollbar-width:none">
+      <article data-snapcard="" style="position:relative;flex:0 0 84%;aspect-ratio:3/4;overflow:hidden;scroll-snap-align:start;background:#0B0502">
+        <img src="images/cat-5.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,0) 38%,rgba(11,5,2,.86) 100%)"></span>
+        <div style="position:absolute;left:20px;right:20px;bottom:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#FFC968">01 · First movement</span>
+          <span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(34px,10vw,52px);line-height:.92;letter-spacing:.02em;text-transform:uppercase;color:#FFF8EA">Discover</span>
+          <span style="font-size:15px;line-height:1.55;color:rgba(247,233,206,.9)">Understanding your vision, story and expectations.</span>
+        </div>
+      </article>
+      <article data-snapcard="" style="position:relative;flex:0 0 84%;aspect-ratio:3/4;overflow:hidden;scroll-snap-align:start;background:#0B0502">
+        <img src="images/svc-6.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,0) 38%,rgba(11,5,2,.86) 100%)"></span>
+        <div style="position:absolute;left:20px;right:20px;bottom:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#FFC968">02 · Second movement</span>
+          <span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(34px,10vw,52px);line-height:.92;letter-spacing:.02em;text-transform:uppercase;color:#FFF8EA">Design</span>
+          <span style="font-size:15px;line-height:1.55;color:rgba(247,233,206,.9)">Transforming your ideas into a complete event concept.</span>
+        </div>
+      </article>
+      <article data-snapcard="" style="position:relative;flex:0 0 84%;aspect-ratio:3/4;overflow:hidden;scroll-snap-align:start;background:#0B0502">
+        <img src="images/cat-6.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,0) 38%,rgba(11,5,2,.86) 100%)"></span>
+        <div style="position:absolute;left:20px;right:20px;bottom:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#FFC968">03 · Third movement</span>
+          <span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(34px,10vw,52px);line-height:.92;letter-spacing:.02em;text-transform:uppercase;color:#FFF8EA">Plan</span>
+          <span style="font-size:15px;line-height:1.55;color:rgba(247,233,206,.9)">Managing every detail, timeline and vendor.</span>
+        </div>
+      </article>
+      <article data-snapcard="" style="position:relative;flex:0 0 84%;aspect-ratio:3/4;overflow:hidden;scroll-snap-align:start;background:#0B0502">
+        <img src="images/gal-1.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,0) 38%,rgba(11,5,2,.86) 100%)"></span>
+        <div style="position:absolute;left:20px;right:20px;bottom:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#FFC968">04 · Fourth movement</span>
+          <span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(34px,10vw,52px);line-height:.92;letter-spacing:.02em;text-transform:uppercase;color:#FFF8EA">Execute</span>
+          <span style="font-size:15px;line-height:1.55;color:rgba(247,233,206,.9)">Bringing everything together flawlessly.</span>
+        </div>
+      </article>
+      <article data-snapcard="" style="position:relative;flex:0 0 84%;aspect-ratio:3/4;overflow:hidden;scroll-snap-align:start;background:#0B0502">
+        <img src="images/svc-5.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+        <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,0) 38%,rgba(11,5,2,.86) 100%)"></span>
+        <div style="position:absolute;left:20px;right:20px;bottom:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#FFC968">05 · Final movement</span>
+          <span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(34px,10vw,52px);line-height:.92;letter-spacing:.02em;text-transform:uppercase;color:#FFF8EA">Celebrate</span>
+          <span style="font-size:15px;line-height:1.55;color:rgba(247,233,206,.9)">You enjoy the moment. We handle the rest.</span>
+        </div>
+      </article>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 20px 0;font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(42,32,24,0.74)">
+      <span style="display:flex;align-items:center;gap:12px"><span id="fm-count" style="color:#8C5F17">01</span><span aria-hidden="true" style="display:block;width:32px;height:1px;background:rgba(140,95,23,.4)"></span>05</span>
+      <span>Swipe</span>
+    </div>
+  </section>
+
+  <section id="film" data-hide-m="" aria-label="Five movements" style="position:relative;height:100svh;min-height:560px;overflow:hidden;background:#0B0502">
     <div data-scene-img="" style="position:absolute;inset:0;overflow:hidden;clip-path:inset(0% 0% 0% 0%)"><img src="images/cat-5.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04)" /></div>
     <div data-scene-img="" style="position:absolute;inset:0;overflow:hidden;clip-path:inset(100% 0% 0% 0%)"><img src="images/svc-6.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
     <div data-scene-img="" style="position:absolute;inset:0;overflow:hidden;clip-path:inset(100% 0% 0% 0%)"><img src="images/cat-6.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
@@ -428,9 +510,9 @@
     <img id="rv-img" src="images/break-bg.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
     <div aria-hidden="true" style="position:absolute;inset:0;background:rgba(11,5,2,.6)"></div>
   </div>
-  <div style="position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(22px,3vw,40px);padding:0 clamp(18px,6vw,120px);text-align:center">
+  <div id="rv-body" style="position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(22px,3vw,40px);padding:0 clamp(18px,6vw,120px);text-align:center">
     <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#FFC968">In their words</span>
-    <div id="rv-stack" style="display:grid;place-items:center">
+    <div id="rv-stack" data-snap="#rv-count" style="display:grid;place-items:center">
       <figure data-rv-item="" style="grid-area:1 / 1;margin:0;display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.6vw,36px)">
         <blockquote data-rv-q="" style="margin:0;max-width:30ch;font-family:Jost,sans-serif;font-weight:300;font-style:normal;font-size:clamp(22px,2.9vw,50px);line-height:1.34;letter-spacing:-.005em;color:#FFF8EA;text-wrap:balance">“They didn't just organise our wedding. They understood exactly what we imagined before we even knew how to explain it.”</blockquote>
         <figcaption data-rv-cite="" style="display:flex;align-items:center;gap:14px;font-family:Marcellus,serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(247,233,206,.86)">Meera &amp; Rohan<span aria-hidden="true" style="display:block;width:28px;height:1px;background:#F0B23C"></span>Wedding · Kochi</figcaption>
@@ -759,7 +841,11 @@ class Component extends DCLogic {
       const desk = ctx.conditions.desk;
 
       /* Hero: pinned full-window plate; it pushes in and darkens while the title splits. */
-      g.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=85%', pin: true, scrub: 1, refreshPriority: 6 } })
+      if (!desk) g.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } })
+        .to('#hero-zoom', { scale: 1.12, ease: 'none' }, 0)
+        .to('#hero-h1', { y: -70, opacity: 0.15, ease: 'none' }, 0)
+        .to('#hero-copy', { opacity: 0, ease: 'none', duration: 0.6 }, 0);
+      else g.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=85%', pin: true, scrub: 1, refreshPriority: 6 } })
         .to('#hero-dim', { opacity: 0.5, ease: 'none', duration: 1 }, 0)
         .to('#hero-img', { yPercent: 6, ease: 'none', duration: 1 }, 0)
         .to('#hero-zoom', { scale: 1.14, ease: 'none', duration: 1 }, 0)
@@ -836,6 +922,7 @@ class Component extends DCLogic {
 
       /* Contact: the testimonial's darkness carries on, the title is typeset letter
          by letter on a held frame, and the house lights come up to cream. */
+      if (desk) {
       this.splitChars(this.$('#contact-title'));
       const ctl = g.timeline({ scrollTrigger: { trigger: '#contact-stage', start: desk ? 'top 18%' : 'top 22%', end: '+=' + (desk ? 110 : 80) + '%', pin: true, scrub: 1, refreshPriority: 1 } });
       ctl.fromTo('#contact', { backgroundColor: '#0B0502' }, { backgroundColor: '#FAF7F1', ease: 'none', duration: 0.7 }, 0.55)
@@ -845,6 +932,7 @@ class Component extends DCLogic {
         .fromTo('#contact-title [data-li]:not(:first-child), #contact-title > span:nth-child(2) [data-li]', { color: '#FFC968' }, { color: '#9A6A1C', ease: 'none', duration: 0.7 }, 0.55)
         .fromTo('#contact-label', { color: 'rgba(247,233,206,.8)', opacity: 0, y: 20 }, { color: 'rgba(42,32,24,.78)', opacity: 1, y: 0, ease: 'none', duration: 0.6 }, 0.1)
         .to({}, { duration: 0.2 });
+      }
       g.from('#v5-form label', { y: 34, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.07,
         scrollTrigger: { trigger: '#v5-form', start: 'top 82%', once: true } });
 
@@ -861,6 +949,16 @@ class Component extends DCLogic {
       }
 
       /* Film: five scenes on one pinned playhead, snapping between movements. */
+      if (!desk) {
+        const offs = [];
+        this.$('[data-snap]').forEach(sc => {
+          const out = this.$(sc.getAttribute('data-snap')), n = sc.children.length;
+          const on = () => { const max = sc.scrollWidth - sc.clientWidth; const k = max > 0 ? Math.round(sc.scrollLeft / max * (n - 1)) : 0; const t = String(k + 1).padStart(2, '0'); if (out && out.textContent !== t) out.textContent = t; };
+          sc.addEventListener('scroll', on, { passive: true }); on();
+          offs.push(() => sc.removeEventListener('scroll', on));
+        });
+        return () => offs.forEach(f => f());
+      }
       const scenes = g.utils.toArray('[data-scene-img]'), texts = g.utils.toArray('[data-scene-txt]'), n = scenes.length;
       const ftl = g.timeline({ scrollTrigger: { trigger: '#film', refreshPriority: 4, start: 'top top', end: '+=' + (n - 1) * (desk ? 90 : 75) + '%', pin: true, scrub: 1,
         snap: { snapTo: 1 / (n - 1), duration: { min: 0.3, max: 0.9 }, delay: 0.08, ease: 'power2.inOut' },

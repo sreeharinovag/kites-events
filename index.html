@@ -1120,7 +1120,7 @@ class Component extends DCLogic {
     const g = gsap, ST = ScrollTrigger, header = this.$('#nav');
     let hidden = false;
     ST.create({ start: 0, end: 'max', onUpdate: s => {
-      const hide = s.direction === 1 && s.scroll() > window.innerHeight * 0.7 && !this._menuOpen;
+      const hide = s.direction === 1 && s.scroll() > window.innerHeight * 0.7 && !this._menuOpen && !this._heroIn;
       if (hide === hidden) return;
       hidden = hide;
       g.to(header, { yPercent: hide ? -120 : 0, duration: 0.7, ease: 'expo.out', overwrite: 'auto' });
@@ -1343,7 +1343,16 @@ class Component extends DCLogic {
     this._ftHdr = true;
     nav.style.transition = (nav.style.transition ? nav.style.transition + ',' : '') + 'translate .7s cubic-bezier(.16,1,.3,1), opacity .5s ease';
     let last = null;
+    const hero = this.$('#hero');
     const check = () => {
+      if (hero) {
+        const host = (hero.parentElement && hero.parentElement.classList.contains('pin-spacer')) ? hero.parentElement : hero;
+        this._heroIn = host.getBoundingClientRect().bottom > window.innerHeight * 0.35;
+        if (this._heroIn && window.gsap && gsap.getProperty(nav, 'yPercent') < -1 && !this._heroShow) {
+          this._heroShow = true;
+          gsap.to(nav, { yPercent: 0, duration: 0.7, ease: 'expo.out', overwrite: 'auto', onComplete: () => { this._heroShow = false; } });
+        }
+      }
       const on = !this._menuOpen && ft.getBoundingClientRect().top < window.innerHeight * 0.6;
       if (on === last) return;
       last = on;

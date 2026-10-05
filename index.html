@@ -46,7 +46,7 @@
     [data-formgrid] > label:first-child, [data-formgrid] > label:last-child { grid-column: 1 / -1; }
   }
   @media (max-width: 1180px) {
-    [data-ftline] { white-space: normal !important; font-size: 14.5px !important; letter-spacing: .08em !important; line-height: 1.7 !important; text-wrap: balance; }
+    [data-ftline] { white-space: normal !important; font-size: 16px !important; letter-spacing: .08em !important; line-height: 1.7 !important; text-wrap: balance; }
   }
   @media (max-width: 1180px) {
     [data-planners] { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: clamp(16px,3vw,40px); }
@@ -102,7 +102,42 @@
   @media (max-width: 599px) {
     #gallery > figure:last-of-type { grid-column: auto !important; aspect-ratio: 1/1; }
   }
+  #contact[data-clayout="ledger"] [data-crow] { display: grid !important; grid-template-columns: minmax(0,5fr) minmax(0,7fr); column-gap: clamp(40px,6vw,128px) !important; row-gap: 0 !important; align-items: start; }
+  #contact[data-clayout="ledger"] [data-cpara] { grid-column: auto; max-width: 21ch; padding-top: clamp(24px,2.6vw,36px); border-top: 1px solid rgba(140,95,23,0.34); font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(24px,2.3vw,38px) !important; line-height: 1.32; color: #17110C; text-wrap: pretty; }
+  #contact[data-clayout="ledger"] [data-cpara]::before { content: 'Talk to a planner'; display: flex; margin-bottom: clamp(16px,1.8vw,24px); font-family: Marcellus, serif; font-size: 10px; letter-spacing: .3em; line-height: 1.6; text-transform: uppercase; color: #8C5F17; }
+  #contact[data-clayout="ledger"] [data-planners] { display: flex !important; flex-direction: column; counter-reset: pl; border-top: 1px solid rgba(140,95,23,0.34) !important; }
+  #contact[data-clayout="ledger"] [data-planners]::before { content: 'The Planners'; display: flex; padding-top: clamp(24px,2.6vw,36px); font-family: Marcellus, serif; font-size: 10px; letter-spacing: .3em; line-height: 1.6; text-transform: uppercase; color: #8C5F17; }
+  #contact[data-clayout="ledger"] [data-planners] > div:first-child { padding-top: clamp(16px,1.8vw,24px) !important; }
+  #contact[data-clayout="ledger"] [data-planners] > div { display: grid !important; grid-template-columns: minmax(0,1fr) auto; column-gap: clamp(14px,2vw,32px); row-gap: 6px; align-items: center; padding: clamp(24px,2.6vw,36px) 0 !important; border-top: 0 !important; border-bottom: 1px solid rgba(42,32,24,0.1) !important; }
+  #contact[data-clayout="ledger"] [data-planners] > div > span:nth-child(1) { grid-column: 1; font-size: clamp(28px,2.8vw,46px) !important; }
+  #contact[data-clayout="ledger"] [data-planners] > div > span:nth-child(2) { grid-column: 1; font-size: 15px !important; letter-spacing: .06em !important; }
+  #contact[data-clayout="ledger"] [data-planners] > div > span:nth-child(3) { grid-column: 2; grid-row: 1 / 3; margin-top: 0 !important; flex-wrap: nowrap !important; }
+  @media (max-width: 900px) {
+    #contact[data-clayout="ledger"] [data-crow] { grid-template-columns: minmax(0,1fr); row-gap: 32px !important; }
+    #contact[data-clayout="ledger"] [data-cpara] { max-width: 24ch; padding-top: 0; border-top: 0; font-size: 26px !important; }
+    #contact[data-clayout="ledger"] [data-planners] > div { grid-template-columns: minmax(0,1fr); }
+    #contact[data-clayout="ledger"] [data-planners] > div > span:nth-child(1) { font-size: 28px !important; }
+    #contact[data-clayout="ledger"] [data-planners] > div > span:nth-child(2) { font-size: 15px !important; }
+    #contact[data-clayout="ledger"] [data-planners] > div > span:nth-child(3) { grid-column: 1; grid-row: 3; margin-top: 10px !important; }
+    #contact[data-clayout="ledger"] [data-planners] a { flex: 1 1 0; justify-content: center; padding: 0 14px !important; }
+  }
   [data-snap]::-webkit-scrollbar, [data-track]::-webkit-scrollbar { display: none; }
+  @media (min-width: 1181px) {
+    [data-crow] { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: clamp(32px,3.6vw,72px) !important; row-gap: clamp(24px,3vw,40px) !important; align-items: stretch; }
+    [data-crow] > [data-cpara] { grid-column: 1 / -1; }
+    [data-planners] { display: contents !important; }
+    [data-planners] > div { border-top: 1px solid rgba(140,95,23,0.34); border-bottom: 0 !important; }
+  }
+  @media (max-width: 900px) {
+    #nav-logo { height: 54px !important; }
+    #hero-h1 { font-size: 9.6vw !important; letter-spacing: .015em !important; line-height: 1.02 !important; }
+    #hero-h1 [data-hl="2"] [data-li] { font-size: 1.42em !important; line-height: 1 !important; }
+    #hero > div:last-of-type > [data-hfade]:first-child { font-size: 11.5px !important; gap: 16px !important; line-height: 1.9; }
+    #hero-copy { gap: 30px !important; }
+    #hero-copy p { font-size: 17px !important; line-height: 1.7 !important; }
+    #hero-copy a[href="#contact"] { padding: 21px 30px !important; font-size: 11.5px !important; }
+    #hero > div:last-of-type { gap: 30px !important; padding-top: 110px !important; padding-bottom: 48px !important; }
+  }
   @media (min-width: 901px) { [data-show-m] { display: none !important; } }
   @media (hover: none), (pointer: coarse) { [data-cursor-el] { display: none !important; } }
   @media (prefers-reduced-motion: reduce) { [data-grain] { animation: none !important; } }
@@ -140,7 +175,7 @@
   <div id="cur-dot" style="position:fixed;left:0;top:0;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:#B07D2A;opacity:0"></div>
 </div>
 
-<header id="nav" style="position:fixed;left:0;right:0;top:0;z-index:130;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(14px,1.8vw,24px) clamp(18px,3.4vw,48px);background:linear-gradient(180deg,rgba(14,7,3,.6),rgba(14,7,3,0));transition:background .6s ease,backdrop-filter .6s ease">
+<header id="nav" style="position:fixed;left:0;right:0;top:0;z-index:130;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:clamp(18px,1.8vw,26px) clamp(20px,3.4vw,48px);background:linear-gradient(180deg,rgba(14,7,3,.6),rgba(14,7,3,0));transition:background .6s ease,backdrop-filter .6s ease">
   <a href="#hero" aria-label="Kites Events, back to top" style="display:flex;align-items:center;gap:13px">
     <img id="nav-logo" src="images/logo-kites-light.png" alt="Kites Events &amp; Wedding Planner" width="425" height="414" style="display:block;height:clamp(42px,3vw,48px);width:auto" />
     <span data-hide-m="" style="display:flex;flex-direction:column;line-height:1.6">
@@ -163,10 +198,10 @@
   </div>
 </header>
 
-<div id="menu" role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;inset:0;z-index:220;background:#F4EFE6;visibility:hidden;clip-path:circle(0% at calc(100% - 40px) 36px);overflow-y:auto">
-  <div style="min-height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:14px clamp(18px,4vw,40px) clamp(20px,3vh,32px)">
-    <div style="display:flex;align-items:center;justify-content:space-between;min-height:44px">
-      <img src="images/logo-kites-dark.png" alt="Kites Events" width="425" height="414" style="display:block;height:44px;width:auto" />
+<div id="menu" role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;inset:0;z-index:220;background:#F4EFE6;visibility:hidden;clip-path:circle(0% at calc(100% - 42px) 45px);overflow-y:auto">
+  <div style="min-height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:clamp(18px,1.8vw,26px) clamp(20px,3.4vw,48px) clamp(20px,3vh,32px)">
+    <div style="display:flex;align-items:center;justify-content:space-between;min-height:54px">
+      <img src="images/logo-kites-dark.png" alt="Kites Events" width="425" height="414" style="display:block;height:54px;width:auto" />
       <button id="menu-close" type="button" aria-label="Close menu" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;background:none;border:1px solid rgba(42,32,24,0.22);border-radius:50%;color:#17110C;cursor:pointer"><span aria-hidden="true" style="position:relative;display:block;width:14px;height:14px"><span style="position:absolute;left:0;top:50%;width:14px;height:1px;background:currentColor;transform:rotate(45deg)"></span><span style="position:absolute;left:0;top:50%;width:14px;height:1px;background:currentColor;transform:rotate(-45deg)"></span></span></button>
     </div>
     <nav aria-label="Menu" style="display:flex;flex-direction:column;margin-top:clamp(28px,6vh,56px);border-top:1px solid rgba(42,32,24,0.1)">
@@ -511,7 +546,7 @@
   </div>
 </section>
 
-<section id="contact" data-section="contact" data-screen-label="Begin" style="position:relative;z-index:2;max-width:none;margin:0;background:#FAF7F1;padding:clamp(80px,12vh,160px) clamp(18px,3.4vw,48px) clamp(70px,10vh,130px)">
+<section id="contact" data-clayout="ledger" data-section="contact" data-screen-label="Begin" style="position:relative;z-index:2;max-width:none;margin:0;background:#FAF7F1;padding:clamp(80px,12vh,160px) clamp(18px,3.4vw,48px) clamp(70px,10vh,130px)">
   <div id="contact-stage" style="max-width:1920px;margin:0 auto;min-height:clamp(300px,52vh,560px);display:flex;flex-direction:column;justify-content:center;padding-bottom:clamp(40px,6vw,96px)">
   <span id="contact-label" style="display:flex;align-items:center;gap:14px;padding-bottom:clamp(24px,3vw,44px);font-family:Marcellus,serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,32,24,0.78)"><span aria-hidden="true" style="display:block;width:clamp(28px,4vw,64px);height:1px;background:#B07D2A"></span>Begin<span style="color:#8C5F17">05</span></span>
   <h2 id="contact-title" style="margin:0;font-family:'Tenor Sans',sans-serif;font-weight:400;font-size:clamp(34px,8.6vw,164px);line-height:.94;letter-spacing:.02em;text-transform:uppercase;color:#17110C">
@@ -520,9 +555,9 @@
   </h2>
   </div>
   <div style="max-width:1920px;margin:0 auto">
-  <div data-cols="" style="display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,5vw,96px);align-items:start">
-    <div style="display:flex;flex-direction:column;gap:clamp(24px,3vw,40px)">
-      <p data-r="" style="margin:0;max-width:44ch;font-size:clamp(15px,1.15vw,18px);line-height:1.75;color:rgba(42,32,24,0.9)">Let's turn your vision into an experience you'll never forget. Call or message us directly, or send an enquiry with your date and venue. We reply within minutes.</p>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr);align-items:start">
+    <div data-crow="" style="display:flex;flex-direction:column;gap:clamp(24px,3vw,40px)">
+      <p data-r="" data-cpara="" style="margin:0;max-width:44ch;font-size:clamp(15px,1.15vw,18px);line-height:1.75;color:rgba(42,32,24,0.9)">Let's turn your vision into an experience you'll never forget. Call or message us directly, or send an enquiry with your date and venue. We reply within minutes.</p>
       <div data-planners="" style="display:flex;flex-direction:column;border-top:1px solid rgba(140,95,23,0.34)">
         <div data-r="" style="display:flex;flex-direction:column;gap:8px;padding:clamp(18px,2vw,28px) 0;border-bottom:1px solid rgba(42,32,24,0.08)">
           <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.2vw,34px);line-height:1.1;color:#17110C">Vishnu KV</span>
@@ -543,33 +578,6 @@
       </div>
     </div>
 
-    <form id="v5-form" data-r="" data-rd="1" onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:clamp(20px,2.4vw,30px);padding:clamp(22px,3vw,44px);background:#FFFFFF;box-shadow:0 30px 80px -40px rgba(42,32,24,.25);border:1px solid rgba(140,95,23,0.17)">
-      <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#9A6A1C">Or send a written enquiry</span>
-      <div data-formgrid="" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2vw,28px)">
-        <label style="display:flex;flex-direction:column;gap:8px"><span style="font-family:Marcellus,serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,32,24,0.74)">Name</span><input name="name" type="text" required="required" style="width:100%;padding:11px 2px;background:none;border:0;border-bottom:1px solid rgba(42,32,24,0.17);font-size:16px;color:#2A2018;outline:none;transition:border-color .4s ease" style-focus="border-bottom-color:#8C5F17" /></label>
-        <label style="display:flex;flex-direction:column;gap:8px"><span style="font-family:Marcellus,serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,32,24,0.74)">Phone</span><input name="phone" type="tel" required="required" style="width:100%;padding:11px 2px;background:none;border:0;border-bottom:1px solid rgba(42,32,24,0.17);font-size:16px;color:#2A2018;outline:none;transition:border-color .4s ease" style-focus="border-bottom-color:#8C5F17" /></label>
-        <label style="display:flex;flex-direction:column;gap:8px"><span style="font-family:Marcellus,serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,32,24,0.74)">Email</span><input name="email" type="email" style="width:100%;padding:11px 2px;background:none;border:0;border-bottom:1px solid rgba(42,32,24,0.17);font-size:16px;color:#2A2018;outline:none;transition:border-color .4s ease" style-focus="border-bottom-color:#8C5F17" /></label>
-        <label style="display:flex;flex-direction:column;gap:8px"><span style="font-family:Marcellus,serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,32,24,0.74)">Event type</span>
-          <select name="type" style="width:100%;padding:11px 2px;background:none;border:0;border-bottom:1px solid rgba(42,32,24,0.17);font-size:16px;color:#2A2018;-webkit-appearance:none;appearance:none;outline:none">
-            <option value="">Select</option>
-            <option value="luxury-wedding">Luxury Wedding</option>
-            <option value="destination-wedding">Destination Wedding</option>
-            <option value="engagement">Engagement</option>
-            <option value="wedding-design">Wedding Design</option>
-            <option value="baptism">Baptism</option>
-            <option value="birthday">Birthday</option>
-            <option value="anniversary">Anniversary</option>
-            <option value="private-event">Private Event</option>
-          </select>
-        </label>
-        <label style="display:flex;flex-direction:column;gap:8px"><span style="font-family:Marcellus,serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,32,24,0.74)">Event date</span><input name="date" type="date" style="width:100%;padding:11px 2px;background:none;border:0;border-bottom:1px solid rgba(42,32,24,0.17);font-size:16px;color:#2A2018;color-scheme:dark;outline:none" /></label>
-        <label style="display:flex;flex-direction:column;gap:8px"><span style="font-family:Marcellus,serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,32,24,0.74)">Message</span><input name="message" type="text" style="width:100%;padding:11px 2px;background:none;border:0;border-bottom:1px solid rgba(42,32,24,0.17);font-size:16px;color:#2A2018;outline:none;transition:border-color .4s ease" style-focus="border-bottom-color:#8C5F17" /></label>
-      </div>
-      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
-        <button data-mag="" type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:15px 32px;border:0;border-radius:999px;background:#17110C;color:#FAF7F1;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;transition:background-color .4s ease" style-hover="background-color:#8C5F17">Send enquiry<span aria-hidden="true">→</span></button>
-        <span id="v5-thanks" role="status" style="display:none;font-family:Marcellus,serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9A6A1C">Thank you. We'll be in touch within minutes.</span>
-      </div>
-    </form>
   </div>
   </div>
 </section>
@@ -580,10 +588,10 @@
       <a href="#about" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">About</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#services" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Services</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#process" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Process</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#moments" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Moments</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#contact" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Contact</a>
     </nav>
   </div>
-  <div id="wordmark" data-lm="" aria-hidden="true" style="display:flex;justify-content:space-between;overflow:hidden;margin-top:auto;padding-top:clamp(32px,4.4vw,72px);font-family:'Tenor Sans',sans-serif;font-size:clamp(90px,24vw,460px);line-height:.82;letter-spacing:0;color:#8C5F17">
+  <div id="wordmark" data-lm="" aria-hidden="true" style="display:flex;justify-content:space-between;overflow:hidden;margin-top:auto;padding-top:clamp(32px,4.4vw,72px);font-family:'Tenor Sans',sans-serif;font-size:clamp(90px,24vw,460px);line-height:.82;letter-spacing:0;color:#000000">
     <span data-li="" style="display:block">K</span><span data-li="" style="display:block">I</span><span data-li="" style="display:block">T</span><span data-li="" style="display:block">E</span><span data-li="" style="display:block">S</span>
   </div>
-  <p data-ftline="" style="margin:clamp(14px,1.6vw,26px) 0 0;white-space:nowrap;overflow:hidden;font-size:min(.98vw,18.8px);line-height:1.4;letter-spacing:.16em;text-align:center;color:rgba(42,32,24,0.82)">Event management and wedding planning in Thodupuzha. We design and produce celebrations people remember for the feeling, not the flowers.</p>
+  <p data-ftline="" style="margin:clamp(14px,1.6vw,26px) 0 0;white-space:nowrap;overflow:hidden;font-size:min(1.25vw,24px);line-height:1.4;letter-spacing:.02em;text-align:center;color:rgba(42,32,24,0.82)">Event &amp; Wedding Planners in Thodupuzha. We craft celebrations that stay with you for how they felt, not simply for how they looked.</p>
   <div id="v5-end" style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:auto;padding-top:clamp(14px,1.8vw,22px);border-top:1px solid rgba(42,32,24,0.08);font-family:Marcellus,serif;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(42,32,24,0.64)">
     <span>© 2026 Kites Events · Thodupuzha, Kerala</span>
     <span>Est. 2016</span>
@@ -592,7 +600,7 @@
 
 </main>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;smoothScroll&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;filmGrain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;smoothScroll&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;filmGrain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;contactLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Ledger&quot;,&quot;Columns&quot;],&quot;default&quot;:&quot;Ledger&quot;,&quot;tsType&quot;:&quot;'Ledger' | 'Columns'&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
 class Component extends DCLogic {
   componentDidMount() {
     this._t0 = Date.now();
@@ -629,10 +637,14 @@ class Component extends DCLogic {
       const pt = t => [(1 - t) * (1 - t) * P0[0] + 2 * (1 - t) * t * C[0] + t * t * P2[0], (1 - t) * (1 - t) * P0[1] + 2 * (1 - t) * t * C[1] + t * t * P2[1]];
       const d = `M${P0[0]},${P0[1]} Q${C[0]},${C[1]} ${P2[0]},${P2[1]}`;
       const glow = mk('g', { style: dark ? 'mix-blend-mode:screen' : '' }, svg);
-      mk('path', { d, fill: 'none', stroke: dark ? 'rgba(0,0,0,.35)' : 'rgba(60,40,20,.12)', 'stroke-width': 3, transform: 'translate(0,3)' }, svg);
-      mk('path', { d, fill: 'none', stroke: dark ? '#17110C' : '#3A2C20', 'stroke-width': 1.7, 'stroke-linecap': 'round' }, svg);
-      mk('path', { d, fill: 'none', stroke: dark ? 'rgba(255,214,150,.22)' : 'rgba(255,255,255,.35)', 'stroke-width': .6, transform: 'translate(0,-.6)', 'stroke-dasharray': '5 3' }, svg);
-      const bulbs = [];
+      const N = 48, pts = [];
+      for (let j = 0; j <= N; j++) pts.push(pt(j / N));
+      const wires = [];
+      wires.push(mk('path', { d, fill: 'none', stroke: dark ? 'rgba(0,0,0,.35)' : 'rgba(60,40,20,.12)', 'stroke-width': 3, transform: 'translate(0,3)' }, svg));
+      wires.push(mk('path', { d, fill: 'none', stroke: dark ? '#17110C' : '#3A2C20', 'stroke-width': 1.7, 'stroke-linecap': 'round' }, svg));
+      wires.push(mk('path', { d, fill: 'none', stroke: dark ? 'rgba(255,214,150,.22)' : 'rgba(255,255,255,.35)', 'stroke-width': .6, transform: 'translate(0,-.6)', 'stroke-dasharray': '5 3' }, svg));
+      box._wire = { wires, pts, N, off: new Float32Array(N + 1), vel: new Float32Array(N + 1) };
+      const bulbs = [], phys = [];
       for (let i = 0; i < n; i++) {
         const t = (i + 0.5) / n;
         const [x, y] = pt(t);
@@ -641,7 +653,8 @@ class Component extends DCLogic {
         const by = y + drop + 9 + r;
         const hR = r * (dark ? 9 : 6);
         const hg = mk('circle', { cx: x, cy: by, r: hR, fill: `url(#${id}h)` }, glow);
-        const g = mk('g', { style: `transform-box:view-box;transform-origin:${x}px ${y}px` }, svg);
+        const gp = mk('g', { style: `transform-box:view-box;transform-origin:${x}px ${y}px` }, svg);
+        const g = mk('g', { style: `transform-box:view-box;transform-origin:${x}px ${y}px` }, gp);
         mk('path', { d: `M${x},${y} C${x - 1.2},${y + drop * .4} ${x + 1.2},${y + drop * .7} ${x},${y + drop}`, fill: 'none', stroke: dark ? '#17110C' : '#3A2C20', 'stroke-width': 1.3 }, g);
         mk('rect', { x: x - r * .42, y: y + drop, width: r * .84, height: 9, rx: 1.4, fill: `url(#${id}s)` }, g);
         mk('rect', { x: x - r * .48, y: y + drop + 7.5, width: r * .96, height: 2.2, rx: 1, fill: '#0C0806' }, g);
@@ -653,7 +666,9 @@ class Component extends DCLogic {
         mk('ellipse', { cx: x - r * .38, cy: by - r * .4, rx: r * .26, ry: r * .16, fill: '#FFFFFF', opacity: .75, transform: `rotate(-35 ${x - r * .38} ${by - r * .4})` }, g);
         mk('ellipse', { cx: x, cy: by + r * 1.25 + 2, rx: r * .9, ry: r * .22, fill: dark ? 'rgba(255,180,80,.18)' : 'rgba(140,95,23,.08)' }, g);
         bulbs.push({ g, hg, core, globe, i });
+        phys.push({ gp, x, by, a: 0, v: 0, j: Math.round(t * N) });
       }
+      box._phys = phys;
       if (reduce) return;
       bulbs.forEach(({ g, hg, core, globe, i }) => {
         const delay = 300 + i * 140;
@@ -665,6 +680,63 @@ class Component extends DCLogic {
         g.animate([{ transform: `rotate(${-a}deg)` }, { transform: `rotate(${a}deg)` }], { duration: 3800 + ((i * 431) % 1800), iterations: Infinity, direction: 'alternate', easing: 'ease-in-out', delay: -((i * 977) % 3000) });
       });
     };
+    if (!reduce && window.matchMedia('(hover: hover)').matches) {
+      let raf = 0, lx = null, ly = null;
+      const tick = () => {
+        let moving = false;
+        document.querySelectorAll('[data-lights]').forEach(box => {
+          const W = box._wire;
+          if (W) {
+            const { off, vel, N, pts } = W;
+            for (let j = 1; j < N; j++) vel[j] += -0.018 * off[j] + 0.22 * (off[j - 1] + off[j + 1] - 2 * off[j]) - 0.05 * vel[j];
+            let e = 0;
+            for (let j = 1; j < N; j++) { off[j] = Math.max(-16, Math.min(16, off[j] + vel[j])); e += Math.abs(off[j]) + Math.abs(vel[j]); }
+            if (e > 0.05 * N) moving = true; else { off.fill(0); vel.fill(0); }
+            let d = 'M' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+            for (let j = 1; j < N; j++) {
+              const mx = (pts[j][0] + pts[j + 1][0]) / 2, my = (pts[j][1] + off[j] + pts[j + 1][1] + off[j + 1]) / 2;
+              d += ' Q' + pts[j][0].toFixed(1) + ',' + (pts[j][1] + off[j]).toFixed(1) + ' ' + mx.toFixed(1) + ',' + my.toFixed(1);
+            }
+            d += ' L' + pts[N][0].toFixed(1) + ',' + pts[N][1].toFixed(1);
+            W.wires.forEach(p => p.setAttribute('d', d));
+          }
+          (box._phys || []).forEach(p => {
+            p.v += (-0.045 * p.a - 0.06 * p.v); p.a += p.v;
+            if (Math.abs(p.a) > 0.01 || Math.abs(p.v) > 0.01) moving = true; else { p.a = 0; p.v = 0; }
+            const o = W ? W.off[p.j] : 0;
+            p.gp.style.transform = 'translate(0px,' + o.toFixed(2) + 'px) rotate(' + p.a.toFixed(3) + 'deg)';
+          });
+        });
+        raf = moving ? requestAnimationFrame(tick) : 0;
+      };
+      this._lightMove = e => {
+        const dx = lx == null ? 0 : e.clientX - lx, dy = ly == null ? 0 : e.clientY - ly; lx = e.clientX; ly = e.clientY;
+        if (!dx && !dy) return;
+        let hit = false;
+        document.querySelectorAll('[data-lights]').forEach(box => {
+          const r = box.getBoundingClientRect();
+          if (e.clientY < r.top - 40 || e.clientY > r.bottom + 40) return;
+          const W = box._wire;
+          if (W) {
+            const px = e.clientX - r.left, py = e.clientY - r.top, sp = Math.min(8, Math.hypot(dx, dy));
+            for (let j = 1; j < W.N; j++) {
+              const wy = W.pts[j][1] + W.off[j], dd = Math.hypot(px - W.pts[j][0], py - wy);
+              if (dd > 70) continue;
+              const k = 1 - dd / 70, push = (py < wy ? 1 : -1) * sp * 0.05 + Math.max(-6, Math.min(6, dy)) * 0.06;
+              W.vel[j] = Math.max(-2.2, Math.min(2.2, W.vel[j] + push * k)); hit = true;
+            }
+          }
+          (box._phys || []).forEach(p => {
+            const d = Math.hypot(e.clientX - r.left - p.x, e.clientY - r.top - p.by);
+            if (d > 90) return;
+            const f = (1 - d / 90) * Math.max(-6, Math.min(6, dx)) * 0.09;
+            p.v += f; p.v = Math.max(-1.6, Math.min(1.6, p.v)); hit = true;
+          });
+        });
+        if (hit && !raf) raf = requestAnimationFrame(tick);
+      };
+      window.addEventListener('pointermove', this._lightMove, { passive: true });
+    }
     document.querySelectorAll('[data-lights]').forEach(box => {
       let w = 0;
       const ro = new ResizeObserver(() => { if (box.clientWidth !== w) { w = box.clientWidth; build(box); } });
@@ -675,6 +747,7 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     (this._lightRO || []).forEach(r => r.disconnect());
+    if (this._lightMove) window.removeEventListener('pointermove', this._lightMove);
     clearInterval(this._boot); clearInterval(this._cnt);
     if (this._mm) this._mm.revert();
     if (this.lenis) this.lenis.destroy();
@@ -689,6 +762,8 @@ class Component extends DCLogic {
   applyProps() {
     const w = this.$('kites-world');
     if (w) w.setAttribute('enabled', this.props.worldEnabled === false ? 'false' : 'true');
+    const c = this.$('#contact');
+    if (c) c.setAttribute('data-clayout', (this.props.contactLayout ?? 'Ledger') === 'Columns' ? 'columns' : 'ledger');
   }
 
   /* Progress is derived from elapsed time, never accumulated per tick, so a
@@ -906,8 +981,6 @@ class Component extends DCLogic {
         .fromTo('#contact-label', { color: 'rgba(247,233,206,.8)', opacity: 0, y: 20 }, { color: 'rgba(42,32,24,.78)', opacity: 1, y: 0, ease: 'none', duration: 0.6 }, 0.1)
         .to({}, { duration: 0.2 });
       }
-      g.from('#v5-form label', { y: 34, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.07,
-        scrollTrigger: { trigger: '#v5-form', start: 'top 82%', once: true } });
 
       /* Services: pinned horizontal track. */
       {
@@ -1146,7 +1219,7 @@ class Component extends DCLogic {
     this._menuOpen = on;
     menu.style.transition = on ? 'clip-path .9s cubic-bezier(.76,0,.24,1), visibility 0s' : 'clip-path .8s cubic-bezier(.76,0,.24,1), visibility 0s linear .8s';
     menu.style.visibility = on ? 'visible' : 'hidden';
-    menu.style.clipPath = on ? 'circle(150% at calc(100% - 40px) 36px)' : 'circle(0% at calc(100% - 40px) 36px)';
+    menu.style.clipPath = on ? 'circle(150% at calc(100% - 42px) 45px)' : 'circle(0% at calc(100% - 42px) 45px)';
     this.$$('[data-ml]').forEach((s, i) => {
       s.style.transitionDelay = on ? (0.25 + i * 0.06) + 's' : '0s';
       s.style.transform = on ? 'translateY(0)' : 'translateY(110%)';

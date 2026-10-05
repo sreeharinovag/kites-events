@@ -57,8 +57,8 @@
     [data-planners] a { flex: 1 1 100%; justify-content: center; padding: 0 14px !important; }
   }
   @media (min-width: 600px) and (max-width: 900px) {
-    [data-snapcard] { flex-basis: 46% !important; }
-    [data-track] { grid-auto-columns: 46vw !important; }
+    [data-track] > article { width: 46vw !important; }
+    [data-track] > :first-child { width: 52vw !important; }
     #rv-stack [data-rv-q] { font-size: 30px !important; }
     [data-gal] { grid-template-columns: repeat(3,minmax(0,1fr)) !important; }
     [data-tile][data-wide] { grid-column: span 3 !important; aspect-ratio: 21/9; }
@@ -70,20 +70,19 @@
     #hero-copy a[href="#contact"] { width: 100%; justify-content: center; }
     #about { padding: 96px 20px 80px !important; }
     #about [data-lift] { width: 46% !important; }
-    #services { min-height: 0 !important; display: block !important; padding: 24px 0 88px !important; }
-    [data-track] { display: grid !important; grid-auto-flow: column; grid-template-rows: auto auto; grid-auto-columns: 80vw; column-gap: 12px !important; row-gap: 36px; width: auto !important; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 20px; padding: 0 20px !important; scrollbar-width: none; }
-    [data-track] > :first-child { grid-row: 1; grid-column: 1 / span 4; position: sticky; left: 0; width: calc(100vw - 40px) !important; }
-    [data-track] > article { grid-row: 2; width: auto !important; scroll-snap-align: start; gap: 16px !important; }
-    [data-cardimg] { height: auto !important; aspect-ratio: 4/5; }
+    #services { padding: 72px 0 40px !important; }
+    [data-track] { gap: 14px !important; padding: 0 20px !important; align-items: center !important; }
+    [data-track] > :first-child { width: 80vw !important; justify-content: center !important; }
+    [data-track] > article { width: 74vw !important; gap: 14px !important; }
+    [data-track] > article p { font-size: 14px !important; line-height: 1.6 !important; }
+    [data-cardimg] { height: min(52svh,440px) !important; }
+    #film [data-scene-txt] span:last-child { font-size: 15px !important; }
     #process > section:first-child { padding: 88px 20px 36px !important; }
     #moments { padding: 88px 20px 80px !important; }
     [data-tile] figcaption > span:first-child { display: none; }
     [data-tile] figcaption > span:last-child { font-size: 16px !important; }
-    #reviews { height: auto !important; min-height: 0 !important; }
-    #rv-body { height: auto !important; padding: 96px 0 80px !important; gap: 28px !important; }
-    #rv-stack { display: flex !important; width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; align-items: center; }
-    [data-rv-item] { flex: 0 0 100%; box-sizing: border-box; padding: 0 28px; opacity: 1 !important; visibility: visible !important; transform: none !important; scroll-snap-align: center; }
-    [data-rv-q] { font-size: 24px !important; line-height: 1.4 !important; }
+    #rv-body { padding: 0 24px !important; gap: 26px !important; }
+    [data-rv-q] { font-size: 23px !important; line-height: 1.42 !important; }
     [data-rv-cite] { flex-wrap: wrap; justify-content: center; line-height: 1.8; }
     #contact { padding: 88px 20px 72px !important; }
     #contact-stage { min-height: 0 !important; padding-bottom: 48px !important; }
@@ -92,6 +91,16 @@
     footer { padding-left: 20px !important; padding-right: 20px !important; }
     footer nav > span { display: none !important; }
     footer nav { gap: 0 22px !important; }
+  }
+  @media (max-width: 900px) {
+    #hero [data-hero-sep] { display: none; }
+    #hero [data-hero-kl] { flex-basis: 100%; }
+    #hero [data-hfade] { text-shadow: 0 1px 18px rgba(11,5,2,.7); }
+    #hero-copy p { color: #F7E9CE !important; font-size: 15px !important; }
+    #hero > div:last-of-type { gap: 22px !important; padding-bottom: 40px !important; }
+  }
+  @media (max-width: 599px) {
+    #gallery > figure:last-of-type { grid-column: auto !important; aspect-ratio: 1/1; }
   }
   [data-snap]::-webkit-scrollbar, [data-track]::-webkit-scrollbar { display: none; }
   @media (min-width: 901px) { [data-show-m] { display: none !important; } }
@@ -115,7 +124,7 @@
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
       <span id="ld-num" style="font-family:'Tenor Sans',sans-serif;font-size:clamp(72px,14vw,240px);line-height:.8;letter-spacing:.02em;color:#17110C">000</span>
       <div style="display:flex;flex-direction:column;gap:12px;width:min(320px,100%);padding-bottom:12px">
-        <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,32,24,0.74)">House lights</span>
+        <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,32,24,0.74)">Lights turning on</span>
         <span style="position:relative;display:block;height:1px;background:rgba(42,32,24,0.1)"><span id="ld-fill" style="position:absolute;inset:0;background:#B07D2A;transform:scaleX(0);transform-origin:left"></span></span>
       </div>
     </div>
@@ -148,29 +157,46 @@
   </nav>
   <div style="display:flex;align-items:center;gap:10px">
     <a id="nav-enq" data-mag="" href="#contact" data-hide-m="" style="display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border:1px solid rgba(247,233,206,.32);border-radius:999px;font-family:Marcellus,serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#FFF8EA;white-space:nowrap;transition:background-color .4s ease,border-color .4s ease,color .4s ease" style-hover="background-color:#F0B23C;border-color:#F0B23C;color:#1A0E05">Enquire</a>
-    <button id="menu-open" data-show-m="" type="button" aria-label="Open menu" aria-expanded="false" style="display:inline-flex;align-items:center;gap:12px;height:44px;padding:0 18px;background:rgba(18,9,4,.35);border:1px solid rgba(247,233,206,.32);border-radius:999px;color:#FFF8EA;cursor:pointer;font-family:Marcellus,serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase">
-      Menu
+    <button id="menu-open" data-show-m="" type="button" aria-label="Open menu" aria-expanded="false" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;background:rgba(18,9,4,.35);border:1px solid rgba(247,233,206,.32);border-radius:50%;color:#FFF8EA;cursor:pointer">
       <span aria-hidden="true" style="display:flex;flex-direction:column;gap:5px;width:16px"><span style="display:block;height:1px;background:currentColor"></span><span style="display:block;height:1px;width:10px;margin-left:auto;background:currentColor"></span></span>
     </button>
   </div>
 </header>
 
-<div id="menu" role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;inset:0;z-index:220;background:#F4EFE6;visibility:hidden;clip-path:circle(0% at calc(100% - 70px) 44px);transition:clip-path .9s cubic-bezier(.76,0,.24,1),visibility 0s linear .9s;overflow-y:auto">
-  <button id="menu-close" type="button" aria-label="Close menu" style="position:absolute;top:clamp(14px,1.8vw,24px);right:clamp(18px,3.4vw,48px);display:inline-flex;align-items:center;gap:12px;height:44px;padding:0 18px;background:none;border:1px solid rgba(42,32,24,0.19);border-radius:999px;color:#17110C;cursor:pointer;font-family:Marcellus,serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase">Close<span aria-hidden="true" style="position:relative;display:block;width:12px;height:12px"><span style="position:absolute;left:0;top:50%;width:12px;height:1px;background:currentColor;transform:rotate(45deg)"></span><span style="position:absolute;left:0;top:50%;width:12px;height:1px;background:currentColor;transform:rotate(-45deg)"></span></span></button>
-  <div data-cols="" style="min-height:100%;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(28px,4vw,72px);align-items:end;padding:clamp(90px,14vh,140px) clamp(18px,3.4vw,48px) clamp(28px,5vh,56px)">
-    <nav aria-label="Menu" style="display:flex;flex-direction:column">
-      <a href="#hero" style="display:block;overflow:hidden;color:#2A2018" style-hover="color:#8C5F17"><span data-ml="" style="display:flex;align-items:baseline;gap:18px;font-family:'Tenor Sans',sans-serif;font-size:clamp(38px,6.4vw,104px);line-height:1.02;letter-spacing:.02em;text-transform:uppercase;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#8C5F17">01</span>Home</span></a>
-      <a href="#about" style="display:block;overflow:hidden;color:#2A2018" style-hover="color:#8C5F17"><span data-ml="" style="display:flex;align-items:baseline;gap:18px;font-family:'Tenor Sans',sans-serif;font-size:clamp(38px,6.4vw,104px);line-height:1.02;letter-spacing:.02em;text-transform:uppercase;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#8C5F17">02</span>About</span></a>
-      <a href="#services" style="display:block;overflow:hidden;color:#2A2018" style-hover="color:#8C5F17"><span data-ml="" style="display:flex;align-items:baseline;gap:18px;font-family:'Tenor Sans',sans-serif;font-size:clamp(38px,6.4vw,104px);line-height:1.02;letter-spacing:.02em;text-transform:uppercase;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#8C5F17">03</span>Services</span></a>
-      <a href="#process" style="display:block;overflow:hidden;color:#2A2018" style-hover="color:#8C5F17"><span data-ml="" style="display:flex;align-items:baseline;gap:18px;font-family:'Tenor Sans',sans-serif;font-size:clamp(38px,6.4vw,104px);line-height:1.02;letter-spacing:.02em;text-transform:uppercase;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#8C5F17">04</span>Process</span></a>
-      <a href="#moments" style="display:block;overflow:hidden;color:#2A2018" style-hover="color:#8C5F17"><span data-ml="" style="display:flex;align-items:baseline;gap:18px;font-family:'Tenor Sans',sans-serif;font-size:clamp(38px,6.4vw,104px);line-height:1.02;letter-spacing:.02em;text-transform:uppercase;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#8C5F17">05</span>Moments</span></a>
-      <a href="#contact" style="display:block;overflow:hidden;color:#2A2018" style-hover="color:#8C5F17"><span data-ml="" style="display:flex;align-items:baseline;gap:18px;font-family:'Tenor Sans',sans-serif;font-size:clamp(38px,6.4vw,104px);line-height:1.02;letter-spacing:.02em;text-transform:uppercase;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#8C5F17">06</span>Contact</span></a>
+<div id="menu" role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;inset:0;z-index:220;background:#F4EFE6;visibility:hidden;clip-path:circle(0% at calc(100% - 40px) 36px);overflow-y:auto">
+  <div style="min-height:100%;box-sizing:border-box;display:flex;flex-direction:column;padding:14px clamp(18px,4vw,40px) clamp(20px,3vh,32px)">
+    <div style="display:flex;align-items:center;justify-content:space-between;min-height:44px">
+      <img src="images/logo-kites-dark.png" alt="Kites Events" width="425" height="414" style="display:block;height:44px;width:auto" />
+      <button id="menu-close" type="button" aria-label="Close menu" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;background:none;border:1px solid rgba(42,32,24,0.22);border-radius:50%;color:#17110C;cursor:pointer"><span aria-hidden="true" style="position:relative;display:block;width:14px;height:14px"><span style="position:absolute;left:0;top:50%;width:14px;height:1px;background:currentColor;transform:rotate(45deg)"></span><span style="position:absolute;left:0;top:50%;width:14px;height:1px;background:currentColor;transform:rotate(-45deg)"></span></span></button>
+    </div>
+    <nav aria-label="Menu" style="display:flex;flex-direction:column;margin-top:clamp(28px,6vh,56px);border-top:1px solid rgba(42,32,24,0.1)">
+      <a href="#hero" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">01</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">Home</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
+      <a href="#about" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">02</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">About</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
+      <a href="#services" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">03</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">Services</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
+      <a href="#process" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">04</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">Process</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
+      <a href="#moments" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">05</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">Moments</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
+      <a href="#contact" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">06</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">Contact</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
     </nav>
-    <div style="display:flex;flex-direction:column;gap:24px">
-      <div data-hide-m="" style="position:relative;aspect-ratio:4/5;max-height:46vh;overflow:hidden"><img src="images/svc-6.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
-      <div style="display:flex;flex-direction:column;border-top:1px solid rgba(42,32,24,0.1);font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase">
-        <a href="tel:+919746117711" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;border-bottom:1px solid rgba(42,32,24,0.08);color:#2A2018">Vishnu KV<span style="color:#8C5F17">+91 97461 17711</span></a>
-        <a href="tel:+919895643641" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;color:#2A2018">Sreesankar<span style="color:#8C5F17">+91 98956 43641</span></a>
+    <div style="flex:1;min-height:28px"></div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(42,32,24,0.72)">Talk to a planner</span>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:8px">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:12px;row-gap:4px;align-items:center;padding:14px 16px;background:#FFFFFF;border:1px solid rgba(140,95,23,0.14)">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:20px;line-height:1.15;color:#17110C">Vishnu KV</span>
+          <span style="font-size:13.5px;letter-spacing:.03em;color:rgba(42,32,24,0.82)">+91 97461 17711</span>
+          <span style="grid-column:2;grid-row:1 / 3;display:flex;gap:8px">
+            <a href="tel:+919746117711" aria-label="Call Vishnu KV" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#17110C;color:#FAF7F1"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg></a>
+            <a href="https://wa.me/919746117711" target="_blank" rel="noopener" aria-label="WhatsApp Vishnu KV" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(42,32,24,.24);color:#17110C"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 0 1 2.2 12C2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2A11.8 11.8 0 0 0 12 .1C5.5.1.2 5.4.2 11.9c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.7c1.7.9 3.7 1.4 5.6 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3z"></path></svg></a>
+          </span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:12px;row-gap:4px;align-items:center;padding:14px 16px;background:#FFFFFF;border:1px solid rgba(140,95,23,0.14)">
+          <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:20px;line-height:1.15;color:#17110C">Sreesankar C Warrier</span>
+          <span style="font-size:13.5px;letter-spacing:.03em;color:rgba(42,32,24,0.82)">+91 98956 43641</span>
+          <span style="grid-column:2;grid-row:1 / 3;display:flex;gap:8px">
+            <a href="tel:+919895643641" aria-label="Call Sreesankar C Warrier" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#17110C;color:#FAF7F1"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg></a>
+            <a href="https://wa.me/919895643641" target="_blank" rel="noopener" aria-label="WhatsApp Sreesankar C Warrier" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(42,32,24,.24);color:#17110C"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 0 1 2.2 12C2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2A11.8 11.8 0 0 0 12 .1C5.5.1.2 5.4.2 11.9c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.7c1.7.9 3.7 1.4 5.6 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3z"></path></svg></a>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -193,6 +219,7 @@
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,5,2,.72) 0%,rgba(11,5,2,.38) 45%,rgba(11,5,2,0) 80%)"></div>
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,.55) 0%,rgba(11,5,2,.1) 30%,rgba(11,5,2,.3) 60%,rgba(11,5,2,.78) 100%)"></div>
     <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(120% 90% at 30% 60%,rgba(11,5,2,0) 40%,rgba(11,5,2,.6) 100%)"></div>
+    <div data-show-m="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,.35) 0%,rgba(11,5,2,0) 22%,rgba(11,5,2,.25) 42%,rgba(11,5,2,.82) 66%,rgba(11,5,2,.92) 100%)"></div>
     <div id="hero-dim" aria-hidden="true" style="position:absolute;inset:0;background:#0B0502;opacity:0;pointer-events:none"></div>
   </div>
   <div data-lights="dark" aria-hidden="true" style="position:absolute;left:0;right:0;top:clamp(76px,10vh,104px);height:clamp(120px,18vh,190px);z-index:2;pointer-events:none"></div>
@@ -202,7 +229,7 @@
   <div style="position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(24px,4vh,48px);padding:clamp(100px,16vh,160px) clamp(18px,3.4vw,48px) clamp(64px,9vh,96px)">
     <div data-hfade="" style="display:flex;align-items:center;gap:14px;font-family:Marcellus,serif;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#FFC968">
       <span aria-hidden="true" style="display:block;width:clamp(28px,4vw,64px);height:1px;background:#F0B23C"></span>
-      Events &amp; Wedding Planners · All Kerala
+      <span style="display:flex;flex-wrap:wrap;gap:6px 0.6em"><span>Events &amp; Wedding Planners</span><span data-hero-sep="">·</span><span data-hero-kl="">All Kerala</span></span>
     </div>
     <h1 id="hero-h1" style="margin:0;display:flex;flex-direction:column;font-family:'Tenor Sans',sans-serif;font-weight:400;font-size:clamp(34px,9.4vw,180px);line-height:.94;letter-spacing:.03em;text-transform:uppercase;color:#FFF8EA;text-shadow:0 2px 40px rgba(11,5,2,.45)">
       <span data-hl="1" style="display:block;overflow:hidden;padding-bottom:.04em"><span data-li="" style="display:block">Moments,</span></span>
@@ -256,7 +283,7 @@
 </section>
 
 <section id="services" data-section="services" data-screen-label="Services" style="position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(80px,11vh,130px) 0 clamp(50px,8vh,90px)">
-  <div id="svc-track" data-track="" data-snapx="" style="display:flex;align-items:stretch;gap:clamp(18px,2.4vw,40px);padding:0 clamp(18px,3.4vw,48px);width:max-content">
+  <div id="svc-track" data-track="" style="display:flex;align-items:stretch;gap:clamp(18px,2.4vw,40px);padding:0 clamp(18px,3.4vw,48px);width:max-content">
     <div style="width:clamp(300px,32vw,560px);display:flex;flex-direction:column;justify-content:space-between;gap:32px">
       <div style="display:flex;flex-direction:column;gap:clamp(18px,2.4vw,32px)">
         <span data-r="" style="display:flex;align-items:center;gap:14px;font-family:Marcellus,serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,32,24,0.78)"><span aria-hidden="true" style="display:block;width:clamp(28px,4vw,64px);height:1px;background:#B07D2A"></span>Services<span style="margin-left:auto;color:#8C5F17">02</span></span>
@@ -326,61 +353,7 @@
   </section>
 
 
-  <section id="film-m" data-show-m="" aria-label="Five movements" style="padding:0 0 72px">
-    <div data-snap="#fm-count" style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;padding:0 20px;scrollbar-width:none">
-      <article data-snapcard="" style="position:relative;flex:0 0 84%;aspect-ratio:3/4;overflow:hidden;scroll-snap-align:start;background:#0B0502">
-        <img src="images/cat-5.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
-        <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,0) 38%,rgba(11,5,2,.86) 100%)"></span>
-        <div style="position:absolute;left:20px;right:20px;bottom:22px;display:flex;flex-direction:column;gap:10px">
-          <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#FFC968">01 · First movement</span>
-          <span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(34px,10vw,52px);line-height:.92;letter-spacing:.02em;text-transform:uppercase;color:#FFF8EA">Discover</span>
-          <span style="font-size:15px;line-height:1.55;color:rgba(247,233,206,.9)">Understanding your vision, story and expectations.</span>
-        </div>
-      </article>
-      <article data-snapcard="" style="position:relative;flex:0 0 84%;aspect-ratio:3/4;overflow:hidden;scroll-snap-align:start;background:#0B0502">
-        <img src="images/svc-6.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
-        <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,0) 38%,rgba(11,5,2,.86) 100%)"></span>
-        <div style="position:absolute;left:20px;right:20px;bottom:22px;display:flex;flex-direction:column;gap:10px">
-          <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#FFC968">02 · Second movement</span>
-          <span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(34px,10vw,52px);line-height:.92;letter-spacing:.02em;text-transform:uppercase;color:#FFF8EA">Design</span>
-          <span style="font-size:15px;line-height:1.55;color:rgba(247,233,206,.9)">Transforming your ideas into a complete event concept.</span>
-        </div>
-      </article>
-      <article data-snapcard="" style="position:relative;flex:0 0 84%;aspect-ratio:3/4;overflow:hidden;scroll-snap-align:start;background:#0B0502">
-        <img src="images/cat-6.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
-        <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,0) 38%,rgba(11,5,2,.86) 100%)"></span>
-        <div style="position:absolute;left:20px;right:20px;bottom:22px;display:flex;flex-direction:column;gap:10px">
-          <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#FFC968">03 · Third movement</span>
-          <span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(34px,10vw,52px);line-height:.92;letter-spacing:.02em;text-transform:uppercase;color:#FFF8EA">Plan</span>
-          <span style="font-size:15px;line-height:1.55;color:rgba(247,233,206,.9)">Managing every detail, timeline and vendor.</span>
-        </div>
-      </article>
-      <article data-snapcard="" style="position:relative;flex:0 0 84%;aspect-ratio:3/4;overflow:hidden;scroll-snap-align:start;background:#0B0502">
-        <img src="images/gal-1.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
-        <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,0) 38%,rgba(11,5,2,.86) 100%)"></span>
-        <div style="position:absolute;left:20px;right:20px;bottom:22px;display:flex;flex-direction:column;gap:10px">
-          <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#FFC968">04 · Fourth movement</span>
-          <span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(34px,10vw,52px);line-height:.92;letter-spacing:.02em;text-transform:uppercase;color:#FFF8EA">Execute</span>
-          <span style="font-size:15px;line-height:1.55;color:rgba(247,233,206,.9)">Bringing everything together flawlessly.</span>
-        </div>
-      </article>
-      <article data-snapcard="" style="position:relative;flex:0 0 84%;aspect-ratio:3/4;overflow:hidden;scroll-snap-align:start;background:#0B0502">
-        <img src="images/svc-5.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
-        <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,5,2,0) 38%,rgba(11,5,2,.86) 100%)"></span>
-        <div style="position:absolute;left:20px;right:20px;bottom:22px;display:flex;flex-direction:column;gap:10px">
-          <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#FFC968">05 · Final movement</span>
-          <span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(34px,10vw,52px);line-height:.92;letter-spacing:.02em;text-transform:uppercase;color:#FFF8EA">Celebrate</span>
-          <span style="font-size:15px;line-height:1.55;color:rgba(247,233,206,.9)">You enjoy the moment. We handle the rest.</span>
-        </div>
-      </article>
-    </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 20px 0;font-family:Marcellus,serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(42,32,24,0.74)">
-      <span style="display:flex;align-items:center;gap:12px"><span id="fm-count" style="color:#8C5F17">01</span><span aria-hidden="true" style="display:block;width:32px;height:1px;background:rgba(140,95,23,.4)"></span>05</span>
-      <span>Swipe</span>
-    </div>
-  </section>
-
-  <section id="film" data-hide-m="" aria-label="Five movements" style="position:relative;height:100svh;min-height:560px;overflow:hidden;background:#0B0502">
+  <section id="film" aria-label="Five movements" style="position:relative;height:100svh;min-height:560px;overflow:hidden;background:#0B0502">
     <div data-scene-img="" style="position:absolute;inset:0;overflow:hidden;clip-path:inset(0% 0% 0% 0%)"><img src="images/cat-5.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04)" /></div>
     <div data-scene-img="" style="position:absolute;inset:0;overflow:hidden;clip-path:inset(100% 0% 0% 0%)"><img src="images/svc-6.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
     <div data-scene-img="" style="position:absolute;inset:0;overflow:hidden;clip-path:inset(100% 0% 0% 0%)"><img src="images/cat-6.webp" alt="" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
@@ -512,7 +485,7 @@
   </div>
   <div id="rv-body" style="position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(22px,3vw,40px);padding:0 clamp(18px,6vw,120px);text-align:center">
     <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#FFC968">In their words</span>
-    <div id="rv-stack" data-snap="#rv-count" style="display:grid;place-items:center">
+    <div id="rv-stack" style="display:grid;place-items:center">
       <figure data-rv-item="" style="grid-area:1 / 1;margin:0;display:flex;flex-direction:column;align-items:center;gap:clamp(20px,2.6vw,36px)">
         <blockquote data-rv-q="" style="margin:0;max-width:30ch;font-family:Jost,sans-serif;font-weight:300;font-style:normal;font-size:clamp(22px,2.9vw,50px);line-height:1.34;letter-spacing:-.005em;color:#FFF8EA;text-wrap:balance">“They didn't just organise our wedding. They understood exactly what we imagined before we even knew how to explain it.”</blockquote>
         <figcaption data-rv-cite="" style="display:flex;align-items:center;gap:14px;font-family:Marcellus,serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(247,233,206,.86)">Meera &amp; Rohan<span aria-hidden="true" style="display:block;width:28px;height:1px;background:#F0B23C"></span>Wedding · Kochi</figcaption>
@@ -936,8 +909,8 @@ class Component extends DCLogic {
       g.from('#v5-form label', { y: 34, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.07,
         scrollTrigger: { trigger: '#v5-form', start: 'top 82%', once: true } });
 
-      /* Services: pinned horizontal track on desktop. */
-      if (desk) {
+      /* Services: pinned horizontal track. */
+      {
         const track = this.$('#svc-track');
         const dist = () => Math.max(0, track.scrollWidth - window.innerWidth);
         const tw = g.to(track, { x: () => -dist(), ease: 'none',
@@ -951,13 +924,13 @@ class Component extends DCLogic {
       /* Film: five scenes on one pinned playhead, snapping between movements. */
       if (!desk) {
         const offs = [];
-        this.$('[data-snap]').forEach(sc => {
+        this.$$('[data-snap]').forEach(sc => {
           const out = this.$(sc.getAttribute('data-snap')), n = sc.children.length;
           const on = () => { const max = sc.scrollWidth - sc.clientWidth; const k = max > 0 ? Math.round(sc.scrollLeft / max * (n - 1)) : 0; const t = String(k + 1).padStart(2, '0'); if (out && out.textContent !== t) out.textContent = t; };
           sc.addEventListener('scroll', on, { passive: true }); on();
           offs.push(() => sc.removeEventListener('scroll', on));
         });
-        return () => offs.forEach(f => f());
+        this._snapOffs = offs;
       }
       const scenes = g.utils.toArray('[data-scene-img]'), texts = g.utils.toArray('[data-scene-txt]'), n = scenes.length;
       const ftl = g.timeline({ scrollTrigger: { trigger: '#film', refreshPriority: 4, start: 'top top', end: '+=' + (n - 1) * (desk ? 90 : 75) + '%', pin: true, scrub: 1,
@@ -1173,7 +1146,7 @@ class Component extends DCLogic {
     this._menuOpen = on;
     menu.style.transition = on ? 'clip-path .9s cubic-bezier(.76,0,.24,1), visibility 0s' : 'clip-path .8s cubic-bezier(.76,0,.24,1), visibility 0s linear .8s';
     menu.style.visibility = on ? 'visible' : 'hidden';
-    menu.style.clipPath = on ? 'circle(150% at calc(100% - 70px) 44px)' : 'circle(0% at calc(100% - 70px) 44px)';
+    menu.style.clipPath = on ? 'circle(150% at calc(100% - 40px) 36px)' : 'circle(0% at calc(100% - 40px) 36px)';
     this.$$('[data-ml]').forEach((s, i) => {
       s.style.transitionDelay = on ? (0.25 + i * 0.06) + 's' : '0s';
       s.style.transform = on ? 'translateY(0)' : 'translateY(110%)';

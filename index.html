@@ -105,10 +105,15 @@
   #contact[data-clayout="ledger"] [data-crow] { display: grid !important; grid-template-columns: minmax(0,5fr) minmax(0,7fr); column-gap: clamp(40px,6vw,128px) !important; row-gap: 0 !important; align-items: start; }
   #contact[data-clayout="ledger"] [data-cpara] { grid-column: auto; max-width: 21ch; padding-top: clamp(24px,2.6vw,36px); border-top: 1px solid rgba(140,95,23,0.34); font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(24px,2.3vw,38px) !important; line-height: 1.32; color: #17110C; text-wrap: pretty; }
   #contact[data-clayout="ledger"] [data-cpara]::before { content: 'Talk to a planner'; display: flex; margin-bottom: clamp(16px,1.8vw,24px); font-family: Marcellus, serif; font-size: 10px; letter-spacing: .3em; line-height: 1.6; text-transform: uppercase; color: #8C5F17; }
-  #contact[data-clayout="ledger"] [data-planners] { display: flex !important; flex-direction: column; counter-reset: pl; border-top: 1px solid rgba(140,95,23,0.34) !important; }
-  #contact[data-clayout="ledger"] [data-planners]::before { content: 'The Planners'; display: flex; padding-top: clamp(24px,2.6vw,36px); font-family: Marcellus, serif; font-size: 10px; letter-spacing: .3em; line-height: 1.6; text-transform: uppercase; color: #8C5F17; }
-  #contact[data-clayout="ledger"] [data-planners] > div:first-child { padding-top: clamp(16px,1.8vw,24px) !important; }
-  #contact[data-clayout="ledger"] [data-planners] > div { display: grid !important; grid-template-columns: minmax(0,1fr) auto; column-gap: clamp(14px,2vw,32px); row-gap: 6px; align-items: center; padding: clamp(24px,2.6vw,36px) 0 !important; border-top: 0 !important; border-bottom: 1px solid rgba(42,32,24,0.1) !important; }
+  #contact[data-clayout="ledger"] [data-planners] { display: flex !important; flex-direction: column; gap: clamp(12px,1.2vw,18px); border-top: 1px solid rgba(140,95,23,0.34) !important; }
+  #contact[data-clayout="ledger"] [data-planners]::before { content: 'The Planners'; display: flex; padding-top: clamp(24px,2.6vw,36px); margin-bottom: calc(clamp(16px,1.8vw,24px) - clamp(12px,1.2vw,18px)); font-family: Marcellus, serif; font-size: 10px; letter-spacing: .3em; line-height: 1.6; text-transform: uppercase; color: #8C5F17; }
+  #contact[data-clayout="ledger"] [data-planners] > div { position: relative; display: grid !important; grid-template-columns: minmax(0,1fr) auto; column-gap: clamp(14px,2vw,32px); row-gap: 6px; align-items: center; padding: clamp(18px,2.2vw,30px) clamp(20px,2.4vw,34px) !important; background: transparent; border: 1px solid rgba(42,32,24,0.2) !important; overflow: hidden; transition: border-color .5s ease, background-color .5s ease; }
+  #contact[data-clayout="ledger"] [data-planners] > div > * { position: relative; z-index: 1; }
+  #contact[data-clayout="ledger"] [data-planners] > div::after { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0; background: radial-gradient(240px 160px at var(--mx,50%) var(--my,50%), rgba(176,125,42,.18), rgba(176,125,42,0) 70%); transition: opacity .5s ease; }
+  @media (hover: hover) {
+    #contact[data-clayout="ledger"] [data-planners] > div:hover { border-color: rgba(194,69,31,.55) !important; background-color: rgba(194,69,31,.05); }
+    #contact[data-clayout="ledger"] [data-planners] > div:hover::after { opacity: 1; }
+  }
   #contact[data-clayout="ledger"] [data-planners] > div > span:nth-child(1) { grid-column: 1; font-size: clamp(28px,2.8vw,46px) !important; }
   #contact[data-clayout="ledger"] [data-planners] > div > span:nth-child(2) { grid-column: 1; font-size: 15px !important; letter-spacing: .06em !important; }
   #contact[data-clayout="ledger"] [data-planners] > div > span:nth-child(3) { grid-column: 2; grid-row: 1 / 3; margin-top: 0 !important; flex-wrap: nowrap !important; }
@@ -140,9 +145,16 @@
   }
   @media (min-width: 901px) {
     [data-show-m] { display: none !important; }
-    #hero [data-hero-tag] { position: absolute; right: clamp(20px,3.4vw,48px); top: 50%; translate: 0 -50%; writing-mode: vertical-rl; flex-direction: row; gap: 18px; white-space: nowrap; }
+    #hero [data-hero-tag] { position: absolute; right: clamp(20px,3.4vw,48px); top: 0; bottom: 0; margin: auto 0; height: max-content; writing-mode: vertical-rl; flex-direction: row; gap: 18px; white-space: nowrap; }
     #hero [data-hero-tagline] { width: 1px !important; height: clamp(40px,6vh,72px) !important; }
     #hero [data-hero-tag] > span:last-child { flex-wrap: nowrap !important; }
+  }
+  @media (min-width: 901px) and (max-height: 760px) {
+    #hero [data-hero-tag] { letter-spacing: .2em !important; gap: 12px !important; bottom: 120px !important; }
+    #hero [data-hero-tagline] { height: 28px !important; }
+  }
+  @media (min-width: 901px) and (max-height: 600px) {
+    #hero [data-hero-tag] { display: none !important; }
   }
   @media (hover: none), (pointer: coarse) { [data-cursor-el] { display: none !important; } }
   @media (prefers-reduced-motion: reduce) { [data-grain] { animation: none !important; } }
@@ -155,6 +167,8 @@
   </div>
 </sc-if>
 
+<canvas id="ld-kites" aria-hidden="true" style="position:fixed;inset:0;width:100%;height:100%;z-index:301;pointer-events:none"></canvas>
+
 <div id="loader" style="position:fixed;inset:0;z-index:300;background:#F4EFE6;color:#2A2018">
   <div id="ld-inner" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(18px,3.4vw,48px)">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:Marcellus,serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,32,24,0.74)">
@@ -162,7 +176,7 @@
       <span>Thodupuzha · Kerala</span>
     </div>
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
-      <span id="ld-num" style="font-family:'Tenor Sans',sans-serif;font-size:clamp(72px,14vw,240px);line-height:.8;letter-spacing:.02em;color:#17110C">000</span>
+      <span id="ld-num" style="font-family:'Tenor Sans',sans-serif;font-size:clamp(40px,6.4vw,110px);line-height:.8;letter-spacing:.02em;color:#17110C">000</span>
       <div style="display:flex;flex-direction:column;gap:12px;width:min(320px,100%);padding-bottom:12px">
         <span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(42,32,24,0.74)">Lights turning on</span>
         <span style="position:relative;display:block;height:1px;background:rgba(42,32,24,0.1)"><span id="ld-fill" style="position:absolute;inset:0;background:#B07D2A;transform:scaleX(0);transform-origin:left"></span></span>
@@ -193,6 +207,7 @@
     <a data-navlink="services" href="#services" style="display:inline-flex;align-items:center;gap:8px;padding:8px 0;color:rgba(247,233,206,.62);transition:color .4s ease" style-hover="color:#FFF8EA"><span data-navdot="" style="display:block;width:4px;height:4px;border-radius:50%;background:#F0B23C;transform:scale(0);transition:transform .5s cubic-bezier(.16,1,.3,1)"></span>Services</a>
     <a data-navlink="process" href="#process" style="display:inline-flex;align-items:center;gap:8px;padding:8px 0;color:rgba(247,233,206,.62);transition:color .4s ease" style-hover="color:#FFF8EA"><span data-navdot="" style="display:block;width:4px;height:4px;border-radius:50%;background:#F0B23C;transform:scale(0);transition:transform .5s cubic-bezier(.16,1,.3,1)"></span>Process</a>
     <a data-navlink="moments" href="#moments" style="display:inline-flex;align-items:center;gap:8px;padding:8px 0;color:rgba(247,233,206,.62);transition:color .4s ease" style-hover="color:#FFF8EA"><span data-navdot="" style="display:block;width:4px;height:4px;border-radius:50%;background:#F0B23C;transform:scale(0);transition:transform .5s cubic-bezier(.16,1,.3,1)"></span>Moments</a>
+    <a data-navlink="reviews" href="#reviews" style="display:inline-flex;align-items:center;gap:8px;padding:8px 0;color:rgba(247,233,206,.62);transition:color .4s ease" style-hover="color:#FFF8EA"><span data-navdot="" style="display:block;width:4px;height:4px;border-radius:50%;background:#F0B23C;transform:scale(0);transition:transform .5s cubic-bezier(.16,1,.3,1)"></span>Reviews</a>
     <a data-navlink="contact" href="#contact" style="display:inline-flex;align-items:center;gap:8px;padding:8px 0;color:rgba(247,233,206,.62);transition:color .4s ease" style-hover="color:#FFF8EA"><span data-navdot="" style="display:block;width:4px;height:4px;border-radius:50%;background:#F0B23C;transform:scale(0);transition:transform .5s cubic-bezier(.16,1,.3,1)"></span>Contact</a>
   </nav>
   <div style="display:flex;align-items:center;gap:10px">
@@ -215,7 +230,8 @@
       <a href="#services" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">03</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">Services</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
       <a href="#process" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">04</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">Process</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
       <a href="#moments" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">05</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">Moments</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
-      <a href="#contact" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">06</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">Contact</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
+      <a href="#reviews" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">06</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">Reviews</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
+      <a href="#contact" style="display:block;overflow:hidden;border-bottom:1px solid rgba(42,32,24,0.1);color:#17110C" style-hover="color:#8C5F17"><span data-ml="" style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;padding:clamp(13px,2.1vh,18px) 0;transform:translateY(110%);transition:transform .9s cubic-bezier(.16,1,.3,1)"><span style="font-family:Marcellus,serif;font-size:10px;letter-spacing:.2em;color:#9A6A1C">07</span><span style="font-family:'Tenor Sans',sans-serif;font-size:clamp(24px,6.6vw,38px);line-height:1.1;letter-spacing:.08em;text-transform:uppercase">Contact</span><span aria-hidden="true" style="font-size:16px;color:rgba(42,32,24,0.5)">→</span></span></a>
     </nav>
     <div style="flex:1;min-height:28px"></div>
     <div style="display:flex;flex-direction:column;gap:12px">
@@ -568,7 +584,7 @@
           <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.2vw,34px);line-height:1.1;color:#17110C">Vishnu KV</span>
           <span style="font-size:15px;letter-spacing:.06em;color:rgba(42,32,24,0.9)">+91 97461 17711</span>
           <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px">
-            <a data-mag="" href="tel:+919746117711" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px;border-radius:999px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;transition:background-color .4s ease,color .4s ease,border-color .4s ease;background:#17110C;border:1px solid #17110C;color:#FAF7F1" style-hover="background-color:#8C5F17;border-color:#8C5F17;color:#FAF7F1"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>Call</a>
+            <a data-mag="" href="tel:+919746117711" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px;border-radius:999px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;transition:background-color .4s ease,color .4s ease,border-color .4s ease;background:transparent;border:1px solid rgba(42,32,24,.24);color:#17110C" style-hover="background-color:#8C5F17;border-color:#8C5F17;color:#FAF7F1"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>Call</a>
             <a data-mag="" href="https://wa.me/919746117711" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px;border-radius:999px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;transition:background-color .4s ease,color .4s ease,border-color .4s ease;background:transparent;border:1px solid rgba(42,32,24,.24);color:#17110C" style-hover="background-color:#1F8F55;border-color:#1F8F55;color:#FFFFFF"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 0 1 2.2 12C2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2A11.8 11.8 0 0 0 12 .1C5.5.1.2 5.4.2 11.9c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.7c1.7.9 3.7 1.4 5.6 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3z"></path></svg>WhatsApp</a>
           </span>
         </div>
@@ -576,7 +592,7 @@
           <span style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,2.2vw,34px);line-height:1.1;color:#17110C">Sreesankar C Warrier</span>
           <span style="font-size:15px;letter-spacing:.06em;color:rgba(42,32,24,0.9)">+91 98956 43641</span>
           <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px">
-            <a data-mag="" href="tel:+919895643641" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px;border-radius:999px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;transition:background-color .4s ease,color .4s ease,border-color .4s ease;background:#17110C;border:1px solid #17110C;color:#FAF7F1" style-hover="background-color:#8C5F17;border-color:#8C5F17;color:#FAF7F1"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>Call</a>
+            <a data-mag="" href="tel:+919895643641" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px;border-radius:999px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;transition:background-color .4s ease,color .4s ease,border-color .4s ease;background:transparent;border:1px solid rgba(42,32,24,.24);color:#17110C" style-hover="background-color:#8C5F17;border-color:#8C5F17;color:#FAF7F1"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"></path></svg>Call</a>
             <a data-mag="" href="https://wa.me/919895643641" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 22px;border-radius:999px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;transition:background-color .4s ease,color .4s ease,border-color .4s ease;background:transparent;border:1px solid rgba(42,32,24,.24);color:#17110C" style-hover="background-color:#1F8F55;border-color:#1F8F55;color:#FFFFFF"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 0 1 2.2 12C2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2A11.8 11.8 0 0 0 12 .1C5.5.1.2 5.4.2 11.9c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.7c1.7.9 3.7 1.4 5.6 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3z"></path></svg>WhatsApp</a>
           </span>
         </div>
@@ -590,7 +606,7 @@
 <footer style="position:relative;max-width:1920px;margin:0 auto;min-height:100svh;box-sizing:border-box;display:flex;flex-direction:column;padding:clamp(48px,6vw,84px) clamp(18px,3.4vw,48px) clamp(20px,2.6vw,34px);border-top:1px solid rgba(140,95,23,0.21);overflow:hidden">
   <div data-r="" style="display:flex;flex-direction:column;align-items:center;gap:clamp(16px,1.8vw,24px);text-align:center">
     <nav aria-label="Footer" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px clamp(16px,2vw,30px)">
-      <a href="#about" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">About</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#services" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Services</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#process" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Process</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#moments" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Moments</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#contact" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Contact</a>
+      <a href="#about" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">About</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#services" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Services</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#process" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Process</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#moments" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Moments</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#reviews" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Reviews</a><span aria-hidden="true" style="display:block;width:3px;height:3px;border-radius:50%;background:#B07D2A"></span><a href="#contact" style="display:inline-flex;align-items:center;min-height:40px;font-family:Marcellus,serif;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(42,32,24,0.86);transition:color .4s ease" style-hover="color:#8C5F17">Contact</a>
     </nav>
   </div>
   <div id="wordmark" data-lm="" aria-hidden="true" style="display:flex;justify-content:space-between;overflow:hidden;margin-top:auto;padding-top:clamp(32px,4.4vw,72px);font-family:'Tenor Sans',sans-serif;font-size:clamp(90px,24vw,460px);line-height:.82;letter-spacing:0;color:#000000">
@@ -610,7 +626,7 @@ class Component extends DCLogic {
   componentDidMount() {
     this._t0 = Date.now();
     this.runLoader();
-    this.initLights();
+    this.loaderKites();
     this._boot = setInterval(() => this.tryBoot(), 100);
   }
 
@@ -744,7 +760,7 @@ class Component extends DCLogic {
     }
     document.querySelectorAll('[data-lights]').forEach(box => {
       let w = 0;
-      const ro = new ResizeObserver(() => { if (box.clientWidth !== w) { w = box.clientWidth; build(box); } });
+      const ro = new ResizeObserver(() => { if (box.clientWidth && box.clientHeight && (box.clientWidth !== w || !box.querySelector('svg'))) { w = box.clientWidth; build(box); } });
       ro.observe(box);
       this._lightRO.push(ro);
     });
@@ -752,6 +768,7 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     (this._lightRO || []).forEach(r => r.disconnect());
+    cancelAnimationFrame(this._ftRaf);
     if (this._lightMove) window.removeEventListener('pointermove', this._lightMove);
     clearInterval(this._boot); clearInterval(this._cnt);
     if (this._mm) this._mm.revert();
@@ -774,10 +791,11 @@ class Component extends DCLogic {
   /* Progress is derived from elapsed time, never accumulated per tick, so a
      throttled timer can only make the counter coarser — never stall it. */
   runLoader() {
-    const DUR = 1800;
+    const DUR = 2800;
     const paint = () => {
       const n = Math.min(100, ((Date.now() - this._t0) / DUR) * 100);
       const shown = this._ready ? n : Math.min(n, 88);
+      this._ldP = shown / 100;
       const num = this.$('#ld-num'), fill = this.$('#ld-fill');
       if (num) num.textContent = String(Math.floor(shown)).padStart(3, '0');
       if (fill) fill.style.transform = 'scaleX(' + (shown / 100).toFixed(3) + ')';
@@ -805,6 +823,7 @@ class Component extends DCLogic {
 
   tryBoot() {
     if (!this.$('#v5-end')) return;
+    if (!this._lightsInit) { this._lightsInit = true; this.initLights(); this.wirePlanners(); this.footerHeader(); }
     this.wireMenu();
     this.applyProps();
     if (!(window.gsap && window.ScrollTrigger)) {
@@ -1062,6 +1081,7 @@ class Component extends DCLogic {
     const L = this.$('#loader');
     if (!L || this._opened) return;
     this._opened = true;
+    this._kiteBurst = performance.now();
     clearInterval(this._cnt);
     const num = this.$('#ld-num'), fill = this.$('#ld-fill');
     if (num) num.textContent = '100';
@@ -1075,14 +1095,10 @@ class Component extends DCLogic {
       go(); return;
     }
     const g = gsap;
-    g.timeline({ defaults: { ease: 'expo.out' }, onComplete: go })
-      .to('#ld-inner', { opacity: 0, y: -24, duration: 0.5, ease: 'power2.in' })
-      .to(L, { yPercent: -100, duration: 1.25, ease: 'expo.inOut' }, '-=.1')
-      .fromTo('#bar-top, #bar-bot', { scaleY: 1 }, { scaleY: 0, duration: 1.7, ease: 'expo.inOut' }, '-=.8')
-      .fromTo('#hero-img', { scale: 1.4 }, { scale: 1, duration: 3 }, '<')
-      .to('#hero [data-li]', { yPercent: 0, duration: 1.7, stagger: 0.12 }, '-=2.2')
-      .to('#hero [data-hfade]', { opacity: 1, y: 0, duration: 1.3, stagger: 0.08 }, '-=1.3')
-      .from('#nav', { yPercent: -100, opacity: 0, duration: 1.2 }, '<')
+    g.set('#hero [data-li]', { yPercent: 0 });
+    g.set('#hero [data-hfade]', { opacity: 1, y: 0 });
+    g.timeline({ onComplete: go })
+      .to(L, { opacity: 0, duration: 1.1, ease: 'power2.inOut' }, 0.35)
       .set(L, { visibility: 'hidden' });
   }
 
@@ -1104,8 +1120,7 @@ class Component extends DCLogic {
     const g = gsap, ST = ScrollTrigger, header = this.$('#nav');
     let hidden = false;
     ST.create({ start: 0, end: 'max', onUpdate: s => {
-      const ftEl = this.$('footer'), inFt = ftEl && ftEl.getBoundingClientRect().top < window.innerHeight * 0.6;
-      const hide = !this._menuOpen && (inFt || (s.direction === 1 && s.scroll() > window.innerHeight * 0.7));
+      const hide = s.direction === 1 && s.scroll() > window.innerHeight * 0.7 && !this._menuOpen;
       if (hide === hidden) return;
       hidden = hide;
       g.to(header, { yPercent: hide ? -120 : 0, duration: 0.7, ease: 'expo.out', overwrite: 'auto' });
@@ -1206,6 +1221,138 @@ class Component extends DCLogic {
       b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); xt((e.clientX - r.left - r.width / 2) * 0.28); yt((e.clientY - r.top - r.height / 2) * 0.35); });
       b.addEventListener('mouseleave', () => { xt(0); yt(0); });
     });
+  }
+
+  loaderKites() {
+    const cv = this.$('#ld-kites');
+    if (!cv || this._kitesOn) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { cv.remove(); return; }
+    this._kitesOn = true;
+    const ctx = cv.getContext('2d');
+    const pal = [['#8C5F17', '#B07D2A'], ['#C2451F', '#E0683A'], ['#B07D2A', '#F0B23C'], ['#17110C', '#4A3B2C']];
+    let W = 0, H = 0, dpr = 1, kites = [], step = 8, cx = 0, cy = 0;
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const layout = () => {
+      dpr = Math.min(2, window.devicePixelRatio || 1);
+      W = window.innerWidth; H = window.innerHeight;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      const mg = Math.min(96, Math.max(20, W * 0.05)), ww = Math.min(W - mg * 2, (H * 0.6) / 0.26), fs = ww / 4.6;
+      const off = document.createElement('canvas'), oc = off.getContext('2d');
+      off.width = Math.ceil(ww); off.height = Math.ceil(fs * 1.1);
+      oc.font = '400 ' + fs + 'px "Tenor Sans", sans-serif'; oc.textBaseline = 'alphabetic'; oc.fillStyle = '#000';
+      const L = 'KITES'.split(''), ws = L.map(c => oc.measureText(c).width), gap = (ww - ws.reduce((s, v) => s + v, 0)) / (L.length - 1);
+      oc.strokeStyle = '#000'; oc.lineWidth = fs * 0.11; oc.lineJoin = 'round';
+      let x = fs * 0.06; L.forEach((c, i) => { oc.fillText(c, x, fs * 0.86); oc.strokeText(c, x, fs * 0.86); x += ws[i] + gap - fs * 0.03; });
+      step = Math.max(5, Math.round(ww / (W < 600 ? 72 : 118)));
+      const d = oc.getImageData(0, 0, off.width, off.height).data, pts = [];
+      for (let y = 0, r = 0; y < off.height; y += step * 0.8, r++) for (let x2 = (r % 2) * step / 2; x2 < off.width; x2 += step) {
+        const i = ((Math.round(y) * off.width) + Math.round(x2)) * 4 + 3; if (d[i] > 110) pts.push([x2, y]);
+      }
+      let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+      pts.forEach(p => { if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; });
+      const ox = W / 2 - (x0 + x1) / 2, oy = H / 2 - (y0 + y1) / 2;
+      cx = W / 2; cy = H / 2;
+      const old = kites;
+      kites = pts.map((p, k) => {
+        const o = old[k], ang = rnd(0, Math.PI * 2), R0 = Math.hypot(W, H) * rnd(0.6, 0.9);
+        const nx = p[0] / ww;
+        return o ? Object.assign(o, { tx: ox + p[0], ty: oy + p[1] }) : {
+          tx: ox + p[0], ty: oy + p[1], th: Math.min(0.97, 0.3 + (nx * 0.45 + Math.random() * 0.55) * 0.66), dt: 0,
+          bend: rnd(-0.5, 0.5), sz: step * rnd(1.2, 1.55), wind: rnd(40, 140), lift: rnd(260, 480), c: pal[Math.floor(Math.random() * (Math.random() < 0.7 ? 3 : 4))],
+          ph: rnd(0, 6.28), fr: rnd(0.8, 1.6), bd: rnd(0, 0.45), vx: 0, vy: 0, str: rnd(1.8, 3)
+        };
+      });
+    };
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    const kite = (k, x, y, rot, a) => {
+      const s = k.sz, hw = s * 0.42;
+      ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.globalAlpha = a;
+      ctx.strokeStyle = 'rgba(42,32,24,.28)'; ctx.lineWidth = 0.6;
+      ctx.beginPath(); ctx.moveTo(0, s * 0.62);
+      const sw = Math.sin(this._kt * k.fr * 2 + k.ph) * s * 0.5;
+      ctx.quadraticCurveTo(sw, s * (0.62 + k.str * 0.5), -sw * 0.6, s * (0.62 + k.str)); ctx.stroke();
+      ctx.fillStyle = k.c[0]; ctx.beginPath(); ctx.moveTo(0, -s * 0.5); ctx.lineTo(-hw, -s * 0.12); ctx.lineTo(0, s * 0.62); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = k.c[1]; ctx.beginPath(); ctx.moveTo(0, -s * 0.5); ctx.lineTo(hw, -s * 0.12); ctx.lineTo(0, s * 0.62); ctx.closePath(); ctx.fill();
+      ctx.restore();
+    };
+    const t0 = performance.now();
+    let t0b = 0, Ps = -1;
+    const frame = now => {
+      this._kt = (now - t0) / 1000;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+      const P = this._ldP || 0, held = (now - t0b) / 1000 > 0.9;
+      if (held && Ps < 0) Ps = Math.min(0.9, P);
+      const q = held ? (P - Ps) / (1 - Ps) : 0;
+      const burst = this._kiteBurst ? (now - this._kiteBurst) / 1000 : -1;
+      const fadeIn = Math.min(1, (now - t0b) / 450);
+      let alive = 0;
+      for (const k of kites) {
+        if (!k.dt && held && (q >= (k.th - 0.3) / 0.67 || burst > k.bd * 0.5)) k.dt = now;
+        let x = k.tx + Math.sin(this._kt * k.fr + k.ph) * step * 0.1;
+        let y = k.ty + Math.cos(this._kt * k.fr * 1.3 + k.ph) * step * 0.08;
+        let rot = Math.sin(this._kt * k.fr * 1.6 + k.ph) * 0.14, al = fadeIn;
+        if (k.dt) {
+          const b2 = (now - k.dt) / 1000, e = Math.min(1, b2 / 0.5) ** 2;
+          x += (b2 * b2 * k.wind * 0.35 + Math.sin(k.ph + b2 * 2.4) * 22 * e) * (k.bend > 0 ? 1 : -0.6);
+          y -= Math.pow(b2, 1.55) * k.lift;
+          rot += Math.sin(b2 * 2.2 + k.ph) * 0.45 * e + k.bend * b2 * 0.6;
+          al *= Math.max(0, 1 - Math.max(0, b2 - 0.7) / 1.1);
+          if (y < -40) al = 0;
+        }
+        if (al <= 0.01) continue;
+        alive++;
+        kite(k, x, y, rot, al);
+      }
+      if (burst > 0.6 && !alive) { cv.remove(); window.removeEventListener('resize', layout); return; }
+      requestAnimationFrame(frame);
+    };
+    const start = () => { t0b = performance.now(); layout(); window.addEventListener('resize', layout); requestAnimationFrame(frame); };
+    const fl = document.fonts && document.fonts.load ? document.fonts.load('400 100px "Tenor Sans"') : Promise.resolve();
+    Promise.race([fl, new Promise(r => setTimeout(r, 700))]).then(start, start);
+  }
+
+  wirePlanners() {
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    const motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.$$('[data-planners] > div').forEach(p => {
+      const num = p.children[1];
+      const final = num ? num.textContent : '';
+      p.addEventListener('mousemove', e => {
+        const b = p.getBoundingClientRect();
+        p.style.setProperty('--mx', ((e.clientX - b.left) / b.width * 100).toFixed(1) + '%');
+        p.style.setProperty('--my', ((e.clientY - b.top) / b.height * 100).toFixed(1) + '%');
+      });
+      p.addEventListener('mouseenter', () => {
+        if (!num || !motion || num._rolling) return;
+        num._rolling = true;
+        let step = 0;
+        const id = setInterval(() => {
+          step++;
+          const keep = Math.floor(final.length * (step / 11));
+          num.textContent = final.split('').map((c, i) => (i < keep || !/\d/.test(c)) ? c : String(Math.floor(Math.random() * 10))).join('');
+          if (step >= 11) { clearInterval(id); num.textContent = final; num._rolling = false; }
+        }, 32);
+      });
+    });
+  }
+
+  footerHeader() {
+    if (this._ftHdr) return;
+    const nav = this.$('#nav'), ft = this.$('footer');
+    if (!nav || !ft) return;
+    this._ftHdr = true;
+    nav.style.transition = (nav.style.transition ? nav.style.transition + ',' : '') + 'translate .7s cubic-bezier(.16,1,.3,1), opacity .5s ease';
+    let last = null;
+    const check = () => {
+      const on = !this._menuOpen && ft.getBoundingClientRect().top < window.innerHeight * 0.6;
+      if (on === last) return;
+      last = on;
+      nav.style.translate = on ? '0 -130%' : '0 0';
+      nav.style.opacity = on ? '0' : '';
+      nav.style.pointerEvents = on ? 'none' : '';
+    };
+    const loop = () => { check(); this._ftRaf = requestAnimationFrame(loop); };
+    loop();
   }
 
   wireMenu() {

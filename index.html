@@ -220,7 +220,8 @@
     <a data-navlink="contact" href="#contact" style="display:inline-flex;align-items:center;gap:8px;padding:8px 0;color:rgba(247,233,206,.62);transition:color .4s ease" style-hover="color:#FFF8EA"><span data-navdot="" style="display:block;width:4px;height:4px;border-radius:50%;background:#F0B23C;transform:scale(0);transition:transform .5s cubic-bezier(.16,1,.3,1)"></span>Contact</a>
   </nav>
   <div style="display:flex;align-items:center;gap:10px">
-    <a id="nav-enq" data-mag="" href="#contact" data-hide-m="" style="display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border:1px solid rgba(247,233,206,.32);border-radius:999px;font-family:Marcellus,serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#FFF8EA;white-space:nowrap;transition:background-color .4s ease,border-color .4s ease,color .4s ease" style-hover="background-color:#F0B23C;border-color:#F0B23C;color:#1A0E05">Enquire</a>
+    <a id="nav-ig" data-mag="" href="https://www.instagram.com/kites_events_/" target="_blank" rel="noopener" aria-label="Kites Events on Instagram (@kites_events_)" title="@kites_events_" style="display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:42px;height:42px;border:1px solid rgba(247,233,206,.32);border-radius:50%;color:#FFF8EA;transition:background-color .4s ease,border-color .4s ease,color .4s ease" style-hover="background-color:#F0B23C;border-color:#F0B23C;color:#1A0E05"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+    <a id="nav-enq" data-mag="" href="#contact" data-hide-m="" style="display:inline-flex;align-items:center;gap:10px;box-sizing:border-box;height:42px;padding:0 22px;border:1px solid rgba(247,233,206,.32);border-radius:999px;font-family:Marcellus,serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#FFF8EA;white-space:nowrap;transition:background-color .4s ease,border-color .4s ease,color .4s ease" style-hover="background-color:#F0B23C;border-color:#F0B23C;color:#1A0E05">Enquire</a>
     <button id="menu-open" data-show-m="" type="button" aria-label="Open menu" aria-expanded="false" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;background:rgba(18,9,4,.35);border:1px solid rgba(247,233,206,.32);border-radius:50%;color:#FFF8EA;cursor:pointer">
       <span aria-hidden="true" style="display:flex;flex-direction:column;gap:5px;width:16px"><span style="display:block;height:1px;background:currentColor"></span><span style="display:block;height:1px;width:10px;margin-left:auto;background:currentColor"></span></span>
     </button>
@@ -1171,7 +1172,7 @@ class Component extends DCLogic {
     const w1 = this.$('#nav-wm1'), w2 = this.$('#nav-wm2');
     if (w1) w1.style.color = this._navOn;
     if (w2) w2.style.color = onImage ? 'rgba(240,178,60,.86)' : '#8C5F17';
-    [this.$('#nav-enq'), this.$('#menu-open')].forEach(b => {
+    [this.$('#nav-enq'), this.$('#nav-ig'), this.$('#menu-open')].forEach(b => {
       if (!b) return;
       b.style.color = this._navOn;
       b.style.borderColor = onImage ? 'rgba(247,233,206,.32)' : 'rgba(42,32,24,.22)';

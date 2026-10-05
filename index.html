@@ -1356,19 +1356,10 @@ class Component extends DCLogic {
     nav.style.transition = (nav.style.transition ? nav.style.transition + ',' : '') + 'translate .7s cubic-bezier(.16,1,.3,1), opacity .5s ease';
     let last = null;
     const hero = this.$('#hero');
-    let lastY = window.scrollY, dirHidden = false;
+    if (window.gsap) gsap.set(nav, { yPercent: 0 });
+    nav.style.transform = '';
     const check = () => {
-      const y = window.scrollY, dy = y - lastY;
-      let dh = dirHidden;
-      if (this._menuOpen || y < 40) dh = false;
-      else if (dy > 3) dh = true;
-      else if (dy < -3) dh = false;
-      if (Math.abs(dy) > 3 || y < 40) lastY = y;
-      if (dh !== dirHidden) {
-        dirHidden = dh;
-        if (window.gsap) gsap.to(nav, { yPercent: dh ? -120 : 0, duration: 0.7, ease: 'expo.out', overwrite: 'auto' });
-        else nav.style.transform = dh ? 'translateY(-120%)' : '';
-      }
+      if (window.gsap && gsap.getProperty(nav, 'yPercent') !== 0) gsap.set(nav, { yPercent: 0 });
       if (hero) {
         const host = (hero.parentElement && hero.parentElement.classList.contains('pin-spacer')) ? hero.parentElement : hero;
         this._heroIn = host.getBoundingClientRect().bottom > window.innerHeight * 0.35;

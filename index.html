@@ -126,6 +126,15 @@
     #contact[data-clayout="ledger"] [data-planners] > div > span:nth-child(3) { grid-column: 1; grid-row: 3; margin-top: 10px !important; }
     #contact[data-clayout="ledger"] [data-planners] a { flex: 1 1 0; justify-content: center; padding: 0 14px !important; }
   }
+  footer { display: grid !important; grid-template-rows: minmax(min-content,1fr) auto minmax(min-content,1fr); grid-template-columns: minmax(0,1fr); padding-bottom: clamp(48px,6vw,84px) !important; }
+  footer > * { grid-column: 1 / -1; }
+  html { scrollbar-width: none; -ms-overflow-style: none; }
+  html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; width: 0; height: 0; }
+  footer > [data-ftline] { padding-bottom: 72px; justify-self: center; max-width: 100%; text-align: center !important; }
+  footer > div[data-r] { grid-row: 1; align-self: start; }
+  footer > #wordmark { grid-row: 2; margin-top: 0 !important; padding-top: 0 !important; }
+  footer > [data-ftline] { grid-row: 3; align-self: start; }
+  footer > #v5-end { grid-row: 3; align-self: end; margin-top: 0 !important; margin-bottom: calc(clamp(20px,2.6vw,34px) - clamp(48px,6vw,84px)) !important; }
   [data-snap]::-webkit-scrollbar, [data-track]::-webkit-scrollbar { display: none; }
   @media (min-width: 1181px) {
     [data-crow] { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)); column-gap: clamp(32px,3.6vw,72px) !important; row-gap: clamp(24px,3vw,40px) !important; align-items: stretch; }
@@ -269,7 +278,7 @@
 <section id="hero" data-section="hero" data-screen-label="Masthead" style="position:relative;height:100svh;min-height:560px;overflow:hidden;background:#FAF7F1">
   <div id="hero-frame" style="position:absolute;inset:0;overflow:hidden;clip-path:inset(0% 0% 0% 0% round 0px)">
     <div id="hero-zoom" style="position:absolute;inset:0">
-      <img id="hero-img" src="images/hero-plate.webp" alt="A Kites Events stage with a lit floral arch, marigold strands, white blooms and gold vessels" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+      <div id="hero-push" style="position:absolute;inset:0;will-change:transform"><img id="hero-img" src="images/hero-plate.webp" alt="A Kites Events stage with a lit floral arch, marigold strands, white blooms and gold vessels" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" /></div>
     </div>
     <div aria-hidden="true" style="position:absolute;inset:0;background:rgba(11,5,2,.34)"></div>
     <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,5,2,.72) 0%,rgba(11,5,2,.38) 45%,rgba(11,5,2,0) 80%)"></div>
@@ -610,7 +619,7 @@
     </nav>
   </div>
   <div id="wordmark" data-lm="" aria-hidden="true" style="display:flex;justify-content:space-between;overflow:hidden;margin-top:auto;padding-top:clamp(32px,4.4vw,72px);font-family:'Tenor Sans',sans-serif;font-size:clamp(90px,24vw,460px);line-height:.82;letter-spacing:0;color:#000000">
-    <span data-li="" style="display:block">K</span><span data-li="" style="display:block">I</span><span data-li="" style="display:block">T</span><span data-li="" style="display:block">E</span><span data-li="" style="display:block">S</span>
+    <span data-li="" style="display:block"><img src="images/logo-k-mark.svg" alt="K" width="444" height="608" style="display:inline-block;height:.7em;width:auto;vertical-align:baseline" /></span><span data-li="" style="display:block">I</span><span data-li="" style="display:block">T</span><span data-li="" style="display:block">E</span><span data-li="" style="display:block">S</span>
   </div>
   <p data-ftline="" style="margin:clamp(14px,1.6vw,26px) 0 0;white-space:nowrap;overflow:hidden;font-size:min(1.25vw,24px);line-height:1.4;letter-spacing:.02em;text-align:center;color:rgba(42,32,24,0.82)">Event &amp; Wedding Planners in Thodupuzha. We craft celebrations that stay with you for how they felt, not simply for how they looked.</p>
   <div id="v5-end" style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:auto;padding-top:clamp(14px,1.8vw,22px);border-top:1px solid rgba(42,32,24,0.08);font-family:Marcellus,serif;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(42,32,24,0.64)">
@@ -1082,6 +1091,8 @@ class Component extends DCLogic {
     if (!L || this._opened) return;
     this._opened = true;
     this._kiteBurst = performance.now();
+    const hp = this.$('#hero-push');
+    if (hp && hp.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) this._heroPush = hp.animate([{ transform: 'scale(1.005)' }, { transform: 'scale(1.14)' }], { duration: 26000, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'forwards' });
     clearInterval(this._cnt);
     const num = this.$('#ld-num'), fill = this.$('#ld-fill');
     if (num) num.textContent = '100';

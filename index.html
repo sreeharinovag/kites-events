@@ -155,6 +155,35 @@
     #hero-copy a[href="#contact"] { padding: 21px 30px !important; font-size: 11.5px !important; }
     #hero > div:last-of-type { gap: 30px !important; padding-top: 110px !important; padding-bottom: 48px !important; }
   }
+  @media (max-width: 900px) {
+    #hero [data-show-m] { background: linear-gradient(200deg,rgba(11,5,2,.2) 0%,rgba(11,5,2,.35) 45%,rgba(11,5,2,.92) 100%) !important; }
+    #hero > div:last-of-type { align-items: flex-end; text-align: right; padding-left: 15vw !important; padding-right: 5vw !important; padding-bottom: 6vw !important; }
+    #hero [data-hero-tag] { position: absolute; left: 5vw; top: 110px; bottom: 6vw; display: flex !important; flex-direction: column; align-items: center; gap: 14px !important; font-size: 10.5px !important; letter-spacing: .36em !important; line-height: 1 !important; }
+    #hero [data-hero-tag] > span:last-child { order: 1; writing-mode: vertical-rl; transform: rotate(180deg); flex-wrap: nowrap !important; white-space: nowrap; gap: .6em !important; }
+    #hero [data-hero-tagline] { order: 2; flex: 1; width: 1px !important; height: auto !important; background: linear-gradient(#F0B23C,rgba(240,178,60,0)) !important; }
+    #hero [data-hero-sep] { display: inline !important; }
+    #hero [data-hero-kl] { flex-basis: auto !important; }
+    #hero-h1 { align-items: flex-end; text-align: right; font-size: 8.2vw !important; line-height: .98 !important; letter-spacing: .01em !important; }
+    #hero-h1 [data-hl="2"] { padding-left: 0 !important; }
+    #hero-h1 [data-hl="2"] [data-li] { font-size: 1.2em !important; }
+    #hero-copy { justify-items: end; gap: 26px !important; }
+    #hero-copy p { max-width: 34ch !important; font-size: 16px !important; line-height: 1.65 !important; }
+    #hero-copy > div { justify-content: flex-end !important; }
+    #hero-copy a[href="#contact"] { width: auto !important; min-height: 48px; padding: 0 !important; gap: 16px !important; background: none !important; border-radius: 0 !important; color: #FFF8EA !important; font-size: 12px !important; letter-spacing: .28em !important; }
+    #hero-copy a[href="#contact"] > span { position: relative; display: block; width: 64px; height: 1px; font-size: 0; background: #F0B23C; }
+    #hero-copy a[href="#contact"] > span::after { content: ''; position: absolute; right: 1px; top: -4px; width: 8px; height: 8px; border-top: 1px solid #F0B23C; border-right: 1px solid #F0B23C; transform: rotate(45deg); }
+  }
+  footer nav[aria-label="Footer"] { display: none !important; }
+  @media (max-width: 1180px) {
+    #nav { padding: 18px 20px !important; }
+    #nav-logo { height: 54px !important; }
+    #nav [data-navlinks], #nav [data-hide-m] { display: none !important; }
+    #nav #menu-open { display: flex !important; }
+  }
+  @media (max-width: 600px) {
+    footer, footer [data-ftline] { text-align: center !important; }
+    footer > #v5-end { flex-direction: column; justify-content: center !important; align-items: center !important; text-align: center; gap: 6px !important; }
+  }
   @media (min-width: 901px) {
     [data-show-m] { display: none !important; }
     #hero [data-hero-tag] { position: absolute; right: clamp(20px,3.4vw,48px); top: 0; bottom: 0; margin: auto 0; height: max-content; writing-mode: vertical-rl; flex-direction: row; gap: 18px; white-space: nowrap; }
@@ -298,7 +327,7 @@
   <div style="position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(24px,4vh,48px);padding:clamp(100px,16vh,160px) clamp(18px,3.4vw,48px) clamp(64px,9vh,96px)">
     <div data-hfade="" data-hero-tag="" style="display:flex;align-items:center;gap:14px;font-family:Marcellus,serif;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:#FFC968">
       <span data-hero-tagline="" aria-hidden="true" style="display:block;width:clamp(28px,4vw,64px);height:1px;background:#F0B23C"></span>
-      <span style="display:flex;flex-wrap:wrap;gap:6px 0.6em"><span>Events &amp; Wedding Planners</span><span data-hero-sep="">·</span><span data-hero-kl="">All Kerala</span></span>
+      <span style="display:flex;flex-wrap:wrap;gap:6px 0.6em"><span>Events &amp; Wedding Planners</span><span data-hero-sep="">·</span><span data-hero-kl="">Thodupuzha</span></span>
     </div>
     <h1 id="hero-h1" style="margin:0;display:flex;flex-direction:column;font-family:'Tenor Sans',sans-serif;font-weight:400;font-size:clamp(34px,9.4vw,180px);line-height:.94;letter-spacing:.03em;text-transform:uppercase;color:#FFF8EA;text-shadow:0 2px 40px rgba(11,5,2,.45)">
       <span data-hl="1" style="display:block;overflow:hidden;padding-bottom:.04em"><span data-li="" style="display:block">Moments,</span></span>
@@ -990,7 +1019,8 @@ class Component extends DCLogic {
           const top = (r.top - gr.top) + (H - gr.height) / 2, left = (r.left - gr.left) + (W - gr.width) / 2;
           return 'inset(' + top.toFixed(1) + 'px ' + (W - left - r.width).toFixed(1) + 'px ' + (H - top - r.height).toFixed(1) + 'px ' + left.toFixed(1) + 'px)'; };
         const dirs = ['inset(0% 100% 0% 0%)', 'inset(100% 0% 0% 0%)', 'inset(0% 0% 0% 100%)', 'inset(0% 0% 100% 0%)', 'inset(0% 100% 0% 0%)', 'inset(100% 0% 0% 0%)'];
-        g.timeline({ scrollTrigger: { trigger: gal, start: 'center center', end: '+=150%', pin: true, scrub: 1, refreshPriority: 3, invalidateOnRefresh: true } })
+        this._moTl = g.timeline({ scrollTrigger: { trigger: gal, start: 'center center', end: '+=150%', pin: true, scrub: 1, refreshPriority: 3, invalidateOnRefresh: true } });
+        this._moTl
           .fromTo(first, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.01 }, 0.98)
           .fromTo(rest, { clipPath: i => dirs[i % dirs.length] }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'power3.inOut', duration: 0.5, stagger: 0.08 }, 1.0)
           .fromTo(rest.map(t => t.querySelector('img')), { scale: 1.45 }, { scale: 1, ease: 'power3.out', duration: 0.7, stagger: 0.08 }, 1.0)
@@ -1062,6 +1092,7 @@ class Component extends DCLogic {
       const rvItems = g.utils.toArray('[data-rv-item]'), rvN = rvItems.length;
       const rtl = g.timeline({ scrollTrigger: { trigger: '#reviews', refreshPriority: 2, start: 'top top', end: '+=' + (100 + (rvN - 1) * 80) + '%', pin: true, scrub: 1,
         onUpdate: s => { const c = this.$('#rv-count'); if (!c) return; const t = s.progress * rtl.duration(); let k = 0; for (let j = 1; j < rvN; j++) if (t > 1.5 + (j - 1) * 1.4) k = j; const txt = String(k + 1).padStart(2, '0'); if (c.textContent !== txt) c.textContent = txt; } } });
+      this._rvTl = rtl;
       rtl.fromTo('#rv-frame', { clipPath: desk ? 'inset(18% 24% 18% 24% round 12px)' : 'inset(16% 7% 16% 7% round 10px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', duration: 1 }, 0)
         .fromTo('#rv-img', { scale: 1.35 }, { scale: 1, ease: 'none', duration: 1 + (rvN - 1) * 1.4 }, 0);
       rvItems.forEach((it, j) => {
@@ -1128,8 +1159,32 @@ class Component extends DCLogic {
         if (!t) return;
         e.preventDefault();
         this.setMenu(false);
-        if (this.lenis) this.lenis.scrollTo(t, { duration: 1.8, easing: x => 1 - Math.pow(1 - x, 4) });
-        else window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY, behavior: this.reduce ? 'auto' : 'smooth' });
+        const glide = (y) => {
+          const d = Math.abs(y - window.scrollY), dur = Math.min(3.2, Math.max(1.4, d / 2600));
+          if (this.lenis) this.lenis.scrollTo(y, { duration: dur, easing: x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2 });
+          else window.scrollTo({ top: y, behavior: this.reduce ? 'auto' : 'smooth' });
+        };
+        if (window.innerWidth > 1180) {
+          if (id === '#contact') {
+            const crow = this.$('#contact [data-crow]');
+            if (crow) {
+              const nh = (this.$('#nav') && this.$('#nav').getBoundingClientRect().height) || 0;
+              glide(crow.getBoundingClientRect().top + window.scrollY - nh - 16);
+              return;
+            }
+          }
+          if (id === '#moments' && this._moTl && this._moTl.scrollTrigger) {
+            glide(this._moTl.scrollTrigger.end);
+            return;
+          }
+        }
+        if (id === '#hero') { glide(0); return; }
+        if (id === '#reviews' && this._rvTl && this._rvTl.scrollTrigger) {
+          const st = this._rvTl.scrollTrigger, D = this._rvTl.duration() || 1;
+          glide(st.start + (st.end - st.start) * Math.min(1, 1.25 / D));
+          return;
+        }
+        glide(t.getBoundingClientRect().top + window.scrollY);
       });
     });
   }
@@ -1251,14 +1306,28 @@ class Component extends DCLogic {
       dpr = Math.min(2, window.devicePixelRatio || 1);
       W = window.innerWidth; H = window.innerHeight;
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-      const mg = Math.min(96, Math.max(20, W * 0.05)), ww = Math.min(W - mg * 2, (H * 0.6) / 0.26), fs = ww / 4.6;
+      const vert = W < 600;
+      const mg = Math.min(96, Math.max(20, W * 0.05));
+      let ww, fs;
       const off = document.createElement('canvas'), oc = off.getContext('2d');
-      off.width = Math.ceil(ww); off.height = Math.ceil(fs * 1.1);
-      oc.font = '400 ' + fs + 'px "Tenor Sans", sans-serif'; oc.textBaseline = 'alphabetic'; oc.fillStyle = '#000';
-      const L = 'KITES'.split(''), ws = L.map(c => oc.measureText(c).width), gap = (ww - ws.reduce((s, v) => s + v, 0)) / (L.length - 1);
-      oc.strokeStyle = '#000'; oc.lineWidth = fs * 0.11; oc.lineJoin = 'round';
-      let x = fs * 0.06; L.forEach((c, i) => { oc.fillText(c, x, fs * 0.86); oc.strokeText(c, x, fs * 0.86); x += ws[i] + gap - fs * 0.03; });
-      step = Math.max(5, Math.round(ww / (W < 600 ? 72 : 118)));
+      const L = 'KITES'.split('');
+      if (vert) {
+        fs = Math.min(H * 0.58, (W - mg * 2) * 4.2) / 5.25;
+        const gapR = 1.42, hh = fs * (0.86 + 4 * gapR + 0.2); ww = hh;
+        off.width = Math.ceil(fs * 1.15); off.height = Math.ceil(hh);
+        oc.font = '400 ' + fs + 'px "Tenor Sans", sans-serif'; oc.textBaseline = 'alphabetic'; oc.textAlign = 'center'; oc.fillStyle = '#000';
+        oc.strokeStyle = '#000'; oc.lineWidth = fs * 0.11; oc.lineJoin = 'round';
+        L.forEach((c, i) => { const by = fs * (0.86 + i * gapR); oc.fillText(c, off.width / 2, by); oc.strokeText(c, off.width / 2, by); });
+        step = Math.max(5, Math.round(fs * 5.25 / 64));
+      } else {
+        ww = Math.min(W - mg * 2, (H * 0.6) / 0.26); fs = ww / 4.6;
+        off.width = Math.ceil(ww); off.height = Math.ceil(fs * 1.1);
+        oc.font = '400 ' + fs + 'px "Tenor Sans", sans-serif'; oc.textBaseline = 'alphabetic'; oc.fillStyle = '#000';
+        const ws = L.map(c => oc.measureText(c).width), gap = (ww - ws.reduce((s, v) => s + v, 0)) / (L.length - 1);
+        oc.strokeStyle = '#000'; oc.lineWidth = fs * 0.11; oc.lineJoin = 'round';
+        let x = fs * 0.06; L.forEach((c, i) => { oc.fillText(c, x, fs * 0.86); oc.strokeText(c, x, fs * 0.86); x += ws[i] + gap - fs * 0.03; });
+        step = Math.max(5, Math.round(ww / 118));
+      }
       const d = oc.getImageData(0, 0, off.width, off.height).data, pts = [];
       for (let y = 0, r = 0; y < off.height; y += step * 0.8, r++) for (let x2 = (r % 2) * step / 2; x2 < off.width; x2 += step) {
         const i = ((Math.round(y) * off.width) + Math.round(x2)) * 4 + 3; if (d[i] > 110) pts.push([x2, y]);
@@ -1270,7 +1339,7 @@ class Component extends DCLogic {
       const old = kites;
       kites = pts.map((p, k) => {
         const o = old[k], ang = rnd(0, Math.PI * 2), R0 = Math.hypot(W, H) * rnd(0.6, 0.9);
-        const nx = p[0] / ww;
+        const nx = vert ? p[1] / ww : p[0] / ww;
         return o ? Object.assign(o, { tx: ox + p[0], ty: oy + p[1] }) : {
           tx: ox + p[0], ty: oy + p[1], th: Math.min(0.97, 0.3 + (nx * 0.45 + Math.random() * 0.55) * 0.66), dt: 0,
           bend: rnd(-0.5, 0.5), sz: step * rnd(1.2, 1.55), wind: rnd(40, 140), lift: rnd(260, 480), c: pal[Math.floor(Math.random() * (Math.random() < 0.7 ? 3 : 4))],
@@ -1448,7 +1517,7 @@ class Component extends DCLogic {
         const host = (hero.parentElement && hero.parentElement.classList.contains('pin-spacer')) ? hero.parentElement : hero;
         this._heroIn = host.getBoundingClientRect().bottom > window.innerHeight * 0.35;
       }
-      const on = !this._menuOpen && ft.getBoundingClientRect().top < window.innerHeight * 0.6;
+      const on = false && ft.getBoundingClientRect().top < window.innerHeight * 0.6;
       if (on === last) return;
       last = on;
       nav.style.translate = on ? '0 -130%' : '0 0';
